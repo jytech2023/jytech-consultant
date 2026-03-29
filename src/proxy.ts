@@ -6,9 +6,15 @@ export async function proxy(request: NextRequest) {
   // Let auth0 handle /auth/* routes
   const authResponse = await auth0.middleware(request);
 
-  // If auth0 handled the request (login, callback, logout), return its response
   const { pathname } = request.nextUrl;
+
+  // Let auth0 handle /auth/* routes
   if (pathname.startsWith("/auth/")) {
+    return authResponse;
+  }
+
+  // Skip locale redirect for API routes
+  if (pathname.startsWith("/api/")) {
     return authResponse;
   }
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeToggle from "./ThemeToggle";
 import AuthButton from "./AuthButton";
 
 export default function Navbar({
@@ -40,6 +41,7 @@ export default function Navbar({
             {dict.nav.pricing}
           </Link>
           <LanguageSwitcher locale={locale} />
+          <ThemeToggle />
           <AuthButton />
         </div>
       </div>

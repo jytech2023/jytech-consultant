@@ -14,11 +14,16 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const { plan, locale = "en" } = body as { plan: string; locale?: string };
 
-  if (!plan || !(plan in PLANS)) {
+  // Only start and growth are purchasable via Stripe
+  if (!plan || !["start", "growth"].includes(plan)) {
     return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
   }
 
   const planConfig = PLANS[plan as PlanKey];
+  if (!planConfig.price || !planConfig.interval) {
+    return NextResponse.json({ error: "Plan not available for checkout" }, { status: 400 });
+  }
+
   const auth0Id = session.user.sub!;
 
   // Get or create user in DB
@@ -41,7 +46,6 @@ export async function POST(request: NextRequest) {
       .returning();
   }
 
-  // Create Stripe Checkout session with 20% platform application fee
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: "subscription",
     customer_email: session.user.email ?? undefined,
@@ -50,10 +54,10 @@ export async function POST(request: NextRequest) {
         price_data: {
           currency: "usd",
           product_data: {
-            name: `JY Consultant — ${planConfig.name} Plan`,
-            description: planConfig.features,
+            name: `JY Consultant — ${planConfig.name}`,
+            description: `${planConfig.commission}% platform commission on expert consulting`,
           },
-          unit_amount: planConfig.basePrice,
+          unit_amount: planConfig.price,
           recurring: { interval: planConfig.interval },
         },
         quantity: 1,
@@ -64,7 +68,7 @@ export async function POST(request: NextRequest) {
         userId: dbUser.id,
         auth0Id,
         plan,
-        platformFee: String(planConfig.platformFee),
+        commission: String(planConfig.commission),
       },
     },
     metadata: {

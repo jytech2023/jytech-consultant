@@ -6,13 +6,20 @@ import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 
 const AI_MODELS = [
-  { value: "openrouter/auto", label: "Auto (Recommended)", labelZh: "自动（推荐）" },
-  { value: "anthropic/claude-sonnet-4", label: "Claude Sonnet 4", labelZh: "Claude Sonnet 4" },
-  { value: "openai/gpt-4o", label: "GPT-4o", labelZh: "GPT-4o" },
-  { value: "openai/gpt-4o-mini", label: "GPT-4o Mini", labelZh: "GPT-4o Mini" },
-  { value: "google/gemini-2.5-flash", label: "Gemini 2.5 Flash", labelZh: "Gemini 2.5 Flash" },
-  { value: "deepseek/deepseek-chat", label: "DeepSeek V3", labelZh: "DeepSeek V3" },
+  { value: "openrouter/auto", label: "Auto Select (Free)", labelZh: "自动选择（免费）", minPlan: "free" },
+  { value: "deepseek/deepseek-chat", label: "DeepSeek V3 (Free)", labelZh: "DeepSeek V3（免费）", minPlan: "free" },
+  { value: "google/gemini-2.5-flash", label: "Gemini 2.5 Flash (Free)", labelZh: "Gemini 2.5 Flash（免费）", minPlan: "free" },
+  { value: "openai/gpt-4o-mini", label: "GPT-4o Mini", labelZh: "GPT-4o Mini", minPlan: "start" },
+  { value: "openai/gpt-4o", label: "GPT-4o", labelZh: "GPT-4o", minPlan: "start" },
+  { value: "anthropic/claude-sonnet-4", label: "Claude Sonnet 4", labelZh: "Claude Sonnet 4", minPlan: "growth" },
 ];
+
+const PLAN_RANK: Record<string, number> = {
+  free: 0,
+  start: 1,
+  growth: 2,
+  enterprise: 3,
+};
 
 export default function ProfileForm({
   locale,
@@ -60,13 +67,15 @@ export default function ProfileForm({
 
   const planLabels: Record<string, string> = {
     free: dict.profile.free,
-    pro: dict.profile.pro,
+    start: dict.profile.start,
+    growth: dict.profile.growth,
     enterprise: dict.profile.enterprise,
   };
 
   const planColors: Record<string, string> = {
     free: "text-muted",
-    pro: "text-accent-light",
+    start: "text-amber-400",
+    growth: "text-accent-light",
     enterprise: "text-purple-400",
   };
 
@@ -85,19 +94,33 @@ export default function ProfileForm({
         <h2 className="font-semibold">{dict.profile.aiModel}</h2>
         <p className="mt-1 text-sm text-muted">{dict.profile.aiModelDesc}</p>
         <div className="mt-4 grid gap-2 sm:grid-cols-2">
-          {AI_MODELS.map((m) => (
-            <button
-              key={m.value}
-              onClick={() => setModel(m.value)}
-              className={`rounded-lg border px-4 py-3 text-left text-sm transition ${
-                model === m.value
-                  ? "border-accent bg-accent/10 text-foreground"
-                  : "border-card-border text-muted hover:border-accent/40"
-              }`}
-            >
-              {locale === "zh" ? m.labelZh : m.label}
-            </button>
-          ))}
+          {AI_MODELS.map((m) => {
+            const userRank = PLAN_RANK[plan] ?? 0;
+            const modelRank = PLAN_RANK[m.minPlan] ?? 0;
+            const locked = userRank < modelRank;
+
+            return (
+              <button
+                key={m.value}
+                onClick={() => !locked && setModel(m.value)}
+                disabled={locked}
+                className={`rounded-lg border px-4 py-3 text-left text-sm transition ${
+                  locked
+                    ? "cursor-not-allowed border-card-border opacity-50"
+                    : model === m.value
+                      ? "border-accent bg-accent/10 text-foreground"
+                      : "border-card-border text-muted hover:border-accent/40"
+                }`}
+              >
+                <span>{locale === "zh" ? m.labelZh : m.label}</span>
+                {locked && (
+                  <span className="ml-2 text-xs text-muted">
+                    🔒 {planLabels[m.minPlan] ?? m.minPlan}+
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </div>
         <div className="mt-4 flex items-center gap-3">
           <button

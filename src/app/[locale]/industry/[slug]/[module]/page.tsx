@@ -7,6 +7,8 @@ import {
   getIndustry,
   getModule,
 } from "@/lib/data";
+import { hasLocale, type Locale } from "@/lib/i18n";
+import { getDictionary } from "@/lib/dictionaries";
 import ConsultingChat from "@/components/ConsultingChat";
 
 export function generateStaticParams() {
@@ -22,14 +24,17 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string; module: string }>;
+  params: Promise<{ locale: string; slug: string; module: string }>;
 }) {
-  const { slug, module: modSlug } = await params;
+  const { locale, slug, module: modSlug } = await params;
   const industry = getIndustry(slug);
   const mod = getModule(modSlug);
   if (!industry || !mod) return {};
   return {
-    title: `${mod.name} — ${industry.name} | AI Business Consultant`,
+    title:
+      locale === "zh"
+        ? `${mod.nameZh} — ${industry.nameZh} | AI商业顾问`
+        : `${mod.name} — ${industry.name} | AI Business Consultant`,
     description: `${mod.description} Tailored for the ${industry.name} industry.`,
   };
 }
@@ -37,12 +42,16 @@ export async function generateMetadata({
 export default async function ModulePage({
   params,
 }: {
-  params: Promise<{ slug: string; module: string }>;
+  params: Promise<{ locale: string; slug: string; module: string }>;
 }) {
-  const { slug, module: modSlug } = await params;
+  const { locale, slug, module: modSlug } = await params;
+  if (!hasLocale(locale)) notFound();
   const industry = getIndustry(slug);
   const mod = getModule(modSlug);
   if (!industry || !mod) notFound();
+
+  const dict = await getDictionary(locale as Locale);
+  const l = locale as Locale;
 
   return (
     <div className="flex flex-1 flex-col">
@@ -50,26 +59,34 @@ export default async function ModulePage({
       <section className="border-b border-card-border px-6 py-6">
         <div className="mx-auto max-w-5xl">
           <div className="flex items-center gap-2 text-sm text-muted">
-            <Link href="/" className="transition hover:text-foreground">
-              Home
+            <Link
+              href={`/${l}`}
+              className="transition hover:text-foreground"
+            >
+              {dict.module.home}
             </Link>
             <span>/</span>
             <Link
-              href={`/industry/${industry.slug}`}
+              href={`/${l}/industry/${industry.slug}`}
               className="transition hover:text-foreground"
             >
-              {industry.icon} {industry.name}
+              {industry.icon}{" "}
+              {l === "zh" ? industry.nameZh : industry.name}
             </Link>
             <span>/</span>
             <span className="text-foreground">
-              {mod.icon} {mod.name}
+              {mod.icon} {l === "zh" ? mod.nameZh : mod.name}
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold">
-            {mod.icon} {mod.name}{" "}
-            <span className="text-muted">for {industry.name}</span>
+            {mod.icon} {l === "zh" ? mod.nameZh : mod.name}{" "}
+            <span className="text-muted">
+              {dict.module.for} {l === "zh" ? industry.nameZh : industry.name}
+            </span>
           </h1>
-          <p className="mt-1 text-sm text-muted">{mod.description}</p>
+          <p className="mt-1 text-sm text-muted">
+            {l === "zh" ? (mod.descriptionZh ?? mod.description) : mod.description}
+          </p>
         </div>
       </section>
 
@@ -78,7 +95,7 @@ export default async function ModulePage({
         <aside className="w-full shrink-0 lg:w-64">
           <div className="rounded-xl border border-card-border bg-card-bg p-5">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted">
-              Capabilities
+              {dict.module.capabilities}
             </h3>
             <ul className="mt-3 space-y-2">
               {mod.features.map((f) => (
@@ -95,7 +112,7 @@ export default async function ModulePage({
           {modSlug === "career" && (
             <div className="mt-4 rounded-xl border border-card-border bg-card-bg p-5">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-muted">
-                Partners
+                {dict.module.partners}
               </h3>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {careerPartners.map((p) => (
@@ -126,11 +143,12 @@ export default async function ModulePage({
         {/* Main Content - Chat Interface */}
         <div className="flex flex-1 flex-col">
           <ConsultingChat
-            industryName={industry.name}
+            industryName={l === "zh" ? industry.nameZh : industry.name}
             industrySlug={industry.slug}
-            moduleName={mod.name}
+            moduleName={l === "zh" ? mod.nameZh : mod.name}
             moduleSlug={mod.slug}
             color={industry.color}
+            locale={l}
           />
         </div>
       </div>

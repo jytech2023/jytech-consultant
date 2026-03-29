@@ -3,38 +3,81 @@
 import { useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, UIMessage } from "ai";
+import type { Locale } from "@/lib/i18n";
 
-const SUGGESTED_PROMPTS: Record<string, string[]> = {
-  customers: [
-    "Help me identify my ideal customer profile",
-    "What are the best acquisition channels for my industry?",
-    "Analyze customer segments for my business",
-  ],
-  competitors: [
-    "Who are the top competitors in this space?",
-    "Generate a SWOT analysis for my business",
-    "Compare pricing strategies of key players",
-  ],
-  strategy: [
-    "Help me plan a market entry strategy",
-    "What growth opportunities should I prioritize?",
-    "Recommend partnership strategies",
-  ],
-  market: [
-    "What are the latest trends in this market?",
-    "Estimate the market size and growth potential",
-    "What regulations should I be aware of?",
-  ],
-  "supply-chain": [
-    "Help me find reliable suppliers",
-    "How can I reduce supply chain costs?",
-    "What are the key risks in my supply chain?",
-  ],
-  career: [
-    "Help me plan a career transition strategy",
-    "Optimize my resume for this industry",
-    "What skills are most in demand right now?",
-  ],
+const SUGGESTED_PROMPTS: Record<string, { en: string[]; zh: string[] }> = {
+  customers: {
+    en: [
+      "Help me identify my ideal customer profile",
+      "What are the best acquisition channels for my industry?",
+      "Analyze customer segments for my business",
+    ],
+    zh: [
+      "帮我识别理想客户画像",
+      "我所在行业最佳的获客渠道有哪些？",
+      "分析我的业务客户细分",
+    ],
+  },
+  competitors: {
+    en: [
+      "Who are the top competitors in this space?",
+      "Generate a SWOT analysis for my business",
+      "Compare pricing strategies of key players",
+    ],
+    zh: [
+      "这个领域的主要竞争对手有哪些？",
+      "为我的业务生成SWOT分析",
+      "比较主要竞争者的定价策略",
+    ],
+  },
+  strategy: {
+    en: [
+      "Help me plan a market entry strategy",
+      "What growth opportunities should I prioritize?",
+      "Recommend partnership strategies",
+    ],
+    zh: [
+      "帮我制定市场进入策略",
+      "我应该优先考虑哪些增长机会？",
+      "推荐合作伙伴策略",
+    ],
+  },
+  market: {
+    en: [
+      "What are the latest trends in this market?",
+      "Estimate the market size and growth potential",
+      "What regulations should I be aware of?",
+    ],
+    zh: [
+      "这个市场的最新趋势是什么？",
+      "估算市场规模和增长潜力",
+      "我需要了解哪些法规？",
+    ],
+  },
+  "supply-chain": {
+    en: [
+      "Help me find reliable suppliers",
+      "How can I reduce supply chain costs?",
+      "What are the key risks in my supply chain?",
+    ],
+    zh: [
+      "帮我找到可靠的供应商",
+      "如何降低供应链成本？",
+      "我的供应链有哪些主要风险？",
+    ],
+  },
+  career: {
+    en: [
+      "Help me plan a career transition strategy",
+      "Optimize my resume for this industry",
+      "What skills are most in demand right now?",
+    ],
+    zh: [
+      "帮我规划职业转型策略",
+      "为这个行业优化我的简历",
+      "目前最受欢迎的技能有哪些？",
+    ],
+  },
 };
 
 export default function ConsultingChat({
@@ -43,12 +86,14 @@ export default function ConsultingChat({
   moduleName,
   moduleSlug,
   color,
+  locale = "en",
 }: {
   industryName: string;
   industrySlug: string;
   moduleName: string;
   moduleSlug: string;
   color: string;
+  locale?: Locale;
 }) {
   const [input, setInput] = useState("");
 
@@ -56,7 +101,13 @@ export default function ConsultingChat({
 You provide actionable, data-driven insights tailored to this specific industry context.
 Keep responses concise but thorough. Use bullet points and structured formatting when helpful.
 Always end with a follow-up question or offer to dive deeper into a specific area.
-Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.`;
+Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.
+${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
+
+  const welcomeText =
+    locale === "zh"
+      ? `欢迎！我是您的AI${moduleName}顾问，专注于**${industryName}**行业。我可以帮助您进行分析、战略规划和提供可行的洞察。\n\n今天有什么可以帮您的？您可以从下面的建议提示开始，也可以直接提出您的问题。`
+      : `Welcome! I'm your AI ${moduleName} consultant specializing in the **${industryName}** industry. I can help you with analysis, strategy, and actionable insights.\n\nHow can I assist you today? You can start with one of the suggested prompts or ask your own question.`;
 
   const { messages, sendMessage, status } = useChat<UIMessage>({
     transport: new DefaultChatTransport({
@@ -70,7 +121,7 @@ Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.`;
         parts: [
           {
             type: "text" as const,
-            text: `Welcome! I'm your AI ${moduleName} consultant specializing in the **${industryName}** industry. I can help you with analysis, strategy, and actionable insights.\n\nHow can I assist you today? You can start with one of the suggested prompts or ask your own question.`,
+            text: welcomeText,
           },
         ],
       },
@@ -78,7 +129,8 @@ Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.`;
   });
 
   const isLoading = status === "submitted" || status === "streaming";
-  const prompts = SUGGESTED_PROMPTS[moduleSlug] ?? SUGGESTED_PROMPTS.strategy;
+  const promptSet = SUGGESTED_PROMPTS[moduleSlug] ?? SUGGESTED_PROMPTS.strategy;
+  const prompts = promptSet[locale] ?? promptSet.en;
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -163,7 +215,11 @@ Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.`;
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={`Ask about ${moduleName.toLowerCase()} for ${industryName.toLowerCase()}...`}
+            placeholder={
+              locale === "zh"
+                ? `询问关于${industryName}行业的${moduleName}...`
+                : `Ask about ${moduleName.toLowerCase()} for ${industryName.toLowerCase()}...`
+            }
             className="flex-1 rounded-lg border border-card-border bg-background px-4 py-2.5 text-sm outline-none transition focus:border-accent/60"
             disabled={isLoading}
           />
@@ -173,7 +229,7 @@ Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.`;
             className="rounded-lg px-5 py-2.5 text-sm font-medium text-white transition disabled:opacity-40"
             style={{ background: color }}
           >
-            Send
+            {locale === "zh" ? "发送" : "Send"}
           </button>
         </form>
       </div>

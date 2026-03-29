@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "industries": "Industries",
+    "caseStudies": "Case Studies",
+    "beta": "Beta"
+  },
+  "home": {
+    "heroTitle": "AI-Powered",
+    "heroTitleAccent": "Business Consulting",
+    "heroSubtitle": "Intelligent insights for customer discovery, competitor analysis, strategy planning, market intelligence, supply chain optimization, and career development — across every industry.",
+    "selectIndustry": "Select Your Industry",
+    "selectIndustryDesc": "Choose an industry to get tailored AI consulting insights",
+    "explore": "Explore",
+    "consultingModules": "Consulting Modules",
+    "consultingModulesDesc": "Full-spectrum AI consulting services available for every industry",
+    "partners": "Partners",
+    "partnersDesc": "We partner with leading companies to provide consulting services",
+    "footer": "© 2026 JY Consultant Service. All rights reserved."
+  },
+  "industry": {
+    "backToIndustries": "← Back to Industries",
+    "consulting": "Consulting",
+    "chooseModule": "Choose a Consulting Module",
+    "chooseModuleDesc": "Select a module to get AI-powered insights tailored for the {industry} industry",
+    "caseStudies": "Case Studies",
+    "caseStudiesDesc": "In-depth market reports and analysis for the {industry} industry",
+    "startAnalysis": "Start Analysis",
+    "readStudy": "Read Study",
+    "more": "+{count} more..."
+  },
+  "module": {
+    "home": "Home",
+    "capabilities": "Capabilities",
+    "partners": "Partners",
+    "for": "for"
+  },
+  "study": {
+    "home": "Home",
+    "caseStudy": "Case Study",
+    "contents": "Contents",
+    "viewFullReport": "View Full Report (Markdown)"
+  },
+  "studies": {
+    "title": "Case Studies",
+    "subtitle": "In-depth market reports, competitive analyses, and strategic studies powered by AI consulting — across every industry we serve."
+  },
+  "chat": {
+    "welcome": "Welcome! I'm your AI {module} consultant specializing in the **{industry}** industry. I can help you with analysis, strategy, and actionable insights.\n\nHow can I assist you today? You can start with one of the suggested prompts or ask your own question.",
+    "placeholder": "Ask about {module} for {industry}...",
+    "send": "Send"
+  },
+  "lang": {
+    "en": "EN",
+    "zh": "中文"
+  },
+  "read": "Read"
+}

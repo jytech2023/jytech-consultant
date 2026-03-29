@@ -1,7 +1,19 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { industries, consultingModules, careerPartners } from "@/lib/data";
+import { hasLocale, type Locale } from "@/lib/i18n";
+import { getDictionary } from "@/lib/dictionaries";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!hasLocale(locale)) notFound();
+  const dict = await getDictionary(locale as Locale);
+  const l = locale as Locale;
+
   return (
     <div className="flex flex-1 flex-col">
       {/* Hero */}
@@ -9,15 +21,13 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl">
           <h1 className="text-5xl font-bold leading-tight tracking-tight sm:text-6xl">
-            AI-Powered{" "}
+            {dict.home.heroTitle}{" "}
             <span className="bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">
-              Business Consulting
+              {dict.home.heroTitleAccent}
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
-            Intelligent insights for customer discovery, competitor analysis,
-            strategy planning, market intelligence, supply chain optimization,
-            and career development — across every industry.
+            {dict.home.heroSubtitle}
           </p>
         </div>
       </section>
@@ -25,16 +35,14 @@ export default function Home() {
       {/* Industries */}
       <section className="mx-auto w-full max-w-7xl px-6 py-16">
         <h2 className="text-2xl font-bold tracking-tight">
-          Select Your Industry
+          {dict.home.selectIndustry}
         </h2>
-        <p className="mt-2 text-muted">
-          Choose an industry to get tailored AI consulting insights
-        </p>
+        <p className="mt-2 text-muted">{dict.home.selectIndustryDesc}</p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((industry) => (
             <Link
               key={industry.slug}
-              href={`/industry/${industry.slug}`}
+              href={`/${l}/industry/${industry.slug}`}
               className="group relative overflow-hidden rounded-xl border border-card-border bg-card-bg p-6 transition hover:border-accent/40 hover:bg-card-bg/80"
             >
               <div
@@ -43,17 +51,21 @@ export default function Home() {
               />
               <div className="text-4xl">{industry.icon}</div>
               <h3 className="mt-4 text-lg font-semibold">
-                {industry.name}{" "}
-                <span className="text-sm text-muted">{industry.nameZh}</span>
+                {l === "zh" ? industry.nameZh : industry.name}{" "}
+                <span className="text-sm text-muted">
+                  {l === "zh" ? industry.name : industry.nameZh}
+                </span>
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
-                {industry.description}
+                {l === "zh"
+                  ? (industry.descriptionZh ?? industry.description)
+                  : industry.description}
               </p>
               <div
                 className="mt-4 inline-flex items-center gap-1 text-sm font-medium"
                 style={{ color: industry.color }}
               >
-                Explore
+                {dict.home.explore}
                 <span className="transition group-hover:translate-x-1">→</span>
               </div>
             </Link>
@@ -65,11 +77,9 @@ export default function Home() {
       <section className="border-t border-card-border bg-card-bg/50 px-6 py-16">
         <div className="mx-auto max-w-7xl">
           <h2 className="text-2xl font-bold tracking-tight">
-            Consulting Modules
+            {dict.home.consultingModules}
           </h2>
-          <p className="mt-2 text-muted">
-            Full-spectrum AI consulting services available for every industry
-          </p>
+          <p className="mt-2 text-muted">{dict.home.consultingModulesDesc}</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {consultingModules.map((mod) => (
               <div
@@ -78,11 +88,15 @@ export default function Home() {
               >
                 <div className="text-3xl">{mod.icon}</div>
                 <h3 className="mt-3 font-semibold">
-                  {mod.name}{" "}
-                  <span className="text-sm text-muted">{mod.nameZh}</span>
+                  {l === "zh" ? mod.nameZh : mod.name}{" "}
+                  <span className="text-sm text-muted">
+                    {l === "zh" ? mod.name : mod.nameZh}
+                  </span>
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {mod.description}
+                  {l === "zh"
+                    ? (mod.descriptionZh ?? mod.description)
+                    : mod.description}
                 </p>
               </div>
             ))}
@@ -93,10 +107,10 @@ export default function Home() {
       {/* Partners */}
       <section className="border-t border-card-border px-6 py-16">
         <div className="mx-auto max-w-7xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight">Partners</h2>
-          <p className="mt-2 text-muted">
-            We partner with leading companies to provide consulting services
-          </p>
+          <h2 className="text-2xl font-bold tracking-tight">
+            {dict.home.partners}
+          </h2>
+          <p className="mt-2 text-muted">{dict.home.partnersDesc}</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             {careerPartners.map((partner) => (
               <a
@@ -126,7 +140,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-card-border px-6 py-8 text-center text-sm text-muted">
-        © 2026 JY Consultant Service. All rights reserved.
+        {dict.home.footer}
       </footer>
     </div>
   );

@@ -4,6 +4,7 @@ export interface Industry {
   nameZh: string;
   icon: string;
   description: string;
+  descriptionZh?: string;
   color: string;
 }
 
@@ -13,6 +14,7 @@ export interface ConsultingModule {
   nameZh: string;
   icon: string;
   description: string;
+  descriptionZh?: string;
   features: string[];
 }
 
@@ -24,6 +26,8 @@ export const industries: Industry[] = [
     icon: "🍽️",
     description:
       "Optimize operations, discover customer segments, analyze local competition, and streamline supply chains for food & beverage businesses.",
+    descriptionZh:
+      "优化运营、发现客户细分、分析本地竞争，并为餐饮企业精简供应链。",
     color: "#ef4444",
   },
   {
@@ -33,6 +37,8 @@ export const industries: Industry[] = [
     icon: "💄",
     description:
       "Identify beauty trends, benchmark competitor products, build DTC strategies, and manage ingredient supply chains effectively.",
+    descriptionZh:
+      "识别美容趋势、对标竞品、构建DTC策略，并有效管理原料供应链。",
     color: "#ec4899",
   },
   {
@@ -42,6 +48,8 @@ export const industries: Industry[] = [
     icon: "🏭",
     description:
       "Find B2B clients, analyze industrial competition, optimize production strategy, and build resilient supply chain networks.",
+    descriptionZh:
+      "寻找B2B客户、分析工业竞争、优化生产策略，并构建弹性供应链网络。",
     color: "#f59e0b",
   },
   {
@@ -51,6 +59,8 @@ export const industries: Industry[] = [
     icon: "🤖",
     description:
       "Target enterprise buyers, track technology competitors, plan go-to-market strategies, and source components intelligently.",
+    descriptionZh:
+      "锁定企业买家、追踪技术竞争对手、规划上市策略，并智能化零部件采购。",
     color: "#6366f1",
   },
   {
@@ -60,6 +70,8 @@ export const industries: Industry[] = [
     icon: "🏥",
     description:
       "Reach healthcare providers, benchmark medical devices, navigate regulatory strategies, and manage critical medical supply chains.",
+    descriptionZh:
+      "触达医疗服务提供商、对标医疗器械、规划监管策略，并管理关键医疗供应链。",
     color: "#10b981",
   },
   {
@@ -69,6 +81,8 @@ export const industries: Industry[] = [
     icon: "📚",
     description:
       "Attract students and institutions, compare edtech competitors, develop curriculum strategies, and manage content supply pipelines.",
+    descriptionZh:
+      "吸引学生和教育机构、比较教育科技竞品、制定课程策略，并管理内容供给。",
     color: "#8b5cf6",
   },
 ];
@@ -226,6 +240,7 @@ export interface CaseStudy {
   title: string;
   titleZh: string;
   subtitle: string;
+  subtitleZh?: string;
   date: string;
   readTime: string;
   heroColor: string;
@@ -237,6 +252,7 @@ export interface CaseStudySection {
   title: string;
   titleZh: string;
   content: string; // HTML-safe markdown-ish content rendered via dangerouslySetInnerHTML
+  contentZh?: string;
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -600,6 +616,8 @@ export const caseStudies: CaseStudy[] = [
     titleZh: "88包包：点心连锁市场扩张研究",
     subtitle:
       "A market analysis of 88 BaoBao, a family-owned dim sum chain expanding from the San Francisco Bay Area across California, Texas, and Oklahoma — covering brand positioning, menu strategy, competitive landscape, and multi-state growth playbook.",
+    subtitleZh:
+      "对88包包的市场分析——一家从旧金山湾区扩展到加州、德州和俄克拉荷马州的家族式点心连锁品牌，涵盖品牌定位、菜单策略、竞争格局和跨州增长战略。",
     date: "March 28, 2026",
     readTime: "18 min read",
     heroColor: "#ef4444",
@@ -627,6 +645,25 @@ export const caseStudies: CaseStudy[] = [
     <div class="text-xs text-muted mt-1">Combined<br/>Online Reviews</div>
   </div>
 </div>`,
+        contentZh: `<p>88包包是一家快速增长的家族式点心连锁餐厅，由<strong>Kevin Chen</strong>于2018年在加州Dublin创立。专注于手工制作小笼包、包子和新鲜点心，品牌已从湾区单一门店发展到<strong>横跨3个州的10余家门店</strong>——加州、德州和俄克拉荷马州——用时不到8年。</p>
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-red-400">10+</div>
+    <div class="text-xs text-muted mt-1">餐厅<br/>门店</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-red-400">3个州</div>
+    <div class="text-xs text-muted mt-1">加州 · 德州 · 俄克拉荷马<br/>跨州布局</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-red-400">$10–$15</div>
+    <div class="text-xs text-muted mt-1">人均<br/>消费</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-red-400">4,000+</div>
+    <div class="text-xs text-muted mt-1">综合<br/>在线评价</div>
+  </div>
+</div>`,
       },
       {
         id: "company-profile",
@@ -649,6 +686,23 @@ export const caseStudies: CaseStudy[] = [
   <p>The restaurant is a true family operation — founder Kevin Chen's parents, <strong>Tom and Lisa Chen</strong>, came out of retirement to hand-roll, pull, and shape dough at new locations. This artisanal, visible-kitchen approach has become a core brand differentiator.</p>
   <p>Texas expansion was led by Kevin's cousin <strong>Johnny Wong</strong> and his wife <strong>JoJo He</strong>, who brought the concept to their hometown of Frisco, TX — demonstrating a family-network expansion model rather than traditional franchising.</p>
 </div>`,
+        contentZh: `<div class="rounded-lg border border-card-border bg-background p-5">
+  <div class="grid gap-3 text-sm">
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">品牌名称</span><span>88包包 (八八包包)</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">成立时间</span><span>2018年，加州Dublin</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">创始人</span><span>Kevin Chen</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">商业模式</span><span>家族经营的快休闲点心连锁</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">菜系</span><span>正宗中式点心、小笼包、手工拉面</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">网站</span><span>88baobaous.com (Wix平台)</span></div>
+    <div class="flex justify-between"><span class="text-muted">在线订餐</span><span>DoorDash、menu11.com、官网</span></div>
+  </div>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">品牌故事</h4>
+<div class="mt-3 space-y-2 text-sm">
+  <p>"88包包"这个名字有双重含义：<strong>"88"</strong>在中华文化中象征繁荣和长寿（八八 = bā bā），同时也是对Dublin原址88街附近的致敬。<strong>"包包"</strong>（BaoBao）直接指代菜单主打的包子和饺子。</p>
+  <p>这家餐厅是真正的家族经营——创始人Kevin Chen的父母<strong>Tom和Lisa Chen</strong>退休后重返岗位，在新门店亲手擀面、拉面、做造型。这种手工艺、开放式厨房的方式已成为品牌核心差异化优势。</p>
+  <p>德州扩张由Kevin的表弟<strong>Johnny Wong</strong>和他的妻子<strong>JoJo He</strong>主导，他们将这个概念带回了家乡Frisco, TX——展示了一种基于家族网络而非传统加盟的扩张模式。</p>
+</div>`,
       },
       {
         id: "locations",
@@ -668,6 +722,9 @@ export const caseStudies: CaseStudy[] = [
       <tr><td class="py-2 pr-4 font-medium">Stockton</td><td class="py-2 pr-4">10710 Trinity Pkwy</td><td class="py-2 pr-4">147 reviews</td><td class="py-2">Established</td></tr>
       <tr><td class="py-2 pr-4 font-medium">Roseville</td><td class="py-2 pr-4">4181 Thrive Dr</td><td class="py-2 pr-4">153 reviews</td><td class="py-2">Established</td></tr>
       <tr><td class="py-2 pr-4 font-medium">Merced</td><td class="py-2 pr-4">3564 G St</td><td class="py-2 pr-4">127 reviews</td><td class="py-2">Established</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Manteca</td><td class="py-2 pr-4">TBD</td><td class="py-2 pr-4">—</td><td class="py-2">Established</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Davis</td><td class="py-2 pr-4">TBD</td><td class="py-2 pr-4">—</td><td class="py-2">Established</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Riverbank</td><td class="py-2 pr-4">TBD</td><td class="py-2 pr-4">—</td><td class="py-2 text-amber-400">Coming Soon</td></tr>
     </tbody>
   </table>
 </div>
@@ -683,6 +740,39 @@ export const caseStudies: CaseStudy[] = [
 </div>
 <div class="mt-4 rounded-lg border border-red-400/30 bg-red-400/5 p-4 text-sm">
   <strong class="text-red-400">Expansion Pattern:</strong> Concentrated Bay Area cluster → Northern California fill → Out-of-state via family network. This "hub-and-spoke with family franchise" model enables rapid expansion without traditional franchise overhead.
+</div>`,
+        contentZh: `<h4 class="font-semibold text-sm uppercase tracking-wider text-muted">加州（12+门店）</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">门店</th><th class="pb-2 pr-4">地址</th><th class="pb-2 pr-4">Yelp评价</th><th class="pb-2">状态</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium">Dublin（旗舰店）</td><td class="py-2 pr-4">3880 Fallon Rd</td><td class="py-2 pr-4 text-red-400 font-semibold">1,070条评价</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Castro Valley</td><td class="py-2 pr-4">3330 Village Dr</td><td class="py-2 pr-4">396条评价</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Brentwood</td><td class="py-2 pr-4">5421 Lone Tree Way #103</td><td class="py-2 pr-4">176条评价</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Concord</td><td class="py-2 pr-4">785 Oak Grove Rd</td><td class="py-2 pr-4">204条评价</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Vallejo</td><td class="py-2 pr-4">145 Plaza Dr</td><td class="py-2 pr-4">158条评价</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Vacaville</td><td class="py-2 pr-4">1639 E Monte Vista Ave</td><td class="py-2 pr-4">340条评价</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Stockton</td><td class="py-2 pr-4">10710 Trinity Pkwy</td><td class="py-2 pr-4">147条评价</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Roseville</td><td class="py-2 pr-4">4181 Thrive Dr</td><td class="py-2 pr-4">153条评价</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Merced</td><td class="py-2 pr-4">3564 G St</td><td class="py-2 pr-4">127条评价</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Manteca</td><td class="py-2 pr-4">待定</td><td class="py-2 pr-4">—</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Davis</td><td class="py-2 pr-4">待定</td><td class="py-2 pr-4">—</td><td class="py-2">已开业</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Riverbank</td><td class="py-2 pr-4">待定</td><td class="py-2 pr-4">—</td><td class="py-2 text-amber-400">即将开业</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">跨州扩张</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">门店</th><th class="pb-2 pr-4">地址</th><th class="pb-2 pr-4">Yelp评价</th><th class="pb-2">备注</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium">Frisco, TX</td><td class="py-2 pr-4">4800 Eldorado Pkwy</td><td class="py-2 pr-4">266条评价</td><td class="py-2">首家跨州门店；由表弟Johnny Wong运营</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">Tulsa, OK</td><td class="py-2 pr-4">7037 S Memorial Dr</td><td class="py-2 pr-4">48条评价</td><td class="py-2">最新进入的市场</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="mt-4 rounded-lg border border-red-400/30 bg-red-400/5 p-4 text-sm">
+  <strong class="text-red-400">扩张模式：</strong>湾区集中布点 → 北加州填充 → 通过家族网络跨州扩张。这种"中心辐射+家族加盟"模式实现了快速扩张，同时避免了传统加盟的高额开销。
 </div>`,
       },
       {
@@ -711,6 +801,28 @@ export const caseStudies: CaseStudy[] = [
   <div class="flex items-start gap-2"><span class="text-red-400 mt-0.5">●</span><strong>No $15+ ceiling:</strong> Psychological pricing barrier removal eliminates sticker shock and speeds ordering decisions</div>
   <div class="flex items-start gap-2"><span class="text-red-400 mt-0.5">●</span><strong>Focused menu:</strong> Limited SKUs reduce kitchen complexity, minimize food waste, and maintain consistency across 10+ locations</div>
 </div>`,
+        contentZh: `<p class="text-sm">88包包保持精简、实惠的菜单，<strong>没有任何单品超过$15</strong>——这是一项刻意策略，将品牌精准定位于高端点心酒楼与普通中餐外卖之间的快休闲甜蜜点。</p>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">核心菜单分类</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">分类</th><th class="pb-2 pr-4">招牌产品</th><th class="pb-2 pr-4">价格区间</th><th class="pb-2">份量</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium">小笼包</td><td class="py-2 pr-4">鲜肉小笼包（招牌）</td><td class="py-2 pr-4 text-red-400">$14.95</td><td class="py-2">8个</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">蒸饺</td><td class="py-2 pr-4">素菜猪肉、鸡肉、蟹肉猪肉</td><td class="py-2 pr-4 text-red-400">$8.95–$11.95</td><td class="py-2">8个</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">煎制</td><td class="py-2 pr-4">牛肉卷、煎饺</td><td class="py-2 pr-4 text-red-400">$13.50</td><td class="py-2">不等</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">包子</td><td class="py-2 pr-4">8种口味，包括红豆、叉烧</td><td class="py-2 pr-4 text-red-400">$5–$8</td><td class="py-2">2个</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">开胃菜</td><td class="py-2 pr-4">红油抄手、春卷、凉拌黄瓜</td><td class="py-2 pr-4 text-red-400">$5–$12.50</td><td class="py-2">分享装</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">面条和米饭</td><td class="py-2 pr-4">手工拉面、蛋炒饭</td><td class="py-2 pr-4 text-red-400">$13.00</td><td class="py-2">单人份</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">定价策略分析</h4>
+<div class="mt-3 space-y-2 text-sm">
+  <div class="flex items-start gap-2"><span class="text-red-400 mt-0.5">●</span><strong>性价比定位：</strong>人均$10-15落在"实惠享受"区间——足够亲民以促进回头客，又足够有品质感</div>
+  <div class="flex items-start gap-2"><span class="text-red-400 mt-0.5">●</span><strong>分享式用餐：</strong>点心份量（8个饺子、2个包子）鼓励聚餐，提升每桌消费</div>
+  <div class="flex items-start gap-2"><span class="text-red-400 mt-0.5">●</span><strong>不超$15天花板：</strong>心理定价策略消除价格冲击，加速点单决策</div>
+  <div class="flex items-start gap-2"><span class="text-red-400 mt-0.5">●</span><strong>精简菜单：</strong>有限SKU降低厨房复杂度，减少食材浪费，保持10+门店的一致性</div>
+</div>`,
       },
       {
         id: "competitive-landscape",
@@ -735,6 +847,26 @@ export const caseStudies: CaseStudy[] = [
   <div class="flex items-start gap-2"><span class="text-red-400">✦</span><strong>Family-network expansion:</strong> No franchise fees, aligned incentives, brand consistency maintained through family values</div>
   <div class="flex items-start gap-2"><span class="text-red-400">✦</span><strong>Cultural authenticity:</strong> Real family members making food, Chinese cultural branding (88 = prosperity)</div>
   <div class="flex items-start gap-2"><span class="text-red-400">✦</span><strong>Multi-channel ordering:</strong> DoorDash (4.7 stars, 3,000+ reviews at Dublin alone), menu11.com, and direct ordering</div>
+</div>`,
+        contentZh: `<h4 class="font-semibold text-sm uppercase tracking-wider text-muted">市场定位</h4>
+<p class="mt-3 text-sm">88包包占据了一个独特的细分市场：<strong>快休闲正宗点心</strong>。美国大多数点心餐厅分为两类——高端推车式餐厅（人均$30-50）或把点心作为附属的普通中餐外卖。88包包开辟了第三条赛道。</p>
+<div class="mt-4 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">细分市场</th><th class="pb-2 pr-4">人均消费</th><th class="pb-2 pr-4">用餐体验</th><th class="pb-2">代表品牌</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium text-amber-400">高端点心</td><td class="py-2 pr-4">$30–50</td><td class="py-2 pr-4">推车服务、宴会厅</td><td class="py-2">Koi Palace, Yank Sing</td></tr>
+      <tr class="bg-red-400/5"><td class="py-2 pr-4 font-medium text-red-400">88包包（快休闲）</td><td class="py-2 pr-4">$10–15</td><td class="py-2 pr-4">柜台点餐、透明厨房、堂食/外卖</td><td class="py-2">88包包</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-blue-400">普通中餐外卖</td><td class="py-2 pr-4">$8–12</td><td class="py-2 pr-4">以外卖为主、菜单广泛</td><td class="py-2">各种本地小店</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">竞争优势</h4>
+<div class="mt-3 space-y-2 text-sm">
+  <div class="flex items-start gap-2"><span class="text-red-400">✦</span><strong>透明厨房：</strong>顾客可以看到面团被手工擀制和塑形——建立对新鲜度和正宗性的信任</div>
+  <div class="flex items-start gap-2"><span class="text-red-400">✦</span><strong>小笼包专精：</strong>汤包技术难度大，很少有品牌能规模化做好——形成天然护城河</div>
+  <div class="flex items-start gap-2"><span class="text-red-400">✦</span><strong>家族网络扩张：</strong>无加盟费、利益一致、通过家族价值观维持品牌一致性</div>
+  <div class="flex items-start gap-2"><span class="text-red-400">✦</span><strong>文化正宗性：</strong>真正的家族成员做食物，中华文化品牌（88 = 发发）</div>
+  <div class="flex items-start gap-2"><span class="text-red-400">✦</span><strong>多渠道订餐：</strong>DoorDash（4.7星，仅Dublin一店3,000+评价）、menu11.com和直接订餐</div>
 </div>`,
       },
       {
@@ -768,6 +900,34 @@ export const caseStudies: CaseStudy[] = [
   <div class="rounded-lg border border-card-border bg-background p-3 text-center"><div class="text-xl">👨‍👩‍👧‍👦</div><div class="mt-1 text-xs text-muted">Asian-American families seeking authentic dim sum at accessible prices</div></div>
   <div class="rounded-lg border border-card-border bg-background p-3 text-center"><div class="text-xl">👥</div><div class="mt-1 text-xs text-muted">Friend groups ordering shareable dim sum platters</div></div>
   <div class="rounded-lg border border-card-border bg-background p-3 text-center"><div class="text-xl">📱</div><div class="mt-1 text-xs text-muted">DoorDash/delivery customers for convenient home dim sum</div></div>
+</div>`,
+        contentZh: `<h4 class="font-semibold text-sm uppercase tracking-wider text-muted">各门店评价量</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">门店</th><th class="pb-2 pr-4">Yelp评价</th><th class="pb-2">口碑</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium">Dublin（旗舰店）</td><td class="py-2 pr-4 text-red-400 font-semibold">1,070</td><td class="py-2"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">非常正面</span></td></tr>
+      <tr><td class="py-2 pr-4">Castro Valley</td><td class="py-2 pr-4">396</td><td class="py-2"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">正面</span></td></tr>
+      <tr><td class="py-2 pr-4">Vacaville</td><td class="py-2 pr-4">340</td><td class="py-2"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">正面</span></td></tr>
+      <tr><td class="py-2 pr-4">Frisco, TX</td><td class="py-2 pr-4">266</td><td class="py-2"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">正面</span></td></tr>
+      <tr><td class="py-2 pr-4">Concord</td><td class="py-2 pr-4">204</td><td class="py-2"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">正面</span></td></tr>
+      <tr><td class="py-2 pr-4">Brentwood</td><td class="py-2 pr-4">176</td><td class="py-2"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">正面</span></td></tr>
+      <tr><td class="py-2 pr-4">Vallejo</td><td class="py-2 pr-4">158</td><td class="py-2"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">正面</span></td></tr>
+      <tr><td class="py-2 pr-4">Roseville</td><td class="py-2 pr-4">153</td><td class="py-2"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">正面</span></td></tr>
+      <tr><td class="py-2 pr-4">Stockton</td><td class="py-2 pr-4">147</td><td class="py-2"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">正面</span></td></tr>
+      <tr><td class="py-2 pr-4">Merced</td><td class="py-2 pr-4">127</td><td class="py-2"><span class="rounded bg-yellow-400/10 px-2 py-0.5 text-xs text-yellow-400">褒贬不一</span></td></tr>
+      <tr><td class="py-2 pr-4">Tulsa, OK</td><td class="py-2 pr-4">48</td><td class="py-2"><span class="rounded bg-yellow-400/10 px-2 py-0.5 text-xs text-yellow-400">初期阶段</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="mt-4 rounded-lg border border-red-400/30 bg-red-400/5 p-4 text-sm">
+  <strong class="text-red-400">核心洞察：</strong>Dublin旗舰店拥有1,070条Yelp评价——对于快休闲餐厅来说这是一个极高的数字，表明强大的自然口碑传播。DoorDash 4.7星评分和3,000+评价确认了稳定的食品质量和配送体验。顾客频繁称赞"品质稳定""价格合理"和"服务友好快捷"。
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">客户画像</h4>
+<div class="mt-3 grid gap-3 sm:grid-cols-3">
+  <div class="rounded-lg border border-card-border bg-background p-3 text-center"><div class="text-xl">👨‍👩‍👧‍👦</div><div class="mt-1 text-xs text-muted">寻求价格亲民的正宗点心的亚裔美国家庭</div></div>
+  <div class="rounded-lg border border-card-border bg-background p-3 text-center"><div class="text-xl">👥</div><div class="mt-1 text-xs text-muted">点分享装点心拼盘的朋友聚餐</div></div>
+  <div class="rounded-lg border border-card-border bg-background p-3 text-center"><div class="text-xl">📱</div><div class="mt-1 text-xs text-muted">通过DoorDash等平台在家享受点心的外卖客户</div></div>
 </div>`,
       },
       {
@@ -820,6 +980,52 @@ export const caseStudies: CaseStudy[] = [
     </ul>
   </div>
 </div>`,
+        contentZh: `<div class="grid gap-4 sm:grid-cols-2">
+  <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-4">
+    <h4 class="font-semibold text-emerald-400 text-sm mb-3">优势</h4>
+    <ul class="space-y-2 text-sm">
+      <li>经验证的10+门店模式，品质稳定</li>
+      <li>强大的品牌认知——4,000+综合在线评价</li>
+      <li>亲民定价（$10-15），无单品超过$15</li>
+      <li>正宗透明厨房体验建立信任</li>
+      <li>家族网络扩张降低开销（相比传统加盟）</li>
+      <li>小笼包专精形成竞争护城河</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-red-400/30 bg-red-400/5 p-4">
+    <h4 class="font-semibold text-red-400 text-sm mb-3">劣势</h4>
+    <ul class="space-y-2 text-sm">
+      <li>基于Wix的网站限制了SEO和数字化能力</li>
+      <li>家族网络模式可能限制超出家族范围的扩展性</li>
+      <li>缺少集中化供应链或中央厨房（推测）</li>
+      <li>手工食品劳动密集且难以标准化</li>
+      <li>加州/德州以外品牌知名度有限</li>
+      <li>没有会员忠诚度或直接订餐的移动应用</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-blue-400/30 bg-blue-400/5 p-4">
+    <h4 class="font-semibold text-blue-400 text-sm mb-3">机会</h4>
+    <ul class="space-y-2 text-sm">
+      <li>随亚洲美食受欢迎，美国点心市场持续增长</li>
+      <li>快休闲模式已被证明可规模化（Chipotle、Sweetgreen模式）</li>
+      <li>郊区商业街门店成本效益高且便于到达</li>
+      <li>外卖平台驱动增量收入（DoorDash 4.7★）</li>
+      <li>冷冻饺子零售线可将品牌延伸至超市</li>
+      <li>德州和阳光地带市场正宗点心供不应求</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-amber-400/30 bg-amber-400/5 p-4">
+    <h4 class="font-semibold text-amber-400 text-sm mb-3">威胁</h4>
+    <ul class="space-y-2 text-sm">
+      <li>劳动力成本上升影响手工食品模式</li>
+      <li>模仿者可以复制快休闲点心概念</li>
+      <li>外卖平台佣金（DoorDash约30%）侵蚀利润</li>
+      <li>门店数量增长带来品控挑战</li>
+      <li>原料成本波动（猪肉、面粉、特殊食材）</li>
+      <li>经济下行风险影响非必需餐饮消费</li>
+    </ul>
+  </div>
+</div>`,
       },
       {
         id: "growth-strategy",
@@ -855,6 +1061,39 @@ export const caseStudies: CaseStudy[] = [
     <div class="space-y-2">
       <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">MEDIUM</span><span>Target 25+ locations nationwide by 2028, focusing on suburban strip-mall locations near Asian community hubs</span></div>
       <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">EXPLORE</span><span>Evaluate catering and corporate event service as a high-margin revenue stream</span></div>
+    </div>
+  </div>
+</div>`,
+        contentZh: `<div class="space-y-6">
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-red-400 mb-3">立即行动（0-90天）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">高优</span><span>从Wix升级到自定义或Shopify网站，具备完善的SEO、门店页面和在线订餐集成</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">高优</span><span>在所有门店实施统一的会员忠诚度/积分计划，促进回头客</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">中优</span><span>统一品牌素材（摄影、社交媒体形象），覆盖所有门店的Yelp/Google资料</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-amber-400 mb-3">短期（3-6个月）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">高优</span><span>在湾区建立中央厨房，用于面团准备、酱料生产和食材分装，确保一致性</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">高优</span><span>识别3-5个新的阳光地带市场（凤凰城、拉斯维加斯、休斯顿、亚特兰大），亚洲美食需求超过供给</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">中优</span><span>开发厨房培训计划，减少对家族成员手工制作的依赖</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-blue-400 mb-3">中期（6-18个月）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">高优</span><span>推出冷冻饺子零售产品线，进入超市分销渠道（Costco、H Mart、大华超市）</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">中优</span><span>规范化扩张模式：为非家族运营者编写家族加盟手册，同时维持品质标准</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">中优</span><span>协商直接配送订餐，降低对DoorDash佣金的依赖</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-purple-400 mb-3">长期（18个月以上）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">中优</span><span>目标2028年达到全国25+门店，聚焦亚裔社区中心附近的郊区商业街</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">探索</span><span>评估团餐和企业活动服务作为高利润收入来源</span></div>
     </div>
   </div>
 </div>`,

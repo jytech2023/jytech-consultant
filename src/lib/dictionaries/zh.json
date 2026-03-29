@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "industries": "行业",
+    "caseStudies": "案例研究",
+    "beta": "测试版"
+  },
+  "home": {
+    "heroTitle": "AI驱动的",
+    "heroTitleAccent": "商业咨询",
+    "heroSubtitle": "智能洞察，覆盖客户开发、竞品分析、战略规划、市场情报、供应链优化和职业发展——横跨每一个行业。",
+    "selectIndustry": "选择您的行业",
+    "selectIndustryDesc": "选择一个行业，获取量身定制的AI咨询洞察",
+    "explore": "探索",
+    "consultingModules": "咨询模块",
+    "consultingModulesDesc": "面向各行业的全方位AI咨询服务",
+    "partners": "合作伙伴",
+    "partnersDesc": "我们与领先企业合作，提供咨询服务",
+    "footer": "© 2026 JY Consultant Service. 版权所有。"
+  },
+  "industry": {
+    "backToIndustries": "← 返回行业列表",
+    "consulting": "咨询",
+    "chooseModule": "选择咨询模块",
+    "chooseModuleDesc": "选择一个模块，获取专为{industry}行业定制的AI洞察",
+    "caseStudies": "案例研究",
+    "caseStudiesDesc": "关于{industry}行业的深度市场报告与分析",
+    "startAnalysis": "开始分析",
+    "readStudy": "阅读案例",
+    "more": "+{count} 更多..."
+  },
+  "module": {
+    "home": "首页",
+    "capabilities": "功能",
+    "partners": "合作伙伴",
+    "for": "—"
+  },
+  "study": {
+    "home": "首页",
+    "caseStudy": "案例研究",
+    "contents": "目录",
+    "viewFullReport": "查看完整报告 (Markdown)"
+  },
+  "studies": {
+    "title": "案例研究",
+    "subtitle": "AI咨询驱动的深度市场报告、竞品分析和战略研究——覆盖我们服务的每一个行业。"
+  },
+  "chat": {
+    "welcome": "欢迎！我是您的AI{module}顾问，专注于**{industry}**行业。我可以帮助您进行分析、战略规划和提供可行的洞察。\n\n今天有什么可以帮您的？您可以从下面的建议提示开始，也可以直接提出您的问题。",
+    "placeholder": "询问关于{industry}行业的{module}...",
+    "send": "发送"
+  },
+  "lang": {
+    "en": "EN",
+    "zh": "中文"
+  },
+  "read": "阅读"
+}

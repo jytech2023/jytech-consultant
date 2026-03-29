@@ -138,10 +138,6 @@ export default async function Home({
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-card-border px-6 py-8 text-center text-sm text-muted">
-        {dict.home.footer}
-      </footer>
     </div>
   );
 }

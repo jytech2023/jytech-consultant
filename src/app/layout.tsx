@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Auth0ProviderClient from "@/components/Auth0ProviderClient";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,9 +14,55 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Business Consultant | Smart Solutions for Every Industry",
+  title: {
+    default: "JY Consultant | AI-Powered Business Consulting",
+    template: "%s | JY Consultant",
+  },
   description:
-    "AI-powered business consulting platform covering restaurant & food service, cosmetic, manufacturing, robotics, medical, and education industries.",
+    "AI-powered business consulting platform providing intelligent insights for customer discovery, competitor analysis, strategy planning, market intelligence, and supply chain optimization across restaurant, cosmetic, manufacturing, robotics, medical, and education industries.",
+  keywords: [
+    "AI business consulting",
+    "market analysis",
+    "competitor analysis",
+    "business strategy",
+    "supply chain optimization",
+    "customer discovery",
+    "market intelligence",
+    "AI consultant",
+    "行业咨询",
+    "AI商业顾问",
+    "市场分析",
+  ],
+  authors: [{ name: "JY Consultant Service" }],
+  openGraph: {
+    type: "website",
+    siteName: "JY Consultant",
+    title: "JY Consultant | AI-Powered Business Consulting",
+    description:
+      "Intelligent insights for customer discovery, competitor analysis, strategy planning, and market intelligence — across every industry.",
+    locale: "en_US",
+    alternateLocale: "zh_CN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "JY Consultant | AI-Powered Business Consulting",
+    description:
+      "AI-powered business consulting platform providing intelligent insights across every industry.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  alternates: {
+    languages: {
+      en: "/en",
+      zh: "/zh",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +75,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Auth0ProviderClient>{children}</Auth0ProviderClient>
+      </body>
     </html>
   );
 }

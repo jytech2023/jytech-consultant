@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, UIMessage } from "ai";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import type { Locale } from "@/lib/i18n";
 
 const SUGGESTED_PROMPTS: Record<string, { en: string[]; zh: string[] }> = {
@@ -80,6 +81,13 @@ const SUGGESTED_PROMPTS: Record<string, { en: string[]; zh: string[] }> = {
   },
 };
 
+interface SavedSession {
+  id: string;
+  title: string;
+  messageCount: number;
+  updatedAt: string;
+}
+
 export default function ConsultingChat({
   industryName,
   industrySlug,
@@ -96,6 +104,11 @@ export default function ConsultingChat({
   locale?: Locale;
 }) {
   const [input, setInput] = useState("");
+  const { user } = useUser();
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [savedSessions, setSavedSessions] = useState<SavedSession[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
+  const lastSavedCount = useRef(0);
 
   const systemPrompt = `You are an expert AI ${moduleName} consultant specializing in the ${industryName} industry.
 You provide actionable, data-driven insights tailored to this specific industry context.
@@ -109,7 +122,7 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
       ? `欢迎！我是您的AI${moduleName}顾问，专注于**${industryName}**行业。我可以帮助您进行分析、战略规划和提供可行的洞察。\n\n今天有什么可以帮您的？您可以从下面的建议提示开始，也可以直接提出您的问题。`
       : `Welcome! I'm your AI ${moduleName} consultant specializing in the **${industryName}** industry. I can help you with analysis, strategy, and actionable insights.\n\nHow can I assist you today? You can start with one of the suggested prompts or ask your own question.`;
 
-  const { messages, sendMessage, status } = useChat<UIMessage>({
+  const { messages, sendMessage, status, setMessages } = useChat<UIMessage>({
     transport: new DefaultChatTransport({
       api: "/api/chat",
       body: { systemPrompt },
@@ -118,12 +131,7 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
       {
         id: "welcome",
         role: "assistant" as const,
-        parts: [
-          {
-            type: "text" as const,
-            text: welcomeText,
-          },
-        ],
+        parts: [{ type: "text" as const, text: welcomeText }],
       },
     ] satisfies UIMessage[],
   });
@@ -131,6 +139,105 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
   const isLoading = status === "submitted" || status === "streaming";
   const promptSet = SUGGESTED_PROMPTS[moduleSlug] ?? SUGGESTED_PROMPTS.strategy;
   const prompts = promptSet[locale] ?? promptSet.en;
+
+  // Load saved sessions list for logged-in users
+  useEffect(() => {
+    if (!user) return;
+    fetch(
+      `/api/chat-history?industrySlug=${industrySlug}&moduleSlug=${moduleSlug}`
+    )
+      .then((r) => r.json())
+      .then((data) => setSavedSessions(data.sessions ?? []))
+      .catch(() => {});
+  }, [user, industrySlug, moduleSlug]);
+
+  // Auto-save messages for logged-in users
+  const saveMessages = useCallback(async () => {
+    if (!user) return;
+
+    // Get unsaved messages (skip welcome message and already-saved ones)
+    const realMessages = messages.filter((m) => m.id !== "welcome");
+    const unsaved = realMessages.slice(lastSavedCount.current);
+    if (!unsaved.length) return;
+
+    const toSave = unsaved.map((m) => ({
+      role: m.role,
+      content: m.parts
+        .filter((p) => p.type === "text")
+        .map((p) => p.text)
+        .join(""),
+    }));
+
+    try {
+      const res = await fetch("/api/chat-history", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionId,
+          industrySlug,
+          moduleSlug,
+          messages: toSave,
+        }),
+      });
+      const data = await res.json();
+      if (data.sessionId) {
+        setSessionId(data.sessionId);
+        lastSavedCount.current = realMessages.length;
+      }
+    } catch {
+      // Silently fail — chat still works without persistence
+    }
+  }, [user, messages, sessionId, industrySlug, moduleSlug]);
+
+  // Save after assistant replies (when streaming is done)
+  useEffect(() => {
+    if (status === "ready" && messages.length > 1 && user) {
+      saveMessages();
+    }
+  }, [status, messages.length, user, saveMessages]);
+
+  // Load a saved session
+  async function loadSession(id: string) {
+    try {
+      const res = await fetch(`/api/chat-history?sessionId=${id}`);
+      const data = await res.json();
+      if (data.messages?.length) {
+        const loaded: UIMessage[] = [
+          {
+            id: "welcome",
+            role: "assistant" as const,
+            parts: [{ type: "text" as const, text: welcomeText }],
+          },
+          ...data.messages.map(
+            (m: { id: string; role: string; content: string }) => ({
+              id: m.id,
+              role: m.role as "user" | "assistant",
+              parts: [{ type: "text" as const, text: m.content }],
+            })
+          ),
+        ];
+        setMessages(loaded);
+        setSessionId(id);
+        lastSavedCount.current = data.messages.length;
+        setShowHistory(false);
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  function startNewChat() {
+    setSessionId(null);
+    lastSavedCount.current = 0;
+    setMessages([
+      {
+        id: "welcome",
+        role: "assistant" as const,
+        parts: [{ type: "text" as const, text: welcomeText }],
+      },
+    ]);
+    setShowHistory(false);
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -153,6 +260,54 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
 
   return (
     <div className="flex flex-1 flex-col rounded-xl border border-card-border bg-card-bg">
+      {/* Header with history toggle */}
+      {user && savedSessions.length > 0 && (
+        <div className="flex items-center justify-between border-b border-card-border px-5 py-2">
+          <button
+            onClick={() => setShowHistory(!showHistory)}
+            className="text-xs text-muted transition hover:text-foreground"
+          >
+            {showHistory
+              ? locale === "zh"
+                ? "关闭历史"
+                : "Close History"
+              : locale === "zh"
+                ? `📋 历史对话 (${savedSessions.length})`
+                : `📋 History (${savedSessions.length})`}
+          </button>
+          {sessionId && (
+            <button
+              onClick={startNewChat}
+              className="text-xs text-accent-light transition hover:text-foreground"
+            >
+              {locale === "zh" ? "+ 新对话" : "+ New Chat"}
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* History panel */}
+      {showHistory && (
+        <div className="max-h-48 overflow-y-auto border-b border-card-border">
+          {savedSessions.map((s) => (
+            <button
+              key={s.id}
+              onClick={() => loadSession(s.id)}
+              className={`flex w-full items-center justify-between px-5 py-2.5 text-left text-xs transition hover:bg-background ${
+                s.id === sessionId ? "bg-accent/10 text-foreground" : "text-muted"
+              }`}
+            >
+              <span className="truncate pr-3">
+                {s.title || (locale === "zh" ? "未命名对话" : "Untitled")}
+              </span>
+              <span className="shrink-0 text-muted">
+                {s.messageCount} {locale === "zh" ? "条" : "msgs"}
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Messages */}
       <div className="flex-1 space-y-4 overflow-y-auto p-5">
         {messages.map((msg) => (
@@ -206,6 +361,25 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
               {prompt}
             </button>
           ))}
+        </div>
+      )}
+
+      {/* Login prompt for chat history */}
+      {!user && messages.length > 2 && (
+        <div className="border-t border-card-border bg-accent/5 px-5 py-3">
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-xs text-muted">
+              {locale === "zh"
+                ? "登录以保存您的对话记录"
+                : "Sign in to save your chat history"}
+            </p>
+            <a
+              href="/auth/login"
+              className="shrink-0 rounded-md bg-accent px-3 py-1 text-xs text-white transition hover:bg-accent/80"
+            >
+              {locale === "zh" ? "登录" : "Sign in"}
+            </a>
+          </div>
         </div>
       )}
 

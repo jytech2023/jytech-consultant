@@ -2,7 +2,7 @@
   "nav": {
     "industries": "行业",
     "caseStudies": "案例研究",
-    "beta": "测试版"
+    "pricing": "定价"
   },
   "home": {
     "heroTitle": "AI驱动的",
@@ -48,6 +48,49 @@
     "welcome": "欢迎！我是您的AI{module}顾问，专注于**{industry}**行业。我可以帮助您进行分析、战略规划和提供可行的洞察。\n\n今天有什么可以帮您的？您可以从下面的建议提示开始，也可以直接提出您的问题。",
     "placeholder": "询问关于{industry}行业的{module}...",
     "send": "发送"
+  },
+  "footer": {
+    "copyright": "© 2026 JY Consultant Service. 版权所有。",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "contact": "联系我们"
+  },
+  "profile": {
+    "title": "个人资料",
+    "aiModel": "AI模型",
+    "aiModelDesc": "选择您咨询会话使用的AI模型",
+    "currentPlan": "当前方案",
+    "save": "保存",
+    "saved": "已保存！",
+    "free": "免费版",
+    "pro": "专业版",
+    "enterprise": "企业版",
+    "upgradePlan": "升级方案",
+    "viewPricing": "查看定价"
+  },
+  "pricing": {
+    "title": "咨询方案",
+    "subtitle": "选择适合您业务需求的方案——从AI驱动的洞察到专家面对面咨询。",
+    "free": "免费版",
+    "freePrice": "$0",
+    "freeDesc": "开始使用AI咨询",
+    "freeFeatures": ["AI驱动的聊天咨询", "所有行业模块", "案例研究访问", "社区支持"],
+    "pro": "专业版",
+    "proPrice": "$299",
+    "proUnit": "/月",
+    "proDesc": "AI + 专家在线咨询",
+    "proFeatures": ["包含免费版全部功能", "每月60分钟专家在线咨询", "与行业专家视频会议", "优先AI模型访问", "聊天记录和会话存档", "邮件支持"],
+    "enterprise": "企业版",
+    "enterprisePrice": "$899",
+    "enterpriseUnit": "/月",
+    "enterpriseDesc": "专家上门咨询",
+    "enterpriseFeatures": ["包含专业版全部功能", "每月1天上门咨询服务", "旧金山湾区驻地顾问", "面对面战略咨询会议", "差旅费用另计（最高$2,000）", "示例：旧金山至纽约3日出差", "专属客户经理", "自定义AI模型配置"],
+    "currentPlan": "当前方案",
+    "getStarted": "开始使用",
+    "subscribe": "订阅",
+    "contactSales": "联系销售",
+    "popular": "最受欢迎",
+    "travelNote": "旧金山湾区以外的上门咨询可能产生额外差旅费用（机票、酒店、餐饮），按实际成本计费，通常每次出差不超过$2,000。"
   },
   "lang": {
     "en": "EN",

@@ -264,6 +264,8 @@ export const caseStudies: CaseStudy[] = [
     titleZh: "美国医用手套市场分析报告",
     subtitle:
       "A comprehensive market analysis of the US nitrile examination glove industry — covering market sizing, tariff impacts, competitive pricing, buyer channels, and go-to-market strategy for medical supply chain entry.",
+    subtitleZh:
+      "美国丁腈检查手套行业的全面市场分析——涵盖市场规模、关税影响、竞争定价、采购渠道和医疗供应链进入的市场策略。",
     date: "March 25, 2026",
     readTime: "25 min read",
     heroColor: "#10b981",
@@ -291,6 +293,25 @@ export const caseStudies: CaseStudy[] = [
     <div class="text-xs text-muted mt-1">China Medical Glove<br/>Tariff (May 2025)</div>
   </div>
 </div>`,
+        contentZh: `<p>本报告从<strong>Ultra Stretch Professional Inc.</strong>（一家位于佐治亚州的丁腈手套品牌/进口商）的角度分析了美国丁腈检查手套市场。研究涵盖市场规模、竞争定位、监管环境、关税影响和经验证的采购商名录——为医疗供应链市场进入提供蓝图。</p>
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-emerald-400">$18亿–$26亿</div>
+    <div class="text-xs text-muted mt-1">美国医用丁腈手套<br/>可触达市场（2025）</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-emerald-400">1000–1240亿</div>
+    <div class="text-xs text-muted mt-1">美国医疗年度<br/>手套消耗量</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-emerald-400">30家</div>
+    <div class="text-xs text-muted mt-1">经验证的潜在<br/>采购商名录</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-emerald-400">~80%</div>
+    <div class="text-xs text-muted mt-1">中国医用手套<br/>关税（2025年5月）</div>
+  </div>
+</div>`,
       },
       {
         id: "company-profile",
@@ -311,6 +332,22 @@ export const caseStudies: CaseStudy[] = [
   <div class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span><strong>ASTM D6319</strong> — Verified. Standard Specification for Nitrile Examination Gloves for Medical Application.</span></div>
   <div class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span><strong>ASTM D6978</strong> — Verified. Chemotherapy drug permeation resistance standard.</span></div>
   <div class="flex items-start gap-2"><span class="text-red-400">✗</span><span><strong>ASTM D6878</strong> — Listed on 7 of 11 products, but this is a roofing membrane standard. Likely a typo for D6978.</span></div>
+</div>`,
+        contentZh: `<div class="rounded-lg border border-card-border bg-background p-5">
+  <div class="grid gap-3 text-sm">
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">法定名称</span><span>Ultra Stretch Professional Inc.</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">所在地</span><span>Chamblee, GA 30341</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">商业模式</span><span>丁腈手套品牌/进口商</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">销售渠道</span><span>官网（WooCommerce）、亚马逊（7个ASIN）、沃尔玛（3+个listing）</span></div>
+    <div class="flex justify-between"><span class="text-muted">产品线</span><span>11个SKU — 检查级（3.0–3.5 mil）、重型（5.0–6.0 mil）、加长袖口（12"）</span></div>
+  </div>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">法规合规状态</h4>
+<div class="mt-3 space-y-2 text-sm">
+  <div class="flex items-start gap-2"><span class="text-yellow-400">⚠</span><span><strong>FDA 510(k)</strong> — 声称拥有但在FDA数据库中未以公司名称找到。许可可能由OEM制造商持有。</span></div>
+  <div class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span><strong>ASTM D6319</strong> — 已验证。医用丁腈检查手套标准规范。</span></div>
+  <div class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span><strong>ASTM D6978</strong> — 已验证。化疗药物渗透抗性标准。</span></div>
+  <div class="flex items-start gap-2"><span class="text-red-400">✗</span><span><strong>ASTM D6878</strong> — 在11个产品中的7个上标注，但这是屋顶膜标准。可能是D6978的打字错误。</span></div>
 </div>`,
       },
       {
@@ -348,6 +385,37 @@ export const caseStudies: CaseStudy[] = [
     </tbody>
   </table>
 </div>`,
+        contentZh: `<h4 class="font-semibold text-sm uppercase tracking-wider text-muted">检查手套（3.0–3.5 mil）</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">产品</th><th class="pb-2 pr-4">包装</th><th class="pb-2 pr-4">价格</th><th class="pb-2 pr-4">单只价</th><th class="pb-2">库存</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4">PRO 3.0 钴蓝</td><td class="py-2 pr-4">2,000只/箱</td><td class="py-2 pr-4">$167.92</td><td class="py-2 pr-4 text-emerald-400">$0.084</td><td class="py-2">✓ 有货</td></tr>
+      <tr><td class="py-2 pr-4">PRO 3.5 冰蓝</td><td class="py-2 pr-4">2,000只/箱</td><td class="py-2 pr-4">$175.92</td><td class="py-2 pr-4 text-emerald-400">$0.088</td><td class="py-2">✓ 有货</td></tr>
+      <tr><td class="py-2 pr-4">PRO 3.5 煤黑</td><td class="py-2 pr-4">1,000只/箱</td><td class="py-2 pr-4">$95.92</td><td class="py-2 pr-4 text-emerald-400">$0.096</td><td class="py-2 text-red-400">缺货</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">重型/抗芬太尼（5.0–6.0 mil）</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">产品</th><th class="pb-2 pr-4">包装</th><th class="pb-2 pr-4">价格</th><th class="pb-2 pr-4">单只价</th><th class="pb-2">库存</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4">PRO 5.0 煤黑</td><td class="py-2 pr-4">1,000只/箱</td><td class="py-2 pr-4">$114.32</td><td class="py-2 pr-4 text-emerald-400">$0.114</td><td class="py-2">✓ 有货</td></tr>
+      <tr><td class="py-2 pr-4">PRO 6.0 煤黑</td><td class="py-2 pr-4">1,000只/箱</td><td class="py-2 pr-4">$159.92</td><td class="py-2 pr-4 text-emerald-400">$0.160</td><td class="py-2">✓ 有货</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">加长袖口（12英寸）</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">产品</th><th class="pb-2 pr-4">包装</th><th class="pb-2 pr-4">价格</th><th class="pb-2 pr-4">单只价</th><th class="pb-2">库存</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4">12" 乳白</td><td class="py-2 pr-4">1,000只/箱</td><td class="py-2 pr-4">$208.00</td><td class="py-2 pr-4 text-emerald-400">$0.208</td><td class="py-2">✓ 有货</td></tr>
+      <tr><td class="py-2 pr-4">12" 亮粉</td><td class="py-2 pr-4">1,000只/箱</td><td class="py-2 pr-4">$119.92</td><td class="py-2 pr-4 text-emerald-400">$0.120</td><td class="py-2 text-red-400">缺货</td></tr>
+    </tbody>
+  </table>
+</div>`,
       },
       {
         id: "market-size",
@@ -371,6 +439,25 @@ export const caseStudies: CaseStudy[] = [
   <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">●</span><strong>Disposable gloves:</strong> ~85% of US consumption</li>
   <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">●</span><strong>Growth drivers:</strong> Infection control mandates, fentanyl exposure concerns, vinyl-to-nitrile conversion, domestic manufacturing policy</li>
   <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">●</span><strong>Consumption intensity:</strong> 30–50 gloves per occupied bed per day in acute care</li>
+</ul>`,
+        contentZh: `<p>多家研究机构提供了重叠但有差异的估算。医用/检查手套可触达市场最可靠的估算为<strong class="text-emerald-400">$18亿–$26亿</strong>。</p>
+<div class="mt-4 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">来源</th><th class="pb-2 pr-4">基准年</th><th class="pb-2 pr-4">预测</th><th class="pb-2 pr-4">复合增长率</th><th class="pb-2">范围</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4">Grand View Research</td><td class="py-2 pr-4">$21.06亿（2025）</td><td class="py-2 pr-4">$44.09亿（2033）</td><td class="py-2 pr-4">9.7%</td><td class="py-2">全部终端</td></tr>
+      <tr><td class="py-2 pr-4">Grand View Research</td><td class="py-2 pr-4">$18亿（2022）</td><td class="py-2 pr-4">$26亿（2030）</td><td class="py-2 pr-4">4.7%</td><td class="py-2">医疗占81.8%</td></tr>
+      <tr><td class="py-2 pr-4">Emergen Research</td><td class="py-2 pr-4">$52亿（2024）</td><td class="py-2 pr-4">$101亿（2034）</td><td class="py-2 pr-4">6.8%</td><td class="py-2">医疗占60%</td></tr>
+      <tr><td class="py-2 pr-4">Precedence Research</td><td class="py-2 pr-4">$64.6亿（2025）</td><td class="py-2 pr-4">$133.3亿（2035）</td><td class="py-2 pr-4">7.51%</td><td class="py-2">广泛范围</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">市场关键特征</h4>
+<ul class="mt-3 space-y-2 text-sm">
+  <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">●</span><strong>医疗主导：</strong>占美国丁腈需求的60–82%</li>
+  <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">●</span><strong>一次性手套：</strong>约占美国消费量的85%</li>
+  <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">●</span><strong>增长驱动：</strong>感染控制规定、芬太尼暴露担忧、PVC转丁腈趋势、国内制造政策</li>
+  <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">●</span><strong>消耗强度：</strong>急症护理中每张占用病床每天30-50只手套</li>
 </ul>`,
       },
       {
@@ -404,6 +491,33 @@ export const caseStudies: CaseStudy[] = [
 <div class="mt-4 rounded-lg border border-yellow-400/30 bg-yellow-400/5 p-4 text-sm">
   <strong class="text-yellow-400">Import Shift:</strong> China's medical glove share collapsed from 38.9% to 2.8%. Malaysia now dominates at 67.5%. US prices are rising +15–25% while European prices are falling –28%, creating a divergent global pricing environment.
 </div>`,
+        contentZh: `<h4 class="font-semibold text-sm uppercase tracking-wider text-muted">中国关税升级</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">生效日期</th><th class="pb-2 pr-4">医用手套</th><th class="pb-2">工业手套</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4">2025年前</td><td class="py-2 pr-4">7.5%</td><td class="py-2">7.5%</td></tr>
+      <tr><td class="py-2 pr-4">2025年1月</td><td class="py-2 pr-4">50%</td><td class="py-2">~30%</td></tr>
+      <tr><td class="py-2 pr-4">2025年5月</td><td class="py-2 pr-4 text-yellow-400 font-semibold">~80%</td><td class="py-2">~55%</td></tr>
+      <tr><td class="py-2 pr-4">2026年1月</td><td class="py-2 pr-4 text-red-400 font-semibold">~130%</td><td class="py-2">~75%+</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">东南亚对等关税（2025年5月）</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">国家</th><th class="pb-2 pr-4">关税</th><th class="pb-2">医用进口份额</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4">马来西亚</td><td class="py-2 pr-4">24%</td><td class="py-2 font-semibold">67.5%</td></tr>
+      <tr><td class="py-2 pr-4">泰国</td><td class="py-2 pr-4">36%</td><td class="py-2">16.9%</td></tr>
+      <tr><td class="py-2 pr-4">越南</td><td class="py-2 pr-4">46%</td><td class="py-2">9.8%</td></tr>
+      <tr><td class="py-2 pr-4">印度尼西亚</td><td class="py-2 pr-4">32%</td><td class="py-2">7.3%</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="mt-4 rounded-lg border border-yellow-400/30 bg-yellow-400/5 p-4 text-sm">
+  <strong class="text-yellow-400">进口转移：</strong>中国医用手套份额从38.9%暴跌至2.8%。马来西亚现以67.5%占据主导地位。美国价格上涨15–25%，而欧洲价格下降28%，形成全球价格分化环境。
+</div>`,
       },
       {
         id: "competitive-pricing",
@@ -430,6 +544,27 @@ export const caseStudies: CaseStudy[] = [
   <div class="flex items-start gap-2"><span class="text-yellow-400">⚠</span><span><strong>Fentanyl 5.0 mil:</strong> $0.114 vs budget $0.049 — 2.3x premium needs justification</span></div>
   <div class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span><strong>Extended cuff 12":</strong> $0.120–$0.208 significantly below market ($0.270–$0.378) — strong value</span></div>
 </div>`,
+        contentZh: `<div class="overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">价格层级</th><th class="pb-2 pr-4">示例</th><th class="pb-2 pr-4">厚度</th><th class="pb-2">单只价</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 text-blue-400">经济型</td><td class="py-2 pr-4">Gloves.com 自有品牌</td><td class="py-2 pr-4">3 mil</td><td class="py-2">$0.040</td></tr>
+      <tr><td class="py-2 pr-4 text-blue-400">经济型</td><td class="py-2 pr-4">Safety Supply America 5mil 抗芬太尼</td><td class="py-2 pr-4">5 mil</td><td class="py-2">$0.049</td></tr>
+      <tr><td class="py-2 pr-4 text-emerald-400">中端</td><td class="py-2 pr-4">McKesson Confiderm 3.5C</td><td class="py-2 pr-4">3.5 mil</td><td class="py-2">$0.089</td></tr>
+      <tr><td class="py-2 pr-4 text-emerald-400">中端</td><td class="py-2 pr-4">Atlantic Safety InTouch</td><td class="py-2 pr-4">5 mil</td><td class="py-2">$0.109</td></tr>
+      <tr><td class="py-2 pr-4 text-amber-400">高端</td><td class="py-2 pr-4">Medline FitGuard Touch</td><td class="py-2 pr-4">3.1 mil</td><td class="py-2">$0.140</td></tr>
+      <tr><td class="py-2 pr-4 text-amber-400">高端</td><td class="py-2 pr-4">Kimberly-Clark Purple Nitrile</td><td class="py-2 pr-4">—</td><td class="py-2">$0.246</td></tr>
+      <tr><td class="py-2 pr-4 text-purple-400">加长袖口</td><td class="py-2 pr-4">GloveSaver 12"</td><td class="py-2 pr-4">12"</td><td class="py-2">$0.270</td></tr>
+      <tr><td class="py-2 pr-4 text-red-400">重型</td><td class="py-2 pr-4">SW MegaMan 8.5mil</td><td class="py-2 pr-4">8.5 mil</td><td class="py-2">$0.57–0.64</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">USP竞争定位</h4>
+<div class="mt-3 space-y-2 text-sm">
+  <div class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span><strong>检查手套（3.0–3.5 mil）：</strong>中端价位有竞争力，$0.084–$0.096</span></div>
+  <div class="flex items-start gap-2"><span class="text-yellow-400">⚠</span><span><strong>抗芬太尼 5.0 mil：</strong>$0.114 对比经济型$0.049——2.3倍溢价需要合理化</span></div>
+  <div class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span><strong>加长袖口 12"：</strong>$0.120–$0.208 显著低于市场价（$0.270–$0.378）——强性价比</span></div>
+</div>`,
       },
       {
         id: "market-segments",
@@ -451,6 +586,23 @@ export const caseStudies: CaseStudy[] = [
 </div>
 <div class="mt-4 rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-4 text-sm">
   <strong class="text-emerald-400">Volume Insight:</strong> A single 3-hospital system consumed 41 million gloves in 2023, spending $2.2M. GPO contracts are active — Vizient with Sri Trang + SafeSource Direct, Premier with Honeywell for 750M gloves.
+</div>`,
+        contentZh: `<div class="overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">细分市场</th><th class="pb-2 pr-4">需求</th><th class="pb-2">关键驱动因素</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium">医疗保健</td><td class="py-2 pr-4"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">强劲</span></td><td class="py-2">OSHA规定；每张病床每天30-50只；占美国丁腈的60–82%</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">牙科</td><td class="py-2 pr-4"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">强劲</span></td><td class="py-2">三重规定（OSHA + CDC + ADA）；177,559家诊所；占美国丁腈的18.3%</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">餐饮服务</td><td class="py-2 pr-4"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">强劲</span></td><td class="py-2">FDA禁止徒手接触食物；78%快餐连锁使用丁腈</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">纹身</td><td class="py-2 pr-4"><span class="rounded bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">强劲</span></td><td class="py-2">OSHA血源性病原体标准；23,000+家店；黑色丁腈为行业标准</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">执法</td><td class="py-2 pr-4"><span class="rounded bg-yellow-400/10 px-2 py-0.5 text-xs text-yellow-400">中等</span></td><td class="py-2">NIOSH/CDC/DEA芬太尼指南；H.R.621拨款</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">美甲/沙龙</td><td class="py-2 pr-4"><span class="rounded bg-yellow-400/10 px-2 py-0.5 text-xs text-yellow-400">中等</span></td><td class="py-2">纽约州强制使用丁腈；65,000–118,000家沙龙</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">大麻</td><td class="py-2 pr-4"><span class="rounded bg-gray-400/10 px-2 py-0.5 text-xs text-gray-400">弱–中</span></td><td class="py-2">~15,000家药房；无联邦强制要求</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="mt-4 rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-4 text-sm">
+  <strong class="text-emerald-400">用量洞察：</strong>单个3家医院系统在2023年消耗了4100万只手套，花费$220万。GPO合同活跃——Vizient与Sri Trang + SafeSource Direct合作，Premier与Honeywell签订7.5亿只手套合同。
 </div>`,
       },
       {
@@ -503,6 +655,52 @@ export const caseStudies: CaseStudy[] = [
     </ul>
   </div>
 </div>`,
+        contentZh: `<div class="grid gap-4 sm:grid-cols-2">
+  <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-4">
+    <h4 class="font-semibold text-emerald-400 text-sm mb-3">优势</h4>
+    <ul class="space-y-2 text-sm">
+      <li>全产品线：11个SKU（3.0–6.0 mil + 12"加长袖口）</li>
+      <li>中端检查手套定价有竞争力（$0.084）</li>
+      <li>加长袖口产品性价比突出</li>
+      <li>多渠道：官网 + 亚马逊 + 沃尔玛</li>
+      <li>ASTM D6978化疗&芬太尼定位</li>
+      <li>多色可选，覆盖医疗、纹身、沙龙细分</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-red-400/30 bg-red-400/5 p-4">
+    <h4 class="font-semibold text-red-400 text-sm mb-3">劣势</h4>
+    <ul class="space-y-2 text-sm">
+      <li>无可验证的企业历史（无BBB、Trustpilot、LinkedIn）</li>
+      <li>ASTM D6878认证错误（7个产品标注了屋顶膜标准）</li>
+      <li>FDA 510(k)无法追溯至公司</li>
+      <li>27%的产品缺货率</li>
+      <li>产品页面"Nitrite"拼写错误</li>
+      <li>关于我们页面返回404错误</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-blue-400/30 bg-blue-400/5 p-4">
+    <h4 class="font-semibold text-blue-400 text-sm mb-3">机会</h4>
+    <ul class="space-y-2 text-sm">
+      <li>关税驱动的供应中断（中国从38.9%降至2.8%）</li>
+      <li>CMS国内PPE Medicare支付溢价</li>
+      <li>餐饮服务中PVC转丁腈趋势</li>
+      <li>芬太尼防护需求（H.R.621拨款）</li>
+      <li>SHOWA阿拉巴马工厂关闭减少竞争者</li>
+      <li>GPO合同管线（Vizient、Premier、HealthTrust）</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-amber-400/30 bg-amber-400/5 p-4">
+    <h4 class="font-semibold text-amber-400 text-sm mb-3">威胁</h4>
+    <ul class="space-y-2 text-sm">
+      <li>关税不确定性——对等关税可能变化</li>
+      <li>经济型竞争激烈（$0.040–$0.049/只）</li>
+      <li>成熟的分销商关系（McKesson、Cardinal、O&M）</li>
+      <li>芬太尼皮肤吸收说法面临科学质疑</li>
+      <li>机构买家的信誉差距</li>
+      <li>CMS规则可能偏向真正的国内制造商</li>
+    </ul>
+  </div>
+</div>`,
       },
       {
         id: "buyer-directory",
@@ -549,6 +747,49 @@ export const caseStudies: CaseStudy[] = [
   </div>
   <div class="rounded-lg border border-card-border bg-background p-4 text-sm">
     <strong>Tier Summary:</strong> 20 Gold (fully verified) · 7 Silver (partially verified) · 3 Bronze (needs manual verification)
+  </div>
+</div>`,
+        contentZh: `<p class="text-sm text-muted mb-4">所有采购商均通过直接网站核查验证。按类别组织，分为金牌/银牌/铜牌验证级别。</p>
+<div class="space-y-6">
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-muted mb-3">医疗分销商</h4>
+    <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">McKesson</span></div><div class="mt-1 text-xs text-muted">美国第一大医疗分销商。拥有自有品牌手套。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Cardinal Health</span></div><div class="mt-1 text-xs text-muted">前三大分销商。ESTEEM、FLEXAL品牌。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Owens & Minor</span></div><div class="mt-1 text-xs text-muted">主要分销商，拥有Halyard产品组合。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-gray-400/20 px-1.5 py-0.5 text-xs text-gray-400">银牌</span><span class="text-sm font-medium">NDC Inc.</span></div><div class="mt-1 text-xs text-muted">中型全国分销商；供应商门户可用。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-gray-400/20 px-1.5 py-0.5 text-xs text-gray-400">银牌</span><span class="text-sm font-medium">Concordance Healthcare</span></div><div class="mt-1 text-xs text-muted">活跃的丁腈手套项目。</div></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-muted mb-3">牙科分销商</h4>
+    <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Henry Schein</span></div><div class="mt-1 text-xs text-muted">全球第一大牙科分销商。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Patterson Dental</span></div><div class="mt-1 text-xs text-muted">第二大牙科分销商。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Benco Dental</span></div><div class="mt-1 text-xs text-muted">第三大牙科分销商，家族企业。</div></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-muted mb-3">工业分销商</h4>
+    <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Grainger</span></div><div class="mt-1 text-xs text-muted">美国最大工业分销商，$160亿+营收。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Fastenal</span></div><div class="mt-1 text-xs text-muted">3,300+个网点。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Uline</span></div><div class="mt-1 text-xs text-muted">主要目录分销商，当日发货。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">MSC Industrial</span></div><div class="mt-1 text-xs text-muted">$35亿+分销商。</div></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-muted mb-3">GPO和政府</h4>
+    <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Vizient</span></div><div class="mt-1 text-xs text-muted">约占美国医院采购的50%。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">Premier Inc.</span></div><div class="mt-1 text-xs text-muted">约4,400家医院。现已私有化（$26亿收购）。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">HealthTrust</span></div><div class="mt-1 text-xs text-muted">HCA旗下GPO；1,800家医院 + 55,000个站点。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">SAM.gov</span></div><div class="mt-1 text-xs text-muted">联邦采购平台。联邦合同必需注册。</div></div>
+      <div class="rounded-lg border border-card-border bg-background p-3"><div class="flex items-center gap-2"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400">金牌</span><span class="text-sm font-medium">NASPO ValuePoint</span></div><div class="mt-1 text-xs text-muted">单一合同覆盖全部50个州。</div></div>
+    </div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-sm">
+    <strong>级别汇总：</strong>20个金牌（完全验证）· 7个银牌（部分验证）· 3个铜牌（需人工验证）
   </div>
 </div>`,
       },
@@ -602,6 +843,55 @@ export const caseStudies: CaseStudy[] = [
       <tr><td class="py-2 pr-4 font-medium">Fentanyl (5.0 mil)</td><td class="py-2">$0.114 vs budget $0.049. Justify premium with ASTM D6978 data or offer volume discounts.</td></tr>
       <tr><td class="py-2 pr-4 font-medium">Heavy-Duty (6.0 mil)</td><td class="py-2">$0.160 within premium norms. Competitive.</td></tr>
       <tr><td class="py-2 pr-4 font-medium text-emerald-400">Extended Cuff (12")</td><td class="py-2">$0.120–$0.208 well below market. Lead with this in marketing.</td></tr>
+    </tbody>
+  </table>
+</div>`,
+        contentZh: `<div class="space-y-6">
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-red-400 mb-3">立即行动（0-30天）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">紧急</span><span>更正全部7个受影响产品页面上的ASTM D6878 → D6978</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">紧急</span><span>修复2个产品页面上的"Nitrite"拼写错误为"Nitrile"</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">紧急</span><span>恢复或创建关于我们页面（当前404）</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>在2026年3月30日前提交CMS ANPRM评论</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>在SAM.gov注册以参与联邦合同</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-amber-400 mb-3">短期（30-90天）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>申请工业供应商门户：Uline、Grainger、MSC、Fastenal</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>联系Concordance Healthcare关于丁腈手套项目</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>向牙科三巨头提交供应商申请：Henry Schein、Patterson、Benco</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">中优</span><span>建立BBB档案和Trustpilot形象</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-blue-400 mb-3">中期（90-180天）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>申请佐治亚州DOAS Team Georgia Marketplace（本州优势）</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>争取NASPO ValuePoint或Sourcewell合作合同</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>接入Vizient投标管理平台</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">中优</span><span>开发执法机构芬太尼销售材料（引用NIOSH/CDC/DEA）</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-purple-400 mb-3">长期（180-365天）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>接洽三大医疗分销商：McKesson、Cardinal Health、Owens & Minor</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">中优</span><span>评估国内制造或组装模式以符合CMS/Berry合规要求</span></div>
+    </div>
+  </div>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">定价策略建议</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">细分</th><th class="pb-2">建议</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium">检查级（3.0–3.5 mil）</td><td class="py-2">$0.084–$0.096有竞争力。维持现价。</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">抗芬太尼（5.0 mil）</td><td class="py-2">$0.114对比经济型$0.049。需用ASTM D6978数据证明溢价合理性或提供批量折扣。</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">重型（6.0 mil）</td><td class="py-2">$0.160在高端区间内。有竞争力。</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-emerald-400">加长袖口（12"）</td><td class="py-2">$0.120–$0.208远低于市场价。在营销中主推此产品。</td></tr>
     </tbody>
   </table>
 </div>`,

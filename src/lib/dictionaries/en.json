@@ -2,7 +2,7 @@
   "nav": {
     "industries": "Industries",
     "caseStudies": "Case Studies",
-    "beta": "Beta"
+    "pricing": "Pricing"
   },
   "home": {
     "heroTitle": "AI-Powered",
@@ -48,6 +48,49 @@
     "welcome": "Welcome! I'm your AI {module} consultant specializing in the **{industry}** industry. I can help you with analysis, strategy, and actionable insights.\n\nHow can I assist you today? You can start with one of the suggested prompts or ask your own question.",
     "placeholder": "Ask about {module} for {industry}...",
     "send": "Send"
+  },
+  "footer": {
+    "copyright": "© 2026 JY Consultant Service. All rights reserved.",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "contact": "Contact"
+  },
+  "profile": {
+    "title": "Profile",
+    "aiModel": "AI Model",
+    "aiModelDesc": "Choose the AI model for your consulting sessions",
+    "currentPlan": "Current Plan",
+    "save": "Save",
+    "saved": "Saved!",
+    "free": "Free",
+    "pro": "Pro",
+    "enterprise": "Enterprise",
+    "upgradePlan": "Upgrade Plan",
+    "viewPricing": "View Pricing"
+  },
+  "pricing": {
+    "title": "Consulting Plans",
+    "subtitle": "Choose the plan that fits your business needs — from AI-powered insights to hands-on expert consulting.",
+    "free": "Free",
+    "freePrice": "$0",
+    "freeDesc": "Get started with AI consulting",
+    "freeFeatures": ["AI-powered chat consulting", "All industry modules", "Case study access", "Community support"],
+    "pro": "Pro",
+    "proPrice": "$299",
+    "proUnit": "/mo",
+    "proDesc": "AI + live expert consulting",
+    "proFeatures": ["Everything in Free", "60-min monthly live consulting session", "Online video chat with industry expert", "Priority AI model access", "Chat history & session archive", "Email support"],
+    "enterprise": "Enterprise",
+    "enterprisePrice": "$899",
+    "enterpriseUnit": "/mo",
+    "enterpriseDesc": "On-site expert consulting",
+    "enterpriseFeatures": ["Everything in Pro", "1-day monthly on-site consulting visit", "SF Bay Area based consultants", "Face-to-face strategy sessions", "Travel costs billed separately (up to $2,000)", "Example: 3-day SF to NYC trip", "Dedicated account manager", "Custom AI model configuration"],
+    "currentPlan": "Current Plan",
+    "getStarted": "Get Started",
+    "subscribe": "Subscribe",
+    "contactSales": "Contact Sales",
+    "popular": "Most Popular",
+    "travelNote": "On-site visits outside the SF Bay Area may incur additional travel expenses (flights, hotel, meals) billed at cost, typically up to $2,000 per trip."
   },
   "lang": {
     "en": "EN",

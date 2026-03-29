@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import LanguageSwitcher from "./LanguageSwitcher";
+import AuthButton from "./AuthButton";
 
 export default function Navbar({
   locale,
@@ -32,10 +33,14 @@ export default function Navbar({
           >
             {dict.nav.caseStudies}
           </Link>
-          <span className="rounded-full bg-accent/10 px-3 py-1 text-accent-light">
-            {dict.nav.beta}
-          </span>
+          <Link
+            href={`/${locale}/pricing`}
+            className="transition hover:text-foreground"
+          >
+            {dict.nav.pricing}
+          </Link>
           <LanguageSwitcher locale={locale} />
+          <AuthButton />
         </div>
       </div>
     </nav>

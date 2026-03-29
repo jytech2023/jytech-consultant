@@ -1,4 +1,4 @@
-import { streamText, createGateway } from "ai";
+import { streamText, createGateway, UIMessage, convertToModelMessages } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
 const openrouter = createOpenRouter({
@@ -10,25 +10,30 @@ const gateway = createGateway({
 });
 
 export async function POST(req: Request) {
-  const { messages, systemPrompt } = await req.json();
+  const {
+    messages,
+    systemPrompt,
+  }: { messages: UIMessage[]; systemPrompt: string } = await req.json();
+
+  const modelMessages = await convertToModelMessages(messages);
 
   // Try OpenRouter first, fallback to Vercel AI Gateway
   try {
     const result = streamText({
       model: openrouter("google/gemini-2.0-flash-001"),
       system: systemPrompt,
-      messages,
+      messages: modelMessages,
     });
 
-    return result.toDataStreamResponse();
+    return result.toUIMessageStreamResponse();
   } catch {
     // Fallback to Vercel AI Gateway
     const result = streamText({
       model: gateway("google/gemini-2.0-flash-001"),
       system: systemPrompt,
-      messages,
+      messages: modelMessages,
     });
 
-    return result.toDataStreamResponse();
+    return result.toUIMessageStreamResponse();
   }
 }

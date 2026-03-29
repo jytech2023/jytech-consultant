@@ -1,6 +1,8 @@
 "use client";
 
-import { useChat } from "ai/react";
+import { useState } from "react";
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport, UIMessage } from "ai";
 
 const SUGGESTED_PROMPTS: Record<string, string[]> = {
   customers: [
@@ -48,29 +50,53 @@ export default function ConsultingChat({
   moduleSlug: string;
   color: string;
 }) {
+  const [input, setInput] = useState("");
+
   const systemPrompt = `You are an expert AI ${moduleName} consultant specializing in the ${industryName} industry.
 You provide actionable, data-driven insights tailored to this specific industry context.
 Keep responses concise but thorough. Use bullet points and structured formatting when helpful.
 Always end with a follow-up question or offer to dive deeper into a specific area.
 Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.`;
 
-  const { messages, input, handleInputChange, handleSubmit, isLoading, append } =
-    useChat({
+  const { messages, sendMessage, status } = useChat<UIMessage>({
+    transport: new DefaultChatTransport({
       api: "/api/chat",
       body: { systemPrompt },
-      initialMessages: [
-        {
-          id: "welcome",
-          role: "assistant",
-          content: `Welcome! I'm your AI ${moduleName} consultant specializing in the **${industryName}** industry. I can help you with analysis, strategy, and actionable insights.\n\nHow can I assist you today? You can start with one of the suggested prompts or ask your own question.`,
-        },
-      ],
-    });
+    }),
+    messages: [
+      {
+        id: "welcome",
+        role: "assistant" as const,
+        parts: [
+          {
+            type: "text" as const,
+            text: `Welcome! I'm your AI ${moduleName} consultant specializing in the **${industryName}** industry. I can help you with analysis, strategy, and actionable insights.\n\nHow can I assist you today? You can start with one of the suggested prompts or ask your own question.`,
+          },
+        ],
+      },
+    ] satisfies UIMessage[],
+  });
 
+  const isLoading = status === "submitted" || status === "streaming";
   const prompts = SUGGESTED_PROMPTS[moduleSlug] ?? SUGGESTED_PROMPTS.strategy;
 
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+    const text = input.trim();
+    setInput("");
+    sendMessage({ text });
+  }
+
   function handlePromptClick(text: string) {
-    append({ role: "user", content: text });
+    sendMessage({ text });
+  }
+
+  function getMessageText(msg: (typeof messages)[number]): string {
+    return msg.parts
+      .filter((p) => p.type === "text")
+      .map((p) => p.text)
+      .join("");
   }
 
   return (
@@ -89,7 +115,7 @@ Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.`;
                   : "bg-background border border-card-border"
               }`}
             >
-              <div className="whitespace-pre-wrap">{msg.content}</div>
+              <div className="whitespace-pre-wrap">{getMessageText(msg)}</div>
             </div>
           </div>
         ))}
@@ -136,7 +162,7 @@ Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.`;
         <form onSubmit={handleSubmit} className="flex gap-3">
           <input
             value={input}
-            onChange={handleInputChange}
+            onChange={(e) => setInput(e.target.value)}
             placeholder={`Ask about ${moduleName.toLowerCase()} for ${industryName.toLowerCase()}...`}
             className="flex-1 rounded-lg border border-card-border bg-background px-4 py-2.5 text-sm outline-none transition focus:border-accent/60"
             disabled={isLoading}

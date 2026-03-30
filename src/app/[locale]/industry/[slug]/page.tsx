@@ -24,8 +24,8 @@ export async function generateMetadata({
   return {
     title:
       locale === "zh"
-        ? `${industry.nameZh}咨询 | AI商业顾问`
-        : `${industry.name} Consulting | AI Business Consultant`,
+        ? `${industry.nameZh}咨询 | JY Consulting`
+        : `${industry.name} Consulting | JY Consulting`,
     description: industry.description,
   };
 }
@@ -371,10 +371,7 @@ export default async function IndustryPage({
               </div>
               <div className="min-w-0">
                 <h3 className="font-semibold">
-                  {l === "zh" ? "胡春育" : "Lucas Hu"}{" "}
-                  <span className="text-xs font-normal text-muted">
-                    {l === "zh" ? "Lucas Hu" : "(胡春育)"}
-                  </span>
+                  Lucas Hu
                 </h3>
                 <p className="text-xs text-muted">
                   {l === "zh"

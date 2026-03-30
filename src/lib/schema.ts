@@ -30,6 +30,10 @@ export const users = pgTable("users", {
   expertBio: text("expert_bio"), // short self-introduction
   // Keep hourlyRate as legacy / default
   hourlyRate: integer("hourly_rate"), // in USD (legacy, defaults to online rate)
+  // Referral: commission earned by importing LinkedIn connections
+  referralCommission: integer("referral_commission").default(0).notNull(), // e.g. 5 = 5% of total booking
+  referredBy: uuid("referred_by").references((): any => users.id), // who referred this user
+  linkedinImported: integer("linkedin_imported").default(0).notNull(), // number of connections imported
   // Subscription: "free" | "start" | "growth" | "enterprise"
   plan: text("plan").default("free").notNull(),
   planExpiresAt: timestamp("plan_expires_at"),
@@ -129,6 +133,47 @@ export const documentsRelations = relations(documents, ({ one }) => ({
     references: [users.id],
   }),
 }));
+
+// ── Chat Ratings (user feedback on AI responses) ─────────────────
+export const chatRatings = pgTable(
+  "chat_ratings",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
+    sessionId: uuid("session_id").references(() => chatSessions.id, { onDelete: "set null" }),
+    modelId: text("model_id").notNull(), // actual model used, e.g. "qwen/qwen3-coder:free"
+    industrySlug: text("industry_slug"),
+    moduleSlug: text("module_slug"),
+    locale: text("locale"),
+    rating: integer("rating").notNull(), // 1 = good, -1 = bad
+    comment: text("comment"), // optional user feedback
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("chat_ratings_model_idx").on(table.modelId),
+    index("chat_ratings_created_idx").on(table.createdAt),
+  ]
+);
+
+// ── Model Routing Scores (weekly aggregated) ─────────────────────
+export const modelScores = pgTable(
+  "model_scores",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    modelId: text("model_id").notNull(),
+    industrySlug: text("industry_slug"), // null = global score
+    locale: text("locale"), // null = all locales
+    totalRatings: integer("total_ratings").default(0).notNull(),
+    positiveRatings: integer("positive_ratings").default(0).notNull(),
+    score: integer("score").default(0).notNull(), // 0-100 percentage
+    userSelectCount: integer("user_select_count").default(0).notNull(), // how many users chose this model
+    period: text("period").notNull(), // e.g. "2026-W13"
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("model_scores_lookup_idx").on(table.modelId, table.industrySlug, table.locale, table.period),
+  ]
+);
 
 // ── Calendly Tokens (expert OAuth connections) ────────────────────
 export const calendlyTokens = pgTable(

@@ -15,8 +15,8 @@ export async function generateMetadata({
   return {
     title:
       locale === "zh"
-        ? "案例研究 | AI商业顾问"
-        : "Case Studies | AI Business Consultant",
+        ? "案例研究 | JY Consulting"
+        : "Case Studies | JY Consulting",
     description: dict.studies.subtitle,
   };
 }

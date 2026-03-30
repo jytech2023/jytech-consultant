@@ -33,8 +33,8 @@ export async function generateMetadata({
   return {
     title:
       locale === "zh"
-        ? `${mod.nameZh} — ${industry.nameZh} | AI商业顾问`
-        : `${mod.name} — ${industry.name} | AI Business Consultant`,
+        ? `${mod.nameZh} — ${industry.nameZh} | JY Consulting`
+        : `${mod.name} — ${industry.name} | JY Consulting`,
     description: `${mod.description} Tailored for the ${industry.name} industry.`,
   };
 }
@@ -90,7 +90,7 @@ export default async function ModulePage({
         </div>
       </section>
 
-      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-6 px-6 py-8 lg:flex-row">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 pb-16 pt-8 lg:flex-row">
         {/* Sidebar - Features */}
         <aside className="w-full shrink-0 lg:w-64">
           <div className="rounded-xl border border-card-border bg-card-bg p-5">
@@ -141,7 +141,7 @@ export default async function ModulePage({
         </aside>
 
         {/* Main Content - Chat Interface */}
-        <div className="flex flex-1 flex-col">
+        <div className="flex-1">
           <ConsultingChat
             industryName={l === "zh" ? industry.nameZh : industry.name}
             industrySlug={industry.slug}

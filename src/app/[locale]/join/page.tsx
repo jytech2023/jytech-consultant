@@ -12,12 +12,12 @@ export async function generateMetadata({
   return {
     title:
       locale === "zh"
-        ? "加入我们 | JY Consultant"
-        : "Join Us | JY Consultant",
+        ? "加入我们 | JY Consulting"
+        : "Join Us | JY Consulting",
     description:
       locale === "zh"
-        ? "让你的知识变现——加入 JY Consultant 成为行业顾问"
-        : "Monetize your expertise — join JY Consultant as an industry advisor",
+        ? "让你的知识变现——加入 JY Consulting 成为行业顾问"
+        : "Monetize your expertise — join JY Consulting as an industry advisor",
   };
 }
 
@@ -137,8 +137,8 @@ export default async function JoinPage({
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted">
             {l === "zh"
-              ? "如果你在行业中拥有一技之长和 3 年以上的工作经历，我们欢迎你加入 JY Consultant，成为我们的顾问成员。你的经验值得被尊重，你的时间值得被定价。"
-              : "If you have specialized skills and 3+ years of professional experience, we invite you to join JY Consultant as an advisor. Your experience deserves respect, and your time deserves a price tag."}
+              ? "如果你在行业中拥有一技之长和 3 年以上的工作经历，我们欢迎你加入 JY Consulting，成为我们的顾问成员。你的经验值得被尊重，你的时间值得被定价。"
+              : "If you have specialized skills and 3+ years of professional experience, we invite you to join JY Consulting as an advisor. Your experience deserves respect, and your time deserves a price tag."}
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link

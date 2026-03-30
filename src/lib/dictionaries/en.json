@@ -7,9 +7,9 @@
     "join": "Join Us"
   },
   "home": {
-    "heroTitle": "AI-Powered",
+    "heroTitle": "Human + AI",
     "heroTitleAccent": "Business Consulting",
-    "heroSubtitle": "Intelligent insights for customer discovery, competitor analysis, strategy planning, market intelligence, supply chain optimization, and career development — across every industry.",
+    "heroSubtitle": "Expert consultants powered by AI — customer discovery, competitor analysis, strategy planning, market intelligence, supply chain optimization, and career development across every industry.",
     "selectIndustry": "Select Your Industry",
     "selectIndustryDesc": "Choose an industry to get tailored AI consulting insights",
     "explore": "Explore",
@@ -17,7 +17,7 @@
     "consultingModulesDesc": "Full-spectrum AI consulting services available for every industry",
     "partners": "Partners",
     "partnersDesc": "We partner with leading companies to provide consulting services",
-    "footer": "© 2026 JY Consultant Service. All rights reserved."
+    "footer": "© 2026 JY Consulting. All rights reserved."
   },
   "industry": {
     "backToIndustries": "← Back to Industries",
@@ -52,7 +52,7 @@
     "send": "Send"
   },
   "footer": {
-    "copyright": "© 2026 JY Consultant Service. All rights reserved.",
+    "copyright": "© 2026 JY Consulting. All rights reserved.",
     "terms": "Terms of Service",
     "privacy": "Privacy Policy",
     "contact": "Contact"

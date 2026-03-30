@@ -18,7 +18,7 @@ export default function Navbar({
         <Link href={`/${locale}`} className="flex items-center gap-2">
           <span className="text-2xl">⚡</span>
           <span className="text-lg font-bold tracking-tight">
-            AI <span className="text-accent-light">Consultant</span>
+            JY <span className="text-accent-light">Consulting</span>
           </span>
         </Link>
         <div className="flex items-center gap-6 text-sm text-muted">

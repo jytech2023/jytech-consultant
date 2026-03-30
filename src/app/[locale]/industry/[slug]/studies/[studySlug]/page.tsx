@@ -33,8 +33,8 @@ export async function generateMetadata({
   return {
     title:
       locale === "zh"
-        ? `${study.titleZh} | ${industry.nameZh} | AI商业顾问`
-        : `${study.title} | ${industry.name} | AI Business Consultant`,
+        ? `${study.titleZh} | ${industry.nameZh} | JY Consulting`
+        : `${study.title} | ${industry.name} | JY Consulting`,
     description: locale === "zh" ? (study.subtitleZh ?? study.subtitle) : study.subtitle,
   };
 }

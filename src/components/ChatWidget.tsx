@@ -7,7 +7,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { usePathname } from "next/navigation";
 import { locales, type Locale } from "@/lib/i18n";
 
-const systemPrompt = `You are an expert AI business consultant for JY Consultant Service. You help users with customer discovery, competitor analysis, business strategy, market intelligence, supply chain optimization, and career consulting across multiple industries including restaurant, cosmetic, manufacturing, robotics, medical, and education.
+const systemPrompt = `You are an expert business consultant for JY Consulting, a Human + AI consulting platform. You help users with customer discovery, competitor analysis, business strategy, market intelligence, supply chain optimization, and career consulting across multiple industries including restaurant, cosmetic, manufacturing, robotics, medical, and education.
 Keep responses concise, actionable, and professional. Use bullet points when helpful. If the user asks in Chinese, respond in Chinese.`;
 
 export default function ChatWidget() {
@@ -24,8 +24,8 @@ export default function ChatWidget() {
   const isZh = locale === "zh";
 
   const welcomeText = isZh
-    ? "你好！我是JY AI顾问。有什么可以帮您的？"
-    : "Hi! I'm the JY AI Consultant. How can I help you?";
+    ? "你好！我是 JY Consulting 顾问。有什么可以帮您的？"
+    : "Hi! I'm the JY Consulting advisor. How can I help you?";
 
   const { messages, sendMessage, status, setMessages } = useChat<UIMessage>({
     id: "chat-widget",
@@ -84,7 +84,7 @@ export default function ChatWidget() {
       <button
         onClick={() => setOpen(true)}
         className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg transition hover:bg-accent/80 hover:scale-105"
-        title={isZh ? "AI 顾问" : "AI Consultant"}
+        title={isZh ? "JY Consulting" : "JY Consulting"}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -104,7 +104,7 @@ export default function ChatWidget() {
         <div className="flex items-center gap-2">
           <span className="text-lg">⚡</span>
           <span className="text-sm font-semibold">
-            {isZh ? "AI 顾问" : "AI Consultant"}
+            {isZh ? "JY Consulting" : "JY Consulting"}
           </span>
           {user && (
             <span className="text-xs text-muted">

@@ -69,6 +69,12 @@ export async function POST(request: NextRequest) {
   const expertAmountCents = Math.round(hourlyRate * hours * 100);
   const platformAmountCents = amountCents - expertAmountCents;
 
+  // Referral: if client was referred, 5% of total goes to referrer
+  const referredBy = dbUser.referredBy ?? null;
+  const referralPct = referredBy ? 5 : 0;
+  const referralAmountCents = Math.round(amountCents * (referralPct / 100));
+  const netPlatformCents = platformAmountCents - referralAmountCents;
+
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: "payment",
     customer_email: session.user.email ?? undefined,
@@ -99,7 +105,9 @@ export async function POST(request: NextRequest) {
       hourlyRate: String(hourlyRate),
       totalCharged: String(amountCents),
       expertPayout: String(expertAmountCents),
-      platformFee: String(platformAmountCents),
+      platformFee: String(netPlatformCents),
+      referredBy: referredBy ?? "",
+      referralPayout: String(referralAmountCents),
       clientPlan,
       commissionPct: String(commissionPct),
     },

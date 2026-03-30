@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "JY Consultant | AI-Powered Business Consulting",
-    template: "%s | JY Consultant",
+    default: "JY Consulting | Human + AI Business Consulting",
+    template: "%s | JY Consulting",
   },
   description:
-    "AI-powered business consulting platform providing intelligent insights for customer discovery, competitor analysis, strategy planning, market intelligence, and supply chain optimization across restaurant, cosmetic, manufacturing, robotics, medical, and education industries.",
+    "Human + AI business consulting platform providing intelligent insights for customer discovery, competitor analysis, strategy planning, market intelligence, and supply chain optimization across restaurant, cosmetic, manufacturing, robotics, medical, and education industries.",
   keywords: [
     "AI business consulting",
     "market analysis",
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     "market intelligence",
     "AI consultant",
     "行业咨询",
-    "AI商业顾问",
+    "JY Consulting",
     "市场分析",
   ],
-  authors: [{ name: "JY Consultant Service" }],
+  authors: [{ name: "JY Consulting" }],
   openGraph: {
     type: "website",
-    siteName: "JY Consultant",
-    title: "JY Consultant | AI-Powered Business Consulting",
+    siteName: "JY Consulting",
+    title: "JY Consulting | Human + AI Business Consulting",
     description:
       "Intelligent insights for customer discovery, competitor analysis, strategy planning, and market intelligence — across every industry.",
     locale: "en_US",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "JY Consultant | AI-Powered Business Consulting",
+    title: "JY Consulting | Human + AI Business Consulting",
     description:
-      "AI-powered business consulting platform providing intelligent insights across every industry.",
+      "Human + AI business consulting platform providing intelligent insights across every industry.",
   },
   robots: {
     index: true,

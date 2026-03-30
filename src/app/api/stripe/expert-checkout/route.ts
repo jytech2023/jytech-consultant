@@ -77,8 +77,8 @@ export async function POST(request: NextRequest) {
           product_data: {
             name:
               locale === "zh"
-                ? "JY Consultant — 专家身份验证"
-                : "JY Consultant — Expert Verification",
+                ? "JY Consulting — 专家身份验证"
+                : "JY Consulting — Expert Verification",
             description:
               locale === "zh"
                 ? "年度专家入驻身份验证费用，通过审核后将在行业页面展示"

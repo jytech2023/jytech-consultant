@@ -26,8 +26,8 @@ export async function generateMetadata({
         : "Lucas Hu | Technology Industry Expert",
     description:
       locale === "zh"
-        ? "Lucas Hu (胡春育) — AI 研究者，专注大语言模型、符号回归、AI 安全与对抗攻击，Old Dominion University 计算机科学博士候选人"
-        : "Lucas Hu (Chunyu Hu) — AI researcher specializing in LLMs, symbolic regression, AI security & adversarial attacks, Ph.D. candidate in Computer Science at Old Dominion University",
+        ? "Lucas Hu — AI 研究者，专注大语言模型、符号回归、AI 安全与对抗攻击，Old Dominion University 计算机科学博士候选人"
+        : "Lucas Hu — AI researcher specializing in LLMs, symbolic regression, AI security & adversarial attacks, Ph.D. candidate in Computer Science at Old Dominion University",
     alternates: {
       languages: {
         en: "/en/industry/technology/experts/lucas-hu",
@@ -281,17 +281,7 @@ export default async function LucasHuExpertPage({
                 {l === "zh" ? "科技行业专家" : "Technology Industry Expert"}
               </p>
               <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">
-                {l === "zh" ? (
-                  <>
-                    胡春育{" "}
-                    <span className="text-lg font-normal text-muted">Lucas Hu</span>
-                  </>
-                ) : (
-                  <>
-                    Lucas Hu{" "}
-                    <span className="text-lg font-normal text-muted">(胡春育)</span>
-                  </>
-                )}
+                Lucas Hu
               </h1>
               <p className="mt-1 text-muted">
                 {l === "zh"

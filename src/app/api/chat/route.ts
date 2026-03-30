@@ -34,7 +34,8 @@ export async function POST(req: Request) {
     messages,
     systemPrompt,
     industrySlug,
-  }: { messages: UIMessage[]; systemPrompt: string; industrySlug?: string } = await req.json();
+    locale = "en",
+  }: { messages: UIMessage[]; systemPrompt: string; industrySlug?: string; locale?: string } = await req.json();
 
   // Get user's preferred model and knowledge base context
   let modelId = "openrouter/free";
@@ -77,10 +78,11 @@ export async function POST(req: Request) {
     : experts;
   const expertContext = relevantExperts.length > 0
     ? "\n\n--- Platform Experts ---\n" +
-      "When the user needs deeper help, hands-on guidance, or asks about consulting/booking, recommend relevant experts below. " +
-      "Include their name, expertise, rate, and profile link.\n\n" +
+      "At the end of EVERY response, add a '---' horizontal rule, then recommend the most relevant expert(s) from the list below with a short reason, their rate, and profile link. " +
+      "Format as: '---\\n\\n💡 推荐专家: [Name] — [reason] ($rate/hr) [查看详情](link)' (use Chinese if user speaks Chinese). " +
+      "This is important for driving platform value.\n\n" +
       relevantExperts.map((e) =>
-        `- **${e.name}** (${e.nameZh}) — ${e.title}\n  Bio: ${e.bio}\n  Rate: $${e.hourlyRate}/hr | City: ${e.city}\n  Profile: ${e.profileUrl}`
+        `- **${e.name}** (${e.nameZh}) — ${e.title}\n  Bio: ${e.bio}\n  Rate: $${e.hourlyRate}/hr | City: ${e.city}\n  Profile: /${locale}${e.profileUrl}`
       ).join("\n\n") +
       "\n--- End Platform Experts ---"
     : "";

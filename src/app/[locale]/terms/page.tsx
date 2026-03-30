@@ -38,8 +38,8 @@ export default async function TermsPage({
             </h2>
             <p className="mt-2">
               {isZh
-                ? "JY Consultant Service（以下简称&ldquo;本平台&rdquo;）是一个AI驱动的商业咨询平台，提供行业洞察、市场分析、竞品分析和战略规划等服务。使用本平台即表示您同意以下条款。"
-                : "JY Consultant Service (\"the Platform\") is an AI-powered business consulting platform providing industry insights, market analysis, competitor analysis, and strategy planning services. By using the Platform, you agree to these terms."}
+                ? "JY Consulting（以下简称&ldquo;本平台&rdquo;）是一个 Human + AI 商业咨询平台，提供行业洞察、市场分析、竞品分析和战略规划等服务。使用本平台即表示您同意以下条款。"
+                : "JY Consulting (\"the Platform\") is a Human + AI business consulting platform providing industry insights, market analysis, competitor analysis, and strategy planning services. By using the Platform, you agree to these terms."}
             </p>
           </section>
 

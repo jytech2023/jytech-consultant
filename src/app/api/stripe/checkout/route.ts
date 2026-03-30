@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
         price_data: {
           currency: "usd",
           product_data: {
-            name: `JY Consultant — ${planConfig.name}`,
+            name: `JY Consulting — ${planConfig.name}`,
             description: `${planConfig.commission}% platform commission on expert consulting`,
           },
           unit_amount: planConfig.price,

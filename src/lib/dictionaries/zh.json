@@ -7,9 +7,9 @@
     "join": "加入我们"
   },
   "home": {
-    "heroTitle": "AI驱动的",
+    "heroTitle": "Human + AI",
     "heroTitleAccent": "商业咨询",
-    "heroSubtitle": "智能洞察，覆盖客户开发、竞品分析、战略规划、市场情报、供应链优化和职业发展——横跨每一个行业。",
+    "heroSubtitle": "专家顾问 + AI 赋能——覆盖客户开发、竞品分析、战略规划、市场情报、供应链优化和职业发展，横跨每一个行业。",
     "selectIndustry": "选择您的行业",
     "selectIndustryDesc": "选择一个行业，获取量身定制的AI咨询洞察",
     "explore": "探索",
@@ -17,7 +17,7 @@
     "consultingModulesDesc": "面向各行业的全方位AI咨询服务",
     "partners": "合作伙伴",
     "partnersDesc": "我们与领先企业合作，提供咨询服务",
-    "footer": "© 2026 JY Consultant Service. 版权所有。"
+    "footer": "© 2026 JY Consulting. 版权所有。"
   },
   "industry": {
     "backToIndustries": "← 返回行业列表",
@@ -52,7 +52,7 @@
     "send": "发送"
   },
   "footer": {
-    "copyright": "© 2026 JY Consultant Service. 版权所有。",
+    "copyright": "© 2026 JY Consulting. 版权所有。",
     "terms": "服务条款",
     "privacy": "隐私政策",
     "contact": "联系我们"

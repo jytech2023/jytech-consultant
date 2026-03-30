@@ -21,10 +21,10 @@ export async function generateMetadata({
     title: {
       default:
         locale === "zh"
-          ? "JY顾问 | AI驱动的商业咨询"
-          : "JY Consultant | AI-Powered Business Consulting",
+          ? "JY Consulting | Human + AI 商业咨询"
+          : "JY Consulting | Human + AI Business Consulting",
       template:
-        locale === "zh" ? "%s | JY顾问" : "%s | JY Consultant",
+        locale === "zh" ? "%s | JY Consulting" : "%s | JY Consulting",
     },
     description: dict.home.heroSubtitle,
     alternates: {

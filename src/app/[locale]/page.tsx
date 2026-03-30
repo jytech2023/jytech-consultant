@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { industries, consultingModules, careerPartners } from "@/lib/data";
 import { hasLocale, type Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/dictionaries";
+import PartnerLogo from "@/components/PartnerLogo";
 
 export default async function Home({
   params,
@@ -121,14 +122,7 @@ export default async function Home({
                 className="flex items-center gap-2 rounded-lg border border-card-border bg-card-bg px-4 py-2 transition hover:border-accent/40"
                 title={partner.name}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`https://www.google.com/s2/favicons?domain=${partner.domain}&sz=64`}
-                  alt={partner.name}
-                  width={24}
-                  height={24}
-                  className="rounded-sm"
-                />
+                <PartnerLogo domain={partner.domain} name={partner.name} />
                 <span className="text-sm font-medium text-muted">
                   {partner.name}
                 </span>

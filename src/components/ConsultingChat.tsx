@@ -109,6 +109,9 @@ export default function ConsultingChat({
   const [input, setInput] = useState("");
   const { user } = useUser();
   const [sessionId, setSessionId] = useState<string | null>(null);
+  const [ratings, setRatings] = useState<Record<string, 1 | -1>>({});
+  const [showCommentFor, setShowCommentFor] = useState<string | null>(null);
+  const [commentText, setCommentText] = useState("");
   const [savedSessions, setSavedSessions] = useState<SavedSession[]>([]);
   const [showHistory, setShowHistory] = useState(false);
   const lastSavedCount = useRef(0);
@@ -129,7 +132,7 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
   const { messages, sendMessage, status, setMessages } = useChat<UIMessage>({
     transport: new DefaultChatTransport({
       api: "/api/chat",
-      body: { systemPrompt },
+      body: { systemPrompt, industrySlug, locale },
     }),
     messages: [
       {
@@ -267,6 +270,28 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
     sendMessage({ text });
   }
 
+  async function submitRating(msgId: string, value: 1 | -1, comment?: string) {
+    setRatings((prev) => ({ ...prev, [msgId]: value }));
+    setShowCommentFor(null);
+    try {
+      await fetch("/api/chat-rating", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          modelId: modelName,
+          rating: value,
+          comment: comment || null,
+          industrySlug,
+          moduleSlug,
+          locale,
+          sessionId,
+        }),
+      });
+    } catch {
+      // Silent fail — rating is non-critical
+    }
+  }
+
   function getReasoningText(msg: (typeof messages)[number]): string {
     return msg.parts
       .filter((p): p is { type: "reasoning"; text: string } => p.type === "reasoning")
@@ -307,7 +332,7 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
   }
 
   return (
-    <div className="flex flex-1 flex-col rounded-xl border border-card-border bg-card-bg">
+    <div className="flex h-[calc(100vh-280px)] flex-col rounded-xl border border-card-border bg-card-bg">
       {/* Header with history toggle */}
       {user && savedSessions.length > 0 && (
         <div className="flex items-center justify-between border-b border-card-border px-5 py-2">
@@ -361,7 +386,7 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
         {messages.map((msg) => (
           <div
             key={msg.id}
-            className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+            className={`group flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}
           >
             <div
               className={`max-w-[92%] rounded-xl px-4 py-3 text-sm leading-relaxed ${
@@ -376,7 +401,6 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
                     const hasText = !!getMessageText(msg);
                     const isThinking = isLoading && !hasText;
                     return isThinking ? (
-                      // Streaming reasoning — show open, with pulsing indicator
                       <div className="mb-2 rounded-lg border border-amber-400/30 bg-amber-400/5">
                         <div className="flex items-center gap-2 px-3 py-1.5 text-xs text-amber-400">
                           <span className="animate-pulse">💭</span>
@@ -387,7 +411,6 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
                         </div>
                       </div>
                     ) : (
-                      // Completed reasoning — collapsible
                       <details className="mb-2 rounded-lg border border-card-border bg-card-bg">
                         <summary className="cursor-pointer select-none px-3 py-1.5 text-xs text-muted">
                           {locale === "zh" ? "💭 思考过程" : "💭 Reasoning"}
@@ -403,16 +426,57 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
                       <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{getMessageText(msg)}</ReactMarkdown>
                     </div>
                   )}
-                  {msg.id !== "welcome" && getMessageText(msg) && (
-                    <div className="mt-2 border-t border-card-border pt-1.5 text-[10px] text-muted opacity-60">
-                      {modelName.split("/").pop()}
-                    </div>
-                  )}
                 </>
               ) : (
                 <div className="whitespace-pre-wrap">{getMessageText(msg)}</div>
               )}
             </div>
+            {/* Rating bar — below bubble, hover to show */}
+            {msg.role === "assistant" && msg.id !== "welcome" && getMessageText(msg) && !isLoading && (
+              <div className="mt-1 flex max-w-[92%] items-center gap-2 px-1 opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="text-[10px] text-muted">
+                  {modelName.split("/").pop()}
+                </span>
+                <div className="flex items-center gap-0.5">
+                  {ratings[msg.id] ? (
+                    <button
+                      onClick={() => {
+                        setRatings((prev) => {
+                          const next = { ...prev };
+                          delete next[msg.id];
+                          return next;
+                        });
+                      }}
+                      className="text-[10px] text-muted transition hover:text-foreground"
+                    >
+                      {ratings[msg.id] === 1 ? "👍" : "👎"}{" "}
+                      {locale === "zh" ? "已评价 · 修改" : "Rated · Change"}
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => {
+                          setShowCommentFor(`${msg.id}:up`);
+                          setCommentText("");
+                        }}
+                        className="rounded px-1 py-0.5 text-[11px] text-muted transition hover:bg-accent/10 hover:text-foreground"
+                      >
+                        👍
+                      </button>
+                      <button
+                        onClick={() => {
+                          setShowCommentFor(`${msg.id}:down`);
+                          setCommentText("");
+                        }}
+                        className="rounded px-1 py-0.5 text-[11px] text-muted transition hover:bg-red-400/10 hover:text-foreground"
+                      >
+                        👎
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         ))}
         {isLoading && messages[messages.length - 1]?.role === "user" && (
@@ -496,6 +560,53 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
           </button>
         </form>
       </div>
+
+      {/* Rating comment modal */}
+      {showCommentFor && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setShowCommentFor(null)}
+          />
+          <div className="relative w-full max-w-md rounded-t-xl sm:rounded-xl border border-card-border bg-background p-5 shadow-xl">
+            <p className="text-sm font-medium">
+              {showCommentFor.endsWith(":up")
+                ? (locale === "zh" ? "👍 感谢！想说点什么吗？" : "👍 Thanks! Any comments?")
+                : (locale === "zh" ? "👎 有什么可以改进的？" : "👎 What could be improved?")}
+            </p>
+            <textarea
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+              placeholder={locale === "zh" ? "输入理由（选填）..." : "Your feedback (optional)..."}
+              rows={3}
+              autoFocus
+              className="mt-3 w-full rounded-lg border border-card-border bg-card-bg px-3 py-2 text-sm outline-none transition focus:border-accent/60"
+            />
+            <div className="mt-3 flex justify-end gap-2">
+              <button
+                onClick={() => {
+                  const msgId = showCommentFor.split(":")[0];
+                  const value = showCommentFor.endsWith(":up") ? 1 : -1;
+                  submitRating(msgId, value as 1 | -1);
+                }}
+                className="rounded-lg px-4 py-2 text-sm text-muted transition hover:text-foreground"
+              >
+                {locale === "zh" ? "跳过" : "Skip"}
+              </button>
+              <button
+                onClick={() => {
+                  const msgId = showCommentFor.split(":")[0];
+                  const value = showCommentFor.endsWith(":up") ? 1 : -1;
+                  submitRating(msgId, value as 1 | -1, commentText);
+                }}
+                className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition hover:bg-accent/80"
+              >
+                {locale === "zh" ? "提交" : "Submit"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

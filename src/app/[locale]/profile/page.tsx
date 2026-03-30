@@ -3,6 +3,7 @@ import { hasLocale, type Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/dictionaries";
 import { auth0 } from "@/lib/auth0";
 import ProfileForm from "@/components/ProfileForm";
+import LinkedInImport from "@/components/LinkedInImport";
 
 export async function generateMetadata({
   params,
@@ -38,15 +39,20 @@ export default async function ProfilePage({
 
         {/* User info */}
         <div className="mt-8 flex items-center gap-4 rounded-xl border border-card-border bg-card-bg p-6">
-          {session.user.picture && (
+          {session.user.picture ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
               src={session.user.picture}
               alt=""
               width={56}
               height={56}
-              className="rounded-full"
+              className="h-14 w-14 shrink-0 rounded-full object-cover"
+              referrerPolicy="no-referrer"
             />
+          ) : (
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent/10 text-lg font-bold text-accent">
+              {(session.user.name ?? session.user.email ?? "?").charAt(0).toUpperCase()}
+            </div>
           )}
           <div>
             <p className="font-semibold">{session.user.name}</p>
@@ -56,6 +62,11 @@ export default async function ProfilePage({
 
         {/* Settings form (client component) */}
         <ProfileForm locale={l} dict={dict} />
+
+        {/* LinkedIn Import */}
+        <div className="mt-8">
+          <LinkedInImport locale={l} />
+        </div>
       </section>
     </div>
   );

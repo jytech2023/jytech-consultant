@@ -16,6 +16,13 @@ type TimeSlot = {
   start_time: string;
 };
 
+const COMMISSION: Record<string, number> = {
+  free: 50,
+  start: 30,
+  growth: 20,
+  enterprise: 0,
+};
+
 export default function CalendlyBooking({
   expertUserId,
   expertName,
@@ -34,6 +41,7 @@ export default function CalendlyBooking({
   const [slotsLoading, setSlotsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [paying, setPaying] = useState(false);
+  const [clientPlan, setClientPlan] = useState("free");
   const [selectedDate, setSelectedDate] = useState(() => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -41,6 +49,17 @@ export default function CalendlyBooking({
   });
 
   const isZh = locale === "zh";
+  const commissionPct = COMMISSION[clientPlan] ?? 50;
+
+  // Fetch client's plan
+  useEffect(() => {
+    fetch("/api/profile")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.user?.plan) setClientPlan(data.user.plan);
+      })
+      .catch(() => {});
+  }, []);
 
   // Fetch event types
   useEffect(() => {
@@ -131,6 +150,14 @@ export default function CalendlyBooking({
     }
   }
 
+  // Expert rate is net — platform fee = commission% * expert rate, client pays both
+  const platformFeeHourly = hourlyRate
+    ? Math.round(hourlyRate * (commissionPct / 100) * 100) / 100
+    : null;
+  const totalHourlyRate = hourlyRate && platformFeeHourly
+    ? Math.round((hourlyRate + platformFeeHourly) * 100) / 100
+    : null;
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12 text-muted">
@@ -144,15 +171,22 @@ export default function CalendlyBooking({
   if (error) {
     return (
       <div className="space-y-4">
-        {hourlyRate && (
-          <div className="flex items-center gap-3 rounded-xl border border-amber-400/30 bg-amber-400/5 p-4">
-            <span className="text-xl">💰</span>
-            <div>
-              <p className="text-sm font-medium">
-                {isZh
-                  ? `咨询费率: $${hourlyRate}/小时`
-                  : `Consulting Rate: $${hourlyRate}/hour`}
-              </p>
+        {hourlyRate && totalHourlyRate && (
+          <div className="rounded-xl border border-amber-400/30 bg-amber-400/5 p-4">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">💰</span>
+              <div>
+                <p className="text-sm font-medium">
+                  {isZh
+                    ? `客户支付: $${totalHourlyRate}/小时`
+                    : `Client Pays: $${totalHourlyRate}/hour`}
+                </p>
+                <p className="mt-1 text-xs text-muted">
+                  {isZh
+                    ? `专家收入 $${hourlyRate} + 平台服务费 $${platformFeeHourly}（${commissionPct}%）`
+                    : `Expert earns $${hourlyRate} + Platform fee $${platformFeeHourly} (${commissionPct}%)`}
+                </p>
+              </div>
             </div>
           </div>
         )}
@@ -181,30 +215,61 @@ export default function CalendlyBooking({
   };
 
   const consultFee =
+    selectedEvent && totalHourlyRate
+      ? Math.round(totalHourlyRate * (selectedEvent.duration / 60) * 100) / 100
+      : null;
+  const expertFee =
     selectedEvent && hourlyRate
       ? Math.round(hourlyRate * (selectedEvent.duration / 60) * 100) / 100
+      : null;
+  const platformFee =
+    consultFee && expertFee
+      ? Math.round((consultFee - expertFee) * 100) / 100
       : null;
 
   return (
     <div className="space-y-6">
       {/* Fee Info */}
-      {hourlyRate && (
-        <div className="flex items-center gap-3 rounded-xl border border-amber-400/30 bg-amber-400/5 p-4">
-          <span className="text-xl">💰</span>
-          <div>
-            <p className="text-sm font-medium">
-              {isZh
-                ? `咨询费率: $${hourlyRate}/小时`
-                : `Consulting Rate: $${hourlyRate}/hour`}
-            </p>
-            {consultFee && selectedEvent && (
-              <p className="text-xs text-muted">
+      {hourlyRate && totalHourlyRate && (
+        <div className="rounded-xl border border-amber-400/30 bg-amber-400/5 p-4">
+          <div className="flex items-center gap-3">
+            <span className="text-xl">💰</span>
+            <div className="flex-1">
+              <p className="text-sm font-medium">
                 {isZh
-                  ? `${selectedEvent.duration} 分钟咨询 = $${consultFee}`
-                  : `${selectedEvent.duration} min session = $${consultFee}`}
+                  ? `客户支付: $${totalHourlyRate}/小时`
+                  : `Client Pays: $${totalHourlyRate}/hour`}
               </p>
-            )}
+              <p className="mt-1 text-xs text-muted">
+                {isZh
+                  ? `专家收入 $${hourlyRate} + 平台服务费 $${platformFeeHourly}（${commissionPct}%）`
+                  : `Expert earns $${hourlyRate} + Platform fee $${platformFeeHourly} (${commissionPct}%)`}
+              </p>
+              {consultFee && selectedEvent && expertFee && platformFee && (
+                <div className="mt-2 rounded-lg border border-card-border bg-background px-3 py-2 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-muted">{isZh ? "专家费用" : "Expert fee"}</span>
+                    <span>${expertFee}</span>
+                  </div>
+                  <div className="flex justify-between mt-0.5">
+                    <span className="text-muted">{isZh ? "平台服务费" : "Platform fee"} ({commissionPct}%)</span>
+                    <span>${platformFee}</span>
+                  </div>
+                  <div className="flex justify-between mt-1 border-t border-card-border pt-1 font-medium">
+                    <span>{isZh ? "合计" : "Total"} ({selectedEvent.duration} min)</span>
+                    <span>${consultFee}</span>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
+          {commissionPct > 20 && (
+            <p className="mt-2 text-xs text-accent-light">
+              {isZh
+                ? `💡 升级订阅可降低平台费率，查看定价了解详情`
+                : `💡 Upgrade your plan to reduce platform fees`}
+            </p>
+          )}
         </div>
       )}
 

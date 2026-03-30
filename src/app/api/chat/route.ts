@@ -9,6 +9,7 @@ import { auth0 } from "@/lib/auth0";
 import { db } from "@/lib/db";
 import { users, documents } from "@/lib/schema";
 import { eq } from "drizzle-orm";
+import { getExpertsForIndustry, experts } from "@/lib/data";
 
 const openrouter = createOpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY ?? "",
@@ -32,7 +33,8 @@ export async function POST(req: Request) {
   const {
     messages,
     systemPrompt,
-  }: { messages: UIMessage[]; systemPrompt: string } = await req.json();
+    industrySlug,
+  }: { messages: UIMessage[]; systemPrompt: string; industrySlug?: string } = await req.json();
 
   // Get user's preferred model and knowledge base context
   let modelId = "openrouter/free";
@@ -69,7 +71,21 @@ export async function POST(req: Request) {
     }
   }
 
-  const fullSystemPrompt = systemPrompt + ragContext;
+  // Build expert recommendation context
+  const relevantExperts = industrySlug
+    ? getExpertsForIndustry(industrySlug)
+    : experts;
+  const expertContext = relevantExperts.length > 0
+    ? "\n\n--- Platform Experts ---\n" +
+      "When the user needs deeper help, hands-on guidance, or asks about consulting/booking, recommend relevant experts below. " +
+      "Include their name, expertise, rate, and profile link.\n\n" +
+      relevantExperts.map((e) =>
+        `- **${e.name}** (${e.nameZh}) — ${e.title}\n  Bio: ${e.bio}\n  Rate: $${e.hourlyRate}/hr | City: ${e.city}\n  Profile: ${e.profileUrl}`
+      ).join("\n\n") +
+      "\n--- End Platform Experts ---"
+    : "";
+
+  const fullSystemPrompt = systemPrompt + ragContext + expertContext;
   const modelMessages = await convertToModelMessages(messages);
 
   try {

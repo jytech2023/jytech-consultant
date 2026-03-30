@@ -3,7 +3,7 @@ import { auth0 } from "@/lib/auth0";
 import { db } from "@/lib/db";
 import { users } from "@/lib/schema";
 import { eq } from "drizzle-orm";
-import { stripe } from "@/lib/stripe";
+import { stripe, PLANS, type PlanKey } from "@/lib/stripe";
 
 // POST /api/consultation/checkout — create Stripe checkout for a consultation booking
 export async function POST(request: NextRequest) {
@@ -57,9 +57,17 @@ export async function POST(request: NextRequest) {
       .returning();
   }
 
-  // Calculate consultation fee (pro-rate by duration)
+  // Get client's plan to determine commission rate
+  const clientPlan = (dbUser.plan ?? "free") as PlanKey;
+  const commissionPct = PLANS[clientPlan]?.commission ?? 50;
+
+  // Expert rate is net — platform fee = commission% * expert rate
   const hours = duration / 60;
-  const amountCents = Math.round(hourlyRate * hours * 100);
+  const platformFee = hourlyRate * (commissionPct / 100);
+  const totalRate = hourlyRate + platformFee;
+  const amountCents = Math.round(totalRate * hours * 100);
+  const expertAmountCents = Math.round(hourlyRate * hours * 100);
+  const platformAmountCents = amountCents - expertAmountCents;
 
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: "payment",
@@ -89,6 +97,11 @@ export async function POST(request: NextRequest) {
       expertUserId,
       duration: String(duration),
       hourlyRate: String(hourlyRate),
+      totalCharged: String(amountCents),
+      expertPayout: String(expertAmountCents),
+      platformFee: String(platformAmountCents),
+      clientPlan,
+      commissionPct: String(commissionPct),
     },
     // After payment, redirect to Calendly to pick the actual time
     success_url: `${schedulingUrl}?utm_source=jyconsultant&utm_medium=paid`,

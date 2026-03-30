@@ -362,6 +362,39 @@ export default async function IndustryPage({
                 </span>
               </div>
             </Link>
+            <Link
+              href={`/${l}/industry/technology/experts/lucas-hu`}
+              className="group flex items-start gap-4 rounded-xl border border-card-border bg-card-bg p-6 transition hover:border-cyan-400/40"
+            >
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 text-lg font-bold text-white shadow">
+                LH
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-semibold">
+                  {l === "zh" ? "胡春育" : "Lucas Hu"}{" "}
+                  <span className="text-xs font-normal text-muted">
+                    {l === "zh" ? "Lucas Hu" : "(胡春育)"}
+                  </span>
+                </h3>
+                <p className="text-xs text-muted">
+                  {l === "zh"
+                    ? "AI 研究者 · Old Dominion University 博士候选人"
+                    : "AI Researcher · Ph.D. Candidate, Old Dominion University"}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
+                  {l === "zh"
+                    ? "专注大语言模型、符号回归、AI 安全与语义通信，IEEE MILCOM 发表研究"
+                    : "LLMs, symbolic regression, AI security & semantic communication, published at IEEE MILCOM"}
+                </p>
+                <span
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
+                  style={{ color: industry.color }}
+                >
+                  {dict.expert.viewProfile}
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </span>
+              </div>
+            </Link>
           </div>
         </section>
       )}

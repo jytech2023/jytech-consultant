@@ -40,6 +40,18 @@ export default function Navbar({
           >
             {dict.nav.pricing}
           </Link>
+          <Link
+            href={`/${locale}/knowledge`}
+            className="transition hover:text-foreground"
+          >
+            {dict.nav.knowledge}
+          </Link>
+          <Link
+            href={`/${locale}/join`}
+            className="rounded-md bg-accent/10 px-3 py-1 text-accent-light transition hover:bg-accent/20"
+          >
+            {dict.nav.join}
+          </Link>
           <LanguageSwitcher locale={locale} />
           <ThemeToggle />
           <AuthButton />

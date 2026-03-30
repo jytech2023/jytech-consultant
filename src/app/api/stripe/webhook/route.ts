@@ -28,9 +28,20 @@ export async function POST(request: NextRequest) {
     case "checkout.session.completed": {
       const session = event.data.object;
       const auth0Id = session.metadata?.auth0Id;
+      const type = session.metadata?.type;
       const plan = session.metadata?.plan;
 
-      if (auth0Id && plan) {
+      if (auth0Id && type === "expert_verification") {
+        // Expert verification payment completed — set status to pending review
+        await db
+          .update(users)
+          .set({
+            isExpert: 1,
+            expertStatus: "pending",
+            updatedAt: new Date(),
+          })
+          .where(eq(users.auth0Id, auth0Id));
+      } else if (auth0Id && plan) {
         await db
           .update(users)
           .set({

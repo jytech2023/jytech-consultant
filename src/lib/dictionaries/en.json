@@ -2,7 +2,9 @@
   "nav": {
     "industries": "Industries",
     "caseStudies": "Case Studies",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "knowledge": "Knowledge",
+    "join": "Join Us"
   },
   "home": {
     "heroTitle": "AI-Powered",
@@ -77,19 +79,19 @@
     "freePrice": "$0",
     "freeCommission": "50%",
     "freeDesc": "Try the platform, pay per consultation",
-    "freeFeatures": ["AI chat (DeepSeek V3, Gemini Flash)", "Access to all industry experts", "50% platform commission on bookings", "Case study access", "Community support"],
+    "freeFeatures": ["AI chat (Llama 3.3 70B, Gemma 3, Qwen3, Nemotron)", "Access to all industry experts", "50% platform commission on bookings", "Case study access", "Community support"],
     "start": "Start",
     "startPrice": "$29",
     "startUnit": "/mo",
     "startCommission": "30%",
     "startDesc": "For startups & micro-businesses",
-    "startFeatures": ["Everything in Free", "30% platform commission on bookings", "Priority AI model access", "Chat history & session archive", "Email support"],
+    "startFeatures": ["Everything in Free", "30% platform commission on bookings", "GPT-4o Mini & GPT-4o access", "Chat history & session archive", "Email support"],
     "growth": "Growth",
     "growthPrice": "$299",
     "growthUnit": "/mo",
     "growthCommission": "20%",
     "growthDesc": "For growing SMBs",
-    "growthFeatures": ["Everything in Start", "20% platform commission on bookings", "Dedicated account manager", "Custom AI model configuration", "Priority expert matching", "Monthly industry report"],
+    "growthFeatures": ["Everything in Start", "20% platform commission on bookings", "Claude Sonnet 4 & Gemini 2.5 Flash", "Dedicated account manager", "Priority expert matching", "Monthly industry report"],
     "enterprise": "Enterprise",
     "enterpriseDesc": "For large organizations",
     "enterpriseFeatures": ["Everything in Growth", "Custom commission rate", "On-site consulting available", "SF Bay Area based consultants", "Travel costs billed separately (up to $2,000)", "Dedicated success team", "Custom integrations & API access", "SLA & priority support"],
@@ -110,5 +112,11 @@
     "en": "EN",
     "zh": "中文"
   },
-  "read": "Read"
+  "read": "Read",
+  "expert": {
+    "title": "Industry Experts",
+    "subtitle": "Connect with experienced consultants in this field",
+    "viewProfile": "View Profile",
+    "consultWith": "Consult with"
+  }
 }

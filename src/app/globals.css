@@ -36,3 +36,92 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* Chat markdown styles */
+.chat-markdown {
+  line-height: 1.6;
+}
+.chat-markdown p {
+  margin: 0.4em 0;
+}
+.chat-markdown p:first-child {
+  margin-top: 0;
+}
+.chat-markdown p:last-child {
+  margin-bottom: 0;
+}
+.chat-markdown h1, .chat-markdown h2, .chat-markdown h3,
+.chat-markdown h4, .chat-markdown h5, .chat-markdown h6 {
+  font-weight: 600;
+  margin: 0.75em 0 0.4em;
+}
+.chat-markdown h1 { font-size: 1.25em; }
+.chat-markdown h2 { font-size: 1.15em; }
+.chat-markdown h3 { font-size: 1.05em; }
+.chat-markdown ul, .chat-markdown ol {
+  margin: 0.4em 0;
+  padding-left: 1.5em;
+}
+.chat-markdown ul { list-style-type: disc; }
+.chat-markdown ol { list-style-type: decimal; }
+.chat-markdown li {
+  margin: 0.2em 0;
+}
+.chat-markdown strong {
+  font-weight: 600;
+}
+.chat-markdown a {
+  color: var(--accent-light);
+  text-decoration: underline;
+}
+.chat-markdown code {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 0.15em 0.35em;
+  font-size: 0.875em;
+  font-family: var(--font-mono);
+}
+.chat-markdown pre {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 0.75em 1em;
+  margin: 0.5em 0;
+  overflow-x: auto;
+}
+.chat-markdown pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.chat-markdown blockquote {
+  border-left: 3px solid var(--card-border);
+  padding-left: 0.75em;
+  margin: 0.5em 0;
+  color: var(--muted);
+}
+.chat-markdown hr {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 0.75em 0;
+}
+.chat-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5em 0;
+  font-size: 0.875em;
+}
+.chat-markdown th {
+  background: var(--card-bg);
+  font-weight: 600;
+  text-align: left;
+}
+.chat-markdown th, .chat-markdown td {
+  border: 1px solid var(--card-border);
+  padding: 0.4em 0.75em;
+}
+.chat-markdown img {
+  max-width: 100%;
+  border-radius: 8px;
+}

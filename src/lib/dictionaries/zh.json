@@ -2,7 +2,9 @@
   "nav": {
     "industries": "行业",
     "caseStudies": "案例研究",
-    "pricing": "定价"
+    "pricing": "定价",
+    "knowledge": "知识库",
+    "join": "加入我们"
   },
   "home": {
     "heroTitle": "AI驱动的",
@@ -77,19 +79,19 @@
     "freePrice": "$0",
     "freeCommission": "50%",
     "freeDesc": "体验平台，按次付费",
-    "freeFeatures": ["AI聊天（DeepSeek V3、Gemini Flash）", "访问所有行业专家", "预约咨询50%平台抽成", "案例研究访问", "社区支持"],
+    "freeFeatures": ["AI聊天（Llama 3.3 70B、Gemma 3、Qwen3、Nemotron）", "访问所有行业专家", "预约咨询50%平台抽成", "案例研究访问", "社区支持"],
     "start": "起步版",
     "startPrice": "$29",
     "startUnit": "/月",
     "startCommission": "30%",
     "startDesc": "适合初创和小微企业",
-    "startFeatures": ["包含免费版全部功能", "预约咨询30%平台抽成", "优先AI模型访问", "聊天记录和会话存档", "邮件支持"],
+    "startFeatures": ["包含免费版全部功能", "预约咨询30%平台抽成", "GPT-4o Mini 和 GPT-4o", "聊天记录和会话存档", "邮件支持"],
     "growth": "成长版",
     "growthPrice": "$299",
     "growthUnit": "/月",
     "growthCommission": "20%",
     "growthDesc": "适合成长中的中小企业",
-    "growthFeatures": ["包含起步版全部功能", "预约咨询20%平台抽成", "专属客户经理", "自定义AI模型配置", "优先专家匹配", "月度行业报告"],
+    "growthFeatures": ["包含起步版全部功能", "预约咨询20%平台抽成", "Claude Sonnet 4 和 Gemini 2.5 Flash", "专属客户经理", "优先专家匹配", "月度行业报告"],
     "enterprise": "企业版",
     "enterpriseDesc": "适合大型企业",
     "enterpriseFeatures": ["包含成长版全部功能", "自定义抽成比例", "可安排上门咨询", "旧金山湾区驻地顾问", "差旅费用另计（最高$2,000）", "专属成功团队", "自定义集成与API访问", "SLA与优先支持"],
@@ -110,5 +112,11 @@
     "en": "EN",
     "zh": "中文"
   },
-  "read": "阅读"
+  "read": "阅读",
+  "expert": {
+    "title": "行业专家",
+    "subtitle": "与该领域的资深顾问建立联系",
+    "viewProfile": "查看简介",
+    "consultWith": "咨询"
+  }
 }

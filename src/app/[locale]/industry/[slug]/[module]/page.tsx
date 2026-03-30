@@ -57,7 +57,7 @@ export default async function ModulePage({
     <div className="flex flex-1 flex-col">
       {/* Header */}
       <section className="border-b border-card-border px-6 py-6">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2 text-sm text-muted">
             <Link
               href={`/${l}`}
@@ -90,7 +90,7 @@ export default async function ModulePage({
         </div>
       </section>
 
-      <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-6 py-8 lg:flex-row">
+      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-6 px-6 py-8 lg:flex-row">
         {/* Sidebar - Features */}
         <aside className="w-full shrink-0 lg:w-64">
           <div className="rounded-xl border border-card-border bg-card-bg p-5">

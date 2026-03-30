@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { locales, hasLocale, type Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/dictionaries";
 import Navbar from "@/components/Navbar";
+import ChatWidget from "@/components/ChatWidget";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -53,6 +54,7 @@ export default async function LocaleLayout({
     <>
       <Navbar locale={l} dict={dict} />
       {children}
+      <ChatWidget />
       <footer className="border-t border-card-border px-6 py-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
           <p className="text-sm text-muted">{dict.footer.copyright}</p>

@@ -85,6 +85,39 @@ export const industries: Industry[] = [
       "吸引学生和教育机构、比较教育科技竞品、制定课程策略，并管理内容供给。",
     color: "#8b5cf6",
   },
+  {
+    slug: "technology",
+    name: "Technology",
+    nameZh: "科技",
+    icon: "💻",
+    description:
+      "Identify enterprise clients, benchmark SaaS competitors, plan product-market fit strategies, optimize tech stack procurement, and scale go-to-market operations.",
+    descriptionZh:
+      "识别企业客户、对标SaaS竞品、规划产品市场匹配策略、优化技术栈采购，并扩展市场运营。",
+    color: "#06b6d4",
+  },
+  {
+    slug: "media",
+    name: "Media & Advertising",
+    nameZh: "传媒广告",
+    icon: "📺",
+    description:
+      "Grow audiences, analyze ad competitors, optimize content strategy, plan media buying, and build local business advertising networks.",
+    descriptionZh:
+      "增长受众、分析广告竞品、优化内容策略、规划媒体采购，并构建本地商业广告网络。",
+    color: "#f97316",
+  },
+  {
+    slug: "finance",
+    name: "Finance",
+    nameZh: "金融",
+    icon: "💰",
+    description:
+      "Analyze financial markets, benchmark fintech competitors, develop investment strategies, manage risk and compliance, and optimize financial operations.",
+    descriptionZh:
+      "分析金融市场、对标金融科技竞品、制定投资策略、管理风险与合规，并优化金融运营。",
+    color: "#16a34a",
+  },
 ];
 
 export const consultingModules: ConsultingModule[] = [
@@ -1384,6 +1417,398 @@ export const caseStudies: CaseStudy[] = [
     <div class="space-y-2">
       <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">中优</span><span>目标2028年达到全国25+门店，聚焦亚裔社区中心附近的郊区商业街</span></div>
       <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">探索</span><span>评估团餐和企业活动服务作为高利润收入来源</span></div>
+    </div>
+  </div>
+</div>`,
+      },
+    ],
+  },
+  {
+    slug: "bannershop-digital-transformation",
+    industrySlug: "media",
+    moduleSlug: "strategy",
+    title: "BannerShop Inc: Print-to-Digital Transformation & Local Media Platform Study",
+    titleZh: "BannerShop Inc：从印刷到数字化转型及本地传媒平台研究",
+    subtitle:
+      "A strategic analysis of BannerShop Inc, a 30-year SF Bay Area print shop evolving into a local digital media ecosystem — operating BannerShopUSA.com, ShopDineGuide.com, FoodieGuide.com, and FoodieCoupon.com — covering brand portfolio strategy, digital transformation, competitive positioning, and growth playbook.",
+    subtitleZh:
+      "对BannerShop Inc的战略分析——一家拥有30年历史的旧金山湾区印刷店向本地数字传媒生态系统转型，旗下运营BannerShopUSA.com、ShopDineGuide.com、FoodieGuide.com和FoodieCoupon.com——涵盖品牌组合策略、数字化转型、竞争定位和增长路线图。",
+    date: "March 29, 2026",
+    readTime: "20 min read",
+    heroColor: "#f97316",
+    sections: [
+      {
+        id: "executive-summary",
+        title: "Executive Summary",
+        titleZh: "摘要",
+        content: `<p>BannerShop Inc is a San Francisco Bay Area-based company with roots tracing back to <strong>1993</strong> as a traditional print and signage shop (formally incorporated in 2012). The company is undergoing a strategic transformation from physical print services into a <strong>local digital media and commerce ecosystem</strong>, operating four interconnected properties.</p>
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-orange-400">30+</div>
+    <div class="text-xs text-muted mt-1">Years in<br/>Business</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-orange-400">4 Properties</div>
+    <div class="text-xs text-muted mt-1">BannerShop · ShopDineGuide<br/>FoodieGuide · FoodieCoupon</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-orange-400">2 Locations</div>
+    <div class="text-xs text-muted mt-1">San Francisco<br/>Daly City</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-orange-400">SF Bay Area</div>
+    <div class="text-xs text-muted mt-1">Chinese-American<br/>Community Focus</div>
+  </div>
+</div>`,
+        contentZh: `<p>BannerShop Inc 是一家扎根旧金山湾区的企业，其历史可追溯至<strong>1993年</strong>的传统印刷和标识店（2012年正式注册公司）。公司正在从实体印刷服务向<strong>本地数字传媒和商业生态系统</strong>进行战略转型，运营四个相互关联的业务。</p>
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-orange-400">30+</div>
+    <div class="text-xs text-muted mt-1">年<br/>经营历史</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-orange-400">4个平台</div>
+    <div class="text-xs text-muted mt-1">BannerShop · ShopDineGuide<br/>FoodieGuide · FoodieCoupon</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-orange-400">2个门店</div>
+    <div class="text-xs text-muted mt-1">旧金山<br/>Daly City</div>
+  </div>
+  <div class="rounded-lg border border-card-border bg-background p-4 text-center">
+    <div class="text-2xl font-bold text-orange-400">旧金山湾区</div>
+    <div class="text-xs text-muted mt-1">华裔社区<br/>深度服务</div>
+  </div>
+</div>`,
+      },
+      {
+        id: "company-profile",
+        title: "Company Profile & Brand Portfolio",
+        titleZh: "公司概况与品牌组合",
+        content: `<div class="rounded-lg border border-card-border bg-background p-5">
+  <div class="grid gap-3 text-sm">
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">Legal Name</span><span>BannerShop Inc</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">Founded</span><span>1993 (operations) / 2012 (incorporated)</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">HQ</span><span>2501 Taraval St, San Francisco, CA 94116</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">Branch</span><span>7100 Mission St, Daly City, CA 94014</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">Employees</span><span>2–10 (approximately 5)</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">Phone</span><span>(415) 682-7777 / (650) 993-6191</span></div>
+    <div class="flex justify-between"><span class="text-muted">Tagline</span><span>International Exposure, Local Knowledge</span></div>
+  </div>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">Brand Portfolio</h4>
+<div class="mt-3 grid gap-3 sm:grid-cols-2">
+  <div class="rounded-lg border border-orange-400/30 bg-orange-400/5 p-4">
+    <h5 class="font-semibold text-orange-400">BannerShopUSA.com</h5>
+    <p class="mt-1 text-sm text-muted">Core business — vinyl banners, posters, stickers, vehicle wraps, large-format printing, signage installation. 1–3 day turnaround, in-house design.</p>
+  </div>
+  <div class="rounded-lg border border-blue-400/30 bg-blue-400/5 p-4">
+    <h5 class="font-semibold text-blue-400">ShopDineGuide.com</h5>
+    <p class="mt-1 text-sm text-muted">Digital pivot — local business directory, digital coupons/vouchers, restaurant guides. Covers SF, Daly City, San Mateo, Millbrae, Napa. Free listing + premium placements.</p>
+  </div>
+  <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-4">
+    <h5 class="font-semibold text-emerald-400">FoodieGuide.com</h5>
+    <p class="mt-1 text-sm text-muted">Original restaurant guide (domain since 2007). Focused on SF Peninsula dining. Currently SSL expired — needs revival or migration to ShopDineGuide.</p>
+  </div>
+  <div class="rounded-lg border border-pink-400/30 bg-pink-400/5 p-4">
+    <h5 class="font-semibold text-pink-400">FoodieCoupon.com</h5>
+    <p class="mt-1 text-sm text-muted">Food-focused coupon platform. Currently inactive/unreachable. Potential to complement ShopDineGuide's voucher system.</p>
+  </div>
+</div>`,
+        contentZh: `<div class="rounded-lg border border-card-border bg-background p-5">
+  <div class="grid gap-3 text-sm">
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">法定名称</span><span>BannerShop Inc</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">创立时间</span><span>1993年（运营）/ 2012年（注册）</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">总部</span><span>2501 Taraval St, San Francisco, CA 94116</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">分店</span><span>7100 Mission St, Daly City, CA 94014</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">员工数</span><span>2-10人（约5人）</span></div>
+    <div class="flex justify-between border-b border-card-border pb-2"><span class="text-muted">电话</span><span>(415) 682-7777 / (650) 993-6191</span></div>
+    <div class="flex justify-between"><span class="text-muted">标语</span><span>International Exposure, Local Knowledge</span></div>
+  </div>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">品牌组合</h4>
+<div class="mt-3 grid gap-3 sm:grid-cols-2">
+  <div class="rounded-lg border border-orange-400/30 bg-orange-400/5 p-4">
+    <h5 class="font-semibold text-orange-400">BannerShopUSA.com</h5>
+    <p class="mt-1 text-sm text-muted">核心业务——横幅、海报、贴纸、车身贴、大幅面印刷、标识安装。1-3天交付，内部设计。</p>
+  </div>
+  <div class="rounded-lg border border-blue-400/30 bg-blue-400/5 p-4">
+    <h5 class="font-semibold text-blue-400">ShopDineGuide.com</h5>
+    <p class="mt-1 text-sm text-muted">数字化转型——本地商户目录、数字优惠券/代金券、餐厅指南。覆盖旧金山、Daly City、San Mateo、Millbrae、Napa。免费入驻+付费推广。</p>
+  </div>
+  <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-4">
+    <h5 class="font-semibold text-emerald-400">FoodieGuide.com</h5>
+    <p class="mt-1 text-sm text-muted">原始餐厅指南（域名自2007年）。专注于旧金山半岛餐饮。目前SSL过期——需要恢复或迁移至ShopDineGuide。</p>
+  </div>
+  <div class="rounded-lg border border-pink-400/30 bg-pink-400/5 p-4">
+    <h5 class="font-semibold text-pink-400">FoodieCoupon.com</h5>
+    <p class="mt-1 text-sm text-muted">美食优惠券平台。目前不可访问。可与ShopDineGuide的代金券系统互补。</p>
+  </div>
+</div>`,
+      },
+      {
+        id: "digital-transformation",
+        title: "Digital Transformation Analysis",
+        titleZh: "数字化转型分析",
+        content: `<h4 class="font-semibold text-sm uppercase tracking-wider text-muted">Evolution Timeline</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">Year</th><th class="pb-2 pr-4">Milestone</th><th class="pb-2">Significance</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium">1993</td><td class="py-2 pr-4">Print shop operations begin</td><td class="py-2">Foundation in physical signage & printing</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">2007</td><td class="py-2 pr-4">FoodieGuide.com registered</td><td class="py-2">First digital venture — restaurant guide for SF Peninsula</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">2012</td><td class="py-2 pr-4">BannerShop Inc incorporated</td><td class="py-2">Formalized the business entity</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">~2020</td><td class="py-2 pr-4">FoodieCoupon.com launched</td><td class="py-2">Expanded into digital coupon space</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">2023</td><td class="py-2 pr-4">ShopDineGuide.com launched</td><td class="py-2">Consolidated platform — shopping + dining + deals</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-orange-400">2026</td><td class="py-2 pr-4 text-orange-400">Digital media ecosystem</td><td class="py-2 text-orange-400">Full local commerce platform with voucher system</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">Print → Digital Synergy Model</h4>
+<div class="mt-3 space-y-2 text-sm">
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>Physical signage → Digital presence:</strong> Print customers for local businesses naturally become ShopDineGuide listings</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>Design services → Digital marketing:</strong> In-house graphic design capability extends to digital ad creation</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>Local relationships → Platform content:</strong> 30 years of Bay Area business relationships provide a built-in merchant network</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>Community trust → Platform adoption:</strong> Established reputation in the Chinese-American community drives merchant onboarding</div>
+</div>`,
+        contentZh: `<h4 class="font-semibold text-sm uppercase tracking-wider text-muted">发展时间线</h4>
+<div class="mt-3 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">年份</th><th class="pb-2 pr-4">里程碑</th><th class="pb-2">意义</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium">1993</td><td class="py-2 pr-4">印刷店开始运营</td><td class="py-2">奠定实体标识和印刷的基础</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">2007</td><td class="py-2 pr-4">注册 FoodieGuide.com</td><td class="py-2">首次数字化尝试——旧金山半岛餐厅指南</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">2012</td><td class="py-2 pr-4">BannerShop Inc 注册公司</td><td class="py-2">正式化企业主体</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">~2020</td><td class="py-2 pr-4">推出 FoodieCoupon.com</td><td class="py-2">拓展至数字优惠券领域</td></tr>
+      <tr><td class="py-2 pr-4 font-medium">2023</td><td class="py-2 pr-4">推出 ShopDineGuide.com</td><td class="py-2">整合平台——购物+餐饮+优惠</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-orange-400">2026</td><td class="py-2 pr-4 text-orange-400">数字传媒生态系统</td><td class="py-2 text-orange-400">完整的本地商业平台与代金券系统</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">印刷→数字化协同模型</h4>
+<div class="mt-3 space-y-2 text-sm">
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>实体标识 → 数字展示：</strong>本地商户的印刷客户自然转化为ShopDineGuide的入驻商户</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>设计服务 → 数字营销：</strong>内部平面设计能力延伸至数字广告创作</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>本地关系 → 平台内容：</strong>30年湾区商业关系提供了现成的商户网络</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>社区信任 → 平台采用：</strong>在华裔社区建立的信誉推动商户入驻</div>
+</div>`,
+      },
+      {
+        id: "competitive-landscape",
+        title: "Competitive Landscape",
+        titleZh: "竞争格局",
+        content: `<h4 class="font-semibold text-sm uppercase tracking-wider text-muted">ShopDineGuide Market Position</h4>
+<p class="mt-3 text-sm">ShopDineGuide occupies a unique niche: <strong>hyperlocal Chinese-American community commerce</strong>. National platforms don't serve this community well — language barriers, cultural preferences, and neighborhood-level granularity create an underserved gap.</p>
+<div class="mt-4 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">Platform</th><th class="pb-2 pr-4">Scope</th><th class="pb-2 pr-4">Strength</th><th class="pb-2">Weakness for this niche</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium text-red-400">Yelp</td><td class="py-2 pr-4">National</td><td class="py-2 pr-4">Brand recognition, reviews</td><td class="py-2">English-first, no voucher system, generic</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-green-400">Groupon</td><td class="py-2 pr-4">National</td><td class="py-2 pr-4">Deal discovery, scale</td><td class="py-2">High merchant fees (50%+), no community focus</td></tr>
+      <tr class="bg-orange-400/5"><td class="py-2 pr-4 font-medium text-orange-400">ShopDineGuide</td><td class="py-2 pr-4">SF Bay Area</td><td class="py-2 pr-4">Community trust, bilingual, low fees</td><td class="py-2">Small scale, limited tech</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-blue-400">Xiaohongshu (RED)</td><td class="py-2 pr-4">Chinese diaspora</td><td class="py-2 pr-4">Chinese-language UGC</td><td class="py-2">No local commerce/voucher system</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-purple-400">WeChat Mini Programs</td><td class="py-2 pr-4">Chinese diaspora</td><td class="py-2 pr-4">Payment integration</td><td class="py-2">Walled garden, discovery limited</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">Competitive Advantages</h4>
+<div class="mt-3 space-y-2 text-sm">
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>30-year trust:</strong> Decades of serving Bay Area businesses creates unmatched local credibility</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>Cross-sell pipeline:</strong> Print customers naturally convert to digital platform merchants</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>Bilingual capability:</strong> Serves both Chinese-speaking merchants and English-speaking consumers</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>Low-cost merchant onboarding:</strong> Free listing tier removes friction vs. Groupon's 50%+ commission</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>Neighborhood-level granularity:</strong> Coverage by specific SF neighborhoods (Chinatown, Sunset, Richmond, etc.)</div>
+</div>`,
+        contentZh: `<h4 class="font-semibold text-sm uppercase tracking-wider text-muted">ShopDineGuide 市场定位</h4>
+<p class="mt-3 text-sm">ShopDineGuide 占据了一个独特的细分市场：<strong>超本地化华裔社区商业</strong>。全国性平台无法很好地服务这个社区——语言障碍、文化偏好和社区级别的精细度创造了一个未被充分服务的缺口。</p>
+<div class="mt-4 overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-card-border text-left text-muted"><th class="pb-2 pr-4">平台</th><th class="pb-2 pr-4">范围</th><th class="pb-2 pr-4">优势</th><th class="pb-2">对此细分的劣势</th></tr></thead>
+    <tbody class="divide-y divide-card-border">
+      <tr><td class="py-2 pr-4 font-medium text-red-400">Yelp</td><td class="py-2 pr-4">全国</td><td class="py-2 pr-4">品牌知名度、评论</td><td class="py-2">英语优先、无代金券、泛化</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-green-400">Groupon</td><td class="py-2 pr-4">全国</td><td class="py-2 pr-4">优惠发现、规模</td><td class="py-2">商户费率高（50%+）、无社区聚焦</td></tr>
+      <tr class="bg-orange-400/5"><td class="py-2 pr-4 font-medium text-orange-400">ShopDineGuide</td><td class="py-2 pr-4">旧金山湾区</td><td class="py-2 pr-4">社区信任、双语、低费率</td><td class="py-2">规模小、技术有限</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-blue-400">小红书</td><td class="py-2 pr-4">海外华人</td><td class="py-2 pr-4">中文UGC</td><td class="py-2">无本地商业/代金券系统</td></tr>
+      <tr><td class="py-2 pr-4 font-medium text-purple-400">微信小程序</td><td class="py-2 pr-4">海外华人</td><td class="py-2 pr-4">支付集成</td><td class="py-2">封闭生态、发现受限</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 class="mt-6 font-semibold text-sm uppercase tracking-wider text-muted">竞争优势</h4>
+<div class="mt-3 space-y-2 text-sm">
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>30年信任积累：</strong>数十年服务湾区企业，建立了无可比拟的本地信誉</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>交叉销售管道：</strong>印刷客户自然转化为数字平台商户</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>双语能力：</strong>同时服务中文商户和英语消费者</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>低成本商户入驻：</strong>免费入驻层去除摩擦，对比Groupon 50%+抽成</div>
+  <div class="flex items-start gap-2"><span class="text-orange-400">✦</span><strong>社区级精细度：</strong>按旧金山具体社区覆盖（唐人街、日落区、列治文区等）</div>
+</div>`,
+      },
+      {
+        id: "swot-analysis",
+        title: "SWOT Analysis",
+        titleZh: "SWOT分析",
+        content: `<div class="grid gap-4 sm:grid-cols-2">
+  <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-4">
+    <h4 class="font-semibold text-emerald-400 text-sm mb-3">Strengths</h4>
+    <ul class="space-y-2 text-sm">
+      <li>30+ years of Bay Area local business relationships</li>
+      <li>Physical + digital revenue diversification</li>
+      <li>Deep Chinese-American community trust</li>
+      <li>In-house design & production capabilities</li>
+      <li>Four complementary web properties</li>
+      <li>Low overhead — small, agile team</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-red-400/30 bg-red-400/5 p-4">
+    <h4 class="font-semibold text-red-400 text-sm mb-3">Weaknesses</h4>
+    <ul class="space-y-2 text-sm">
+      <li>FoodieGuide SSL expired — poor digital maintenance</li>
+      <li>FoodieCoupon unreachable — dormant property</li>
+      <li>Minimal social media presence (13 LinkedIn followers)</li>
+      <li>3.1-star Google rating with some negative reviews</li>
+      <li>Fragmented brand identity across 4 properties</li>
+      <li>Limited engineering/tech resources</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-blue-400/30 bg-blue-400/5 p-4">
+    <h4 class="font-semibold text-blue-400 text-sm mb-3">Opportunities</h4>
+    <ul class="space-y-2 text-sm">
+      <li>Consolidate all properties under ShopDineGuide brand</li>
+      <li>Chinese-American market in Bay Area is growing and underserved</li>
+      <li>QR code voucher system can scale to other cities</li>
+      <li>AI-powered local business marketing tools</li>
+      <li>Expand to other ethnic community commerce (Korean, Vietnamese)</li>
+      <li>Partner with local chambers of commerce</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-amber-400/30 bg-amber-400/5 p-4">
+    <h4 class="font-semibold text-amber-400 text-sm mb-3">Threats</h4>
+    <ul class="space-y-2 text-sm">
+      <li>Print industry secular decline</li>
+      <li>Google/Yelp adding more local commerce features</li>
+      <li>WeChat/Xiaohongshu expanding US local services</li>
+      <li>Economic downturn impacts small business ad spend</li>
+      <li>Tech talent expensive in Bay Area</li>
+      <li>Larger platforms could target this niche</li>
+    </ul>
+  </div>
+</div>`,
+        contentZh: `<div class="grid gap-4 sm:grid-cols-2">
+  <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-4">
+    <h4 class="font-semibold text-emerald-400 text-sm mb-3">优势</h4>
+    <ul class="space-y-2 text-sm">
+      <li>30+年湾区本地商业关系</li>
+      <li>实体+数字收入多元化</li>
+      <li>深厚的华裔社区信任</li>
+      <li>内部设计和生产能力</li>
+      <li>四个互补的网络平台</li>
+      <li>低开销——小型敏捷团队</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-red-400/30 bg-red-400/5 p-4">
+    <h4 class="font-semibold text-red-400 text-sm mb-3">劣势</h4>
+    <ul class="space-y-2 text-sm">
+      <li>FoodieGuide SSL过期——数字化维护不足</li>
+      <li>FoodieCoupon无法访问——休眠资产</li>
+      <li>社交媒体存在感极低（LinkedIn 13个关注者）</li>
+      <li>Google评分3.1星，有负面评价</li>
+      <li>四个平台品牌形象碎片化</li>
+      <li>工程/技术资源有限</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-blue-400/30 bg-blue-400/5 p-4">
+    <h4 class="font-semibold text-blue-400 text-sm mb-3">机会</h4>
+    <ul class="space-y-2 text-sm">
+      <li>将所有平台整合至ShopDineGuide品牌下</li>
+      <li>湾区华裔市场持续增长且服务不足</li>
+      <li>QR码代金券系统可扩展至其他城市</li>
+      <li>AI驱动的本地商业营销工具</li>
+      <li>扩展至其他族裔社区商业（韩裔、越南裔）</li>
+      <li>与本地商会合作</li>
+    </ul>
+  </div>
+  <div class="rounded-lg border border-amber-400/30 bg-amber-400/5 p-4">
+    <h4 class="font-semibold text-amber-400 text-sm mb-3">威胁</h4>
+    <ul class="space-y-2 text-sm">
+      <li>印刷行业整体衰退</li>
+      <li>Google/Yelp增加更多本地商业功能</li>
+      <li>微信/小红书扩展美国本地服务</li>
+      <li>经济衰退影响小企业广告支出</li>
+      <li>湾区技术人才成本高</li>
+      <li>大型平台可能瞄准这一细分市场</li>
+    </ul>
+  </div>
+</div>`,
+      },
+      {
+        id: "growth-strategy",
+        title: "Growth Strategy & Recommendations",
+        titleZh: "增长策略与建议",
+        content: `<div class="space-y-6">
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-red-400 mb-3">Immediate (0–90 Days)</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">CRITICAL</span><span>Fix FoodieGuide.com SSL certificate — either restore or 301 redirect to ShopDineGuide</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">CRITICAL</span><span>Resolve FoodieCoupon.com — migrate voucher features to ShopDineGuide or sunset the domain</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">HIGH</span><span>Improve Google rating — respond to all reviews, address negative feedback patterns</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">HIGH</span><span>Establish consistent social media presence across LinkedIn, Facebook, Instagram, and Xiaohongshu</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-amber-400 mb-3">Short-Term (3–6 Months)</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">HIGH</span><span>Consolidate brand: ShopDineGuide as the primary consumer platform, BannerShopUSA for B2B print services</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">HIGH</span><span>Build merchant self-service dashboard on ShopDineGuide — allow businesses to manage listings, create deals, track voucher redemptions</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">MEDIUM</span><span>Create print+digital bundle packages: signage + ShopDineGuide listing + digital voucher campaign</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-blue-400 mb-3">Medium-Term (6–18 Months)</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">HIGH</span><span>Expand ShopDineGuide to San Jose / South Bay — the largest Chinese-American market in the Bay Area</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">HIGH</span><span>Integrate AI-powered tools: automated business descriptions, smart voucher pricing recommendations, customer analytics</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">MEDIUM</span><span>Launch mobile app for ShopDineGuide with push notifications for nearby deals</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-purple-400 mb-3">Long-Term (18+ Months)</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">HIGH</span><span>Expand to other major Chinese-American metros: Los Angeles SGV, NYC Flushing, Houston Chinatown</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">EXPLORE</span><span>White-label the platform for other ethnic community commerce (Korean, Vietnamese, Indian)</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">EXPLORE</span><span>Revenue model evolution: SaaS tier for merchants ($29-99/mo) + transaction fees on voucher sales</span></div>
+    </div>
+  </div>
+</div>`,
+        contentZh: `<div class="space-y-6">
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-red-400 mb-3">立即行动（0-90天）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">紧急</span><span>修复FoodieGuide.com SSL证书——恢复网站或301重定向至ShopDineGuide</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-red-400/20 px-1.5 py-0.5 text-xs text-red-400 shrink-0">紧急</span><span>处理FoodieCoupon.com——将优惠券功能迁移至ShopDineGuide或关闭域名</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>提升Google评分——回复所有评价，解决负面反馈的模式性问题</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>建立持续的社交媒体存在——LinkedIn、Facebook、Instagram和小红书</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-amber-400 mb-3">短期（3-6个月）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>整合品牌：ShopDineGuide作为主要消费者平台，BannerShopUSA专注B2B印刷服务</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>在ShopDineGuide上建立商户自助后台——允许商家管理店铺、创建优惠、追踪代金券核销</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">中优</span><span>创建印刷+数字捆绑套餐：标识制作 + ShopDineGuide入驻 + 数字代金券推广</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-blue-400 mb-3">中期（6-18个月）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>将ShopDineGuide扩展至San Jose/南湾——湾区最大的华裔市场</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>集成AI工具：自动生成商家描述、智能代金券定价建议、客户数据分析</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">中优</span><span>推出ShopDineGuide移动应用，支持附近优惠推送通知</span></div>
+    </div>
+  </div>
+  <div>
+    <h4 class="font-semibold text-sm uppercase tracking-wider text-purple-400 mb-3">长期（18个月以上）</h4>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-amber-400/20 px-1.5 py-0.5 text-xs text-amber-400 shrink-0">高优</span><span>扩展至其他华裔聚集城市：洛杉矶圣盖博谷、纽约法拉盛、休斯顿中国城</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">探索</span><span>将平台白标化，服务其他族裔社区商业（韩裔、越南裔、印度裔）</span></div>
+      <div class="flex items-start gap-3 rounded-lg border border-card-border bg-background p-3 text-sm"><span class="rounded bg-blue-400/20 px-1.5 py-0.5 text-xs text-blue-400 shrink-0">探索</span><span>收入模式升级：商户SaaS订阅（$29-99/月）+ 代金券交易手续费</span></div>
     </div>
   </div>
 </div>`,

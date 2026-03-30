@@ -1,9 +1,43 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { locales, type Locale } from "@/lib/i18n";
+
+function getInitials(name?: string | null, email?: string | null) {
+  return (name ?? email ?? "?")
+    .split(/[\s@]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((s) => s[0].toUpperCase())
+    .join("");
+}
+
+function Avatar({ src, name, email }: { src?: string | null; name?: string | null; email?: string | null }) {
+  const [failed, setFailed] = useState(false);
+
+  if (src && !failed) {
+    return (
+      /* eslint-disable-next-line @next/next/no-img-element */
+      <img
+        src={src}
+        alt=""
+        width={20}
+        height={20}
+        className="rounded-full"
+        onError={() => setFailed(true)}
+      />
+    );
+  }
+
+  return (
+    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-white">
+      {getInitials(name, email)}
+    </span>
+  );
+}
 
 export default function AuthButton() {
   const { user, isLoading } = useUser();
@@ -26,16 +60,7 @@ export default function AuthButton() {
           href={`/${locale}/profile`}
           className="flex items-center gap-2 text-xs text-muted transition hover:text-foreground"
         >
-          {user.picture && (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              src={user.picture}
-              alt=""
-              width={20}
-              height={20}
-              className="rounded-full"
-            />
-          )}
+          <Avatar src={user.picture} name={user.name} email={user.email} />
           <span className="truncate max-w-[100px]">
             {user.name ?? user.email}
           </span>

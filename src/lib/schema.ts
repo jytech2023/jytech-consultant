@@ -17,8 +17,20 @@ export const users = pgTable("users", {
   name: text("name"),
   picture: text("picture"),
   // Preferences
-  preferredModel: text("preferred_model").default("openrouter/auto").notNull(),
-  // Subscription: "free" | "pro" | "enterprise"
+  preferredModel: text("preferred_model").default("openrouter/free").notNull(),
+  // BYOK — user's own LlamaIndex API key (encrypted in production)
+  llamaindexApiKey: text("llamaindex_api_key"),
+  // Expert profile
+  isExpert: integer("is_expert").default(0).notNull(), // 0 = no, 1 = yes
+  expertStatus: text("expert_status").default("draft").notNull(), // draft | pending | approved | rejected
+  expertIndustries: text("expert_industries"), // comma-separated slugs, e.g. "technology,media"
+  hourlyRateOnline: integer("hourly_rate_online"), // online consultation rate in USD
+  hourlyRateOnsite: integer("hourly_rate_onsite"), // on-site consultation rate in USD
+  expertCity: text("expert_city"), // e.g. "San Francisco, CA"
+  expertBio: text("expert_bio"), // short self-introduction
+  // Keep hourlyRate as legacy / default
+  hourlyRate: integer("hourly_rate"), // in USD (legacy, defaults to online rate)
+  // Subscription: "free" | "start" | "growth" | "enterprise"
   plan: text("plan").default("free").notNull(),
   planExpiresAt: timestamp("plan_expires_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -27,6 +39,7 @@ export const users = pgTable("users", {
 
 export const usersRelations = relations(users, ({ many }) => ({
   chatSessions: many(chatSessions),
+  documents: many(documents),
 }));
 
 // ── Chat Sessions ──────────────────────────────────────────────────
@@ -81,5 +94,66 @@ export const chatMessagesRelations = relations(chatMessages, ({ one }) => ({
   session: one(chatSessions, {
     fields: [chatMessages.sessionId],
     references: [chatSessions.id],
+  }),
+}));
+
+// ── Knowledge Base Documents ───────────────────────────────────────
+export const documents = pgTable(
+  "documents",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    fileName: text("file_name").notNull(),
+    fileSize: integer("file_size").notNull(),
+    fileType: text("file_type").notNull(),
+    // LlamaParse job tracking
+    parseJobId: text("parse_job_id"),
+    parseStatus: text("parse_status").default("pending").notNull(), // pending | processing | success | error
+    // Parsed content stored for RAG
+    content: text("content"),
+    // Which API key was used: "system" or "byok"
+    keySource: text("key_source").default("system").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("documents_user_id_idx").on(table.userId),
+  ]
+);
+
+export const documentsRelations = relations(documents, ({ one }) => ({
+  user: one(users, {
+    fields: [documents.userId],
+    references: [users.id],
+  }),
+}));
+
+// ── Calendly Tokens (expert OAuth connections) ────────────────────
+export const calendlyTokens = pgTable(
+  "calendly_tokens",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    accessToken: text("access_token").notNull(),
+    refreshToken: text("refresh_token").notNull(),
+    expiresAt: timestamp("expires_at").notNull(),
+    calendlyUserUri: text("calendly_user_uri").notNull(),
+    calendlyEmail: text("calendly_email"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("calendly_tokens_user_id_idx").on(table.userId),
+  ]
+);
+
+export const calendlyTokensRelations = relations(calendlyTokens, ({ one }) => ({
+  user: one(users, {
+    fields: [calendlyTokens.userId],
+    references: [users.id],
   }),
 }));

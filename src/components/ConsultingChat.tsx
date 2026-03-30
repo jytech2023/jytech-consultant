@@ -4,6 +4,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, UIMessage } from "ai";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import type { Locale } from "@/lib/i18n";
 
 const SUGGESTED_PROMPTS: Record<string, { en: string[]; zh: string[] }> = {
@@ -109,6 +112,7 @@ export default function ConsultingChat({
   const [savedSessions, setSavedSessions] = useState<SavedSession[]>([]);
   const [showHistory, setShowHistory] = useState(false);
   const lastSavedCount = useRef(0);
+  const [modelName, setModelName] = useState("openrouter/free");
 
   const systemPrompt = `You are an expert AI ${moduleName} consultant specializing in the ${industryName} industry.
 You provide actionable, data-driven insights tailored to this specific industry context.
@@ -139,6 +143,18 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
   const isLoading = status === "submitted" || status === "streaming";
   const promptSet = SUGGESTED_PROMPTS[moduleSlug] ?? SUGGESTED_PROMPTS.strategy;
   const prompts = promptSet[locale] ?? promptSet.en;
+
+  // Fetch actual model name after each response completes
+  useEffect(() => {
+    if (status === "ready" && messages.length > 1) {
+      fetch("/api/chat")
+        .then((r) => r.json())
+        .then((data) => {
+          if (data.model) setModelName(data.model);
+        })
+        .catch(() => {});
+    }
+  }, [status, messages.length]);
 
   // Load saved sessions list for logged-in users
   useEffect(() => {
@@ -251,11 +267,43 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
     sendMessage({ text });
   }
 
-  function getMessageText(msg: (typeof messages)[number]): string {
+  function getReasoningText(msg: (typeof messages)[number]): string {
     return msg.parts
-      .filter((p) => p.type === "text")
+      .filter((p): p is { type: "reasoning"; text: string } => p.type === "reasoning")
       .map((p) => p.text)
       .join("");
+  }
+
+  function getMessageText(msg: (typeof messages)[number]): string {
+    const textParts = msg.parts
+      .filter((p): p is { type: "text"; text: string } => p.type === "text")
+      .map((p) => p.text);
+    const raw = textParts.length > 1
+      ? textParts.map((t) => t.trimEnd()).join("\n\n")
+      : textParts.join("");
+    // Normalize markdown: ensure block elements start on their own line
+    // Process line by line, skip table rows (lines starting with |)
+    const lines = raw.split("\n");
+    const result: string[] = [];
+    for (const line of lines) {
+      if (line.trimStart().startsWith("|")) {
+        // Table row — keep as-is
+        result.push(line);
+        continue;
+      }
+      let fixed = line
+        // Headings: ensure newline before # when not at line start
+        .replace(/(.+?)(#{1,6}\s)/g, "$1\n\n$2")
+        // Numbered list: ensure newline before "1." etc. when preceded by text
+        .replace(/(.+?)\s{2,}(\d+\.\s)/g, "$1\n\n$2")
+        // Bullet list: ensure newline before "- " when preceded by text
+        .replace(/(.+?)\s{2,}(-\s)/g, "$1\n$2")
+        // HR: ensure newline around ---
+        .replace(/(.+?)(---)/g, "$1\n\n$2")
+        .replace(/(---)(.+)/g, "$1\n\n$2");
+      result.push(fixed);
+    }
+    return result.join("\n");
   }
 
   return (
@@ -316,13 +364,54 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
             className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`max-w-[80%] rounded-xl px-4 py-3 text-sm leading-relaxed ${
+              className={`max-w-[92%] rounded-xl px-4 py-3 text-sm leading-relaxed ${
                 msg.role === "user"
                   ? "bg-accent text-white"
                   : "bg-background border border-card-border"
               }`}
             >
-              <div className="whitespace-pre-wrap">{getMessageText(msg)}</div>
+              {msg.role === "assistant" ? (
+                <>
+                  {getReasoningText(msg) && (() => {
+                    const hasText = !!getMessageText(msg);
+                    const isThinking = isLoading && !hasText;
+                    return isThinking ? (
+                      // Streaming reasoning — show open, with pulsing indicator
+                      <div className="mb-2 rounded-lg border border-amber-400/30 bg-amber-400/5">
+                        <div className="flex items-center gap-2 px-3 py-1.5 text-xs text-amber-400">
+                          <span className="animate-pulse">💭</span>
+                          {locale === "zh" ? "思考中..." : "Thinking..."}
+                        </div>
+                        <div className="border-t border-amber-400/20 px-3 py-2 text-xs leading-relaxed text-muted whitespace-pre-wrap max-h-48 overflow-y-auto">
+                          {getReasoningText(msg)}
+                        </div>
+                      </div>
+                    ) : (
+                      // Completed reasoning — collapsible
+                      <details className="mb-2 rounded-lg border border-card-border bg-card-bg">
+                        <summary className="cursor-pointer select-none px-3 py-1.5 text-xs text-muted">
+                          {locale === "zh" ? "💭 思考过程" : "💭 Reasoning"}
+                        </summary>
+                        <div className="border-t border-card-border px-3 py-2 text-xs leading-relaxed text-muted whitespace-pre-wrap max-h-64 overflow-y-auto">
+                          {getReasoningText(msg)}
+                        </div>
+                      </details>
+                    );
+                  })()}
+                  {getMessageText(msg) && (
+                    <div className="chat-markdown">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{getMessageText(msg)}</ReactMarkdown>
+                    </div>
+                  )}
+                  {msg.id !== "welcome" && getMessageText(msg) && (
+                    <div className="mt-2 border-t border-card-border pt-1.5 text-[10px] text-muted opacity-60">
+                      {modelName.split("/").pop()}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="whitespace-pre-wrap">{getMessageText(msg)}</div>
+              )}
             </div>
           </div>
         ))}

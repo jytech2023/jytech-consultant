@@ -77,6 +77,33 @@ export default async function IndustryPage({
               ? (industry.descriptionZh ?? industry.description)
               : industry.description}
           </p>
+          {industry.slug === "legal" && (
+            <div className="mt-4 max-w-2xl rounded-lg border border-indigo-500/40 bg-indigo-500/15 px-4 py-3">
+              <p className="text-sm text-foreground">
+                {l === "zh"
+                  ? "⚖️ 本板块由 GPULaw 提供持证律师支持。所有法律咨询均由具备执业资格的律师提供，确保合规与专业性。"
+                  : "⚖️ This section is powered by GPULaw with licensed attorneys. All legal consultations are provided by qualified, licensed lawyers ensuring compliance and professionalism."}
+              </p>
+            </div>
+          )}
+          {industry.slug === "medical" && (
+            <div className="mt-4 max-w-2xl rounded-lg border border-emerald-500/40 bg-emerald-500/15 px-4 py-3">
+              <p className="text-sm text-foreground">
+                {l === "zh"
+                  ? "🏥 临床咨询服务由持证医师（MD/DO）提供。医疗器械、运营策略等商业咨询不要求医师执照。"
+                  : "🏥 Clinical consulting is provided by licensed physicians (MD/DO). Business consulting for medical devices, operations, and strategy does not require a medical license."}
+              </p>
+            </div>
+          )}
+          {industry.slug === "finance" && (
+            <div className="mt-4 max-w-2xl rounded-lg border border-amber-500/40 bg-amber-500/15 px-4 py-3">
+              <p className="text-sm text-foreground">
+                {l === "zh"
+                  ? "⚠️ 免责声明：本平台提供的是金融服务行业的商业咨询（市场分析、运营策略、获客策略等），不提供任何投资建议、理财规划或证券推荐。如需金融服务，请咨询持证金融顾问。"
+                  : "⚠️ Disclaimer: This platform provides business consulting for the financial services industry (market analysis, operational strategy, customer acquisition, etc.). We do not provide investment advice, financial planning, or securities recommendations. Please consult a licensed financial advisor for financial needs."}
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -197,13 +224,13 @@ export default async function IndustryPage({
       })()}
 
       {/* Industry Experts */}
-      {industry.slug === "cosmetic" && (
+      {industry.slug === "retail" && (
         <section className="mx-auto w-full max-w-7xl px-6 py-12">
           <h2 className="text-xl font-bold">{dict.expert.title}</h2>
           <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <Link
-              href={`/${l}/industry/cosmetic/experts/xianji-li`}
+              href={`/${l}/industry/retail/experts/xianji-li`}
               className="group flex items-start gap-4 rounded-xl border border-card-border bg-card-bg p-6 transition hover:border-pink-400/40"
             >
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-pink-400 to-rose-600 text-lg font-bold text-white shadow">

@@ -123,7 +123,14 @@ export default function CalendlyBooking({
   }, [selectedEvent, selectedDate, expertUserId]);
 
   async function handlePayAndBook() {
-    if (!selectedEvent || !expertUserId || !hourlyRate) return;
+    if (!selectedEvent || !expertUserId) return;
+
+    // Free consultation — skip payment, go directly to Calendly
+    if (!hourlyRate || hourlyRate === 0) {
+      window.location.href = `${selectedEvent.scheduling_url}?utm_source=jyconsultant&utm_medium=free`;
+      return;
+    }
+
     setPaying(true);
     try {
       const res = await fetch("/api/consultation/checkout", {
@@ -168,10 +175,19 @@ export default function CalendlyBooking({
     );
   }
 
+  const isFree = hourlyRate === 0;
+
   if (error) {
     return (
       <div className="space-y-4">
-        {hourlyRate && totalHourlyRate && (
+        {isFree ? (
+          <div className="flex items-center gap-3 rounded-xl border border-emerald-400/30 bg-emerald-400/5 p-4">
+            <span className="text-xl">🎉</span>
+            <p className="text-sm font-medium text-emerald-400">
+              {isZh ? "免费咨询" : "Free Consultation"}
+            </p>
+          </div>
+        ) : hourlyRate && totalHourlyRate ? (
           <div className="rounded-xl border border-amber-400/30 bg-amber-400/5 p-4">
             <div className="flex items-center gap-3">
               <span className="text-xl">💰</span>
@@ -189,7 +205,7 @@ export default function CalendlyBooking({
               </div>
             </div>
           </div>
-        )}
+        ) : null}
         <div className="rounded-xl border border-card-border bg-card-bg p-8 text-center">
           <p className="text-muted">{error}</p>
           <div className="mt-4 rounded-lg border border-card-border bg-background p-4">
@@ -230,7 +246,14 @@ export default function CalendlyBooking({
   return (
     <div className="space-y-6">
       {/* Fee Info */}
-      {hourlyRate && totalHourlyRate && (
+      {isFree ? (
+        <div className="flex items-center gap-3 rounded-xl border border-emerald-400/30 bg-emerald-400/5 p-4">
+          <span className="text-xl">🎉</span>
+          <p className="text-sm font-medium text-emerald-400">
+            {isZh ? "免费咨询 — 无需支付" : "Free Consultation — No payment required"}
+          </p>
+        </div>
+      ) : hourlyRate && totalHourlyRate ? (
         <div className="rounded-xl border border-amber-400/30 bg-amber-400/5 p-4">
           <div className="flex items-center gap-3">
             <span className="text-xl">💰</span>
@@ -271,7 +294,7 @@ export default function CalendlyBooking({
             </p>
           )}
         </div>
-      )}
+      ) : null}
 
       {/* Event Type Selection */}
       {eventTypes.length > 1 && (
@@ -348,27 +371,41 @@ export default function CalendlyBooking({
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="font-semibold">
-                    {isZh ? "支付并预约" : "Pay & Book"}
+                    {isFree
+                      ? (isZh ? "免费预约" : "Book for Free")
+                      : (isZh ? "支付并预约" : "Pay & Book")}
                   </p>
                   <p className="mt-1 text-sm text-muted">
-                    {isZh
-                      ? "支付咨询费用后，将跳转至 Calendly 选择具体时间完成预约"
-                      : "After payment, you'll be redirected to Calendly to select your preferred time"}
+                    {isFree
+                      ? (isZh
+                        ? "将跳转至 Calendly 选择具体时间完成预约"
+                        : "You'll be redirected to Calendly to select your preferred time")
+                      : (isZh
+                        ? "支付咨询费用后，将跳转至 Calendly 选择具体时间完成预约"
+                        : "After payment, you'll be redirected to Calendly to select your preferred time")}
                   </p>
                 </div>
                 <button
                   onClick={handlePayAndBook}
                   disabled={paying}
-                  className="shrink-0 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-500 px-8 py-3 font-medium text-white transition hover:opacity-90 disabled:opacity-50"
+                  className={`shrink-0 rounded-lg px-8 py-3 font-medium text-white transition hover:opacity-90 disabled:opacity-50 ${
+                    isFree
+                      ? "bg-gradient-to-r from-emerald-500 to-teal-500"
+                      : "bg-gradient-to-r from-blue-500 to-indigo-500"
+                  }`}
                 >
                   {paying
                     ? "..."
-                    : consultFee
+                    : isFree
                       ? isZh
-                        ? `支付 $${consultFee} 并预约`
-                        : `Pay $${consultFee} & Book`
-                      : isZh
-                        ? "支付并预约"
+                        ? "立即预约"
+                        : "Book Now"
+                      : consultFee
+                        ? isZh
+                          ? `支付 $${consultFee} 并预约`
+                          : `Pay $${consultFee} & Book`
+                        : isZh
+                          ? "支付并预约"
                         : "Pay & Book"}
                 </button>
               </div>

@@ -16,16 +16,16 @@ export async function generateMetadata({
   return {
     title:
       locale === "zh"
-        ? "Xianji Li | 美妆行业专家"
-        : "Xianji Li | Cosmetic Industry Expert",
+        ? "Xianji Li | 零售行业专家"
+        : "Xianji Li | Retail Industry Expert",
     description:
       locale === "zh"
         ? "Xianji Li (李先基) — Unincore & Coway 旧金山湾区销售主管，年营业额百万级，深耕美妆与健康家电行业"
         : "Xianji Li — Regional Sales Director for Unincore & Coway in the San Francisco Bay Area, with annual revenue exceeding one million, specializing in beauty and wellness appliances",
     alternates: {
       languages: {
-        en: "/en/industry/cosmetic/experts/xianji-li",
-        zh: "/zh/industry/cosmetic/experts/xianji-li",
+        en: "/en/industry/retail/experts/xianji-li",
+        zh: "/zh/industry/retail/experts/xianji-li",
       },
     },
   };
@@ -205,10 +205,10 @@ export default async function XianjiLiExpertPage({
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-pink-500/15 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-7xl">
           <Link
-            href={`/${l}/industry/cosmetic`}
+            href={`/${l}/industry/retail`}
             className="inline-flex items-center gap-1 text-sm text-muted transition hover:text-foreground"
           >
-            {l === "zh" ? "← 返回美妆咨询" : "← Back to Cosmetic"}
+            {l === "zh" ? "← 返回零售咨询" : "← Back to Retail"}
           </Link>
 
           <div className="mt-8 flex flex-col items-start gap-8 sm:flex-row sm:items-center">
@@ -217,7 +217,7 @@ export default async function XianjiLiExpertPage({
             </div>
             <div>
               <p className="text-sm font-medium uppercase tracking-wider text-pink-400">
-                {l === "zh" ? "美妆行业专家" : "Cosmetic Industry Expert"}
+                {l === "zh" ? "零售行业专家" : "Retail Industry Expert"}
               </p>
               <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">
                 Xianji Li{" "}
@@ -339,10 +339,10 @@ export default async function XianjiLiExpertPage({
           </p>
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
-              href={`/${l}/industry/cosmetic`}
+              href={`/${l}/industry/retail`}
               className="inline-flex items-center gap-2 rounded-lg border border-card-border bg-card-bg px-6 py-3 font-medium transition hover:border-accent/40"
             >
-              {l === "zh" ? "探索美妆咨询" : "Explore Cosmetic Consulting"}
+              {l === "zh" ? "探索零售咨询" : "Explore Retail Consulting"}
             </Link>
             <Link
               href={`/${l}/pricing`}

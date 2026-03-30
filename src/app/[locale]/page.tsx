@@ -18,10 +18,10 @@ export default async function Home({
   return (
     <div className="flex flex-1 flex-col">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-card-border px-6 py-24 text-center">
+      <section className="relative overflow-hidden border-b border-card-border px-4 py-16 text-center sm:px-6 sm:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl">
-          <h1 className="text-5xl font-bold leading-tight tracking-tight sm:text-6xl">
+          <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             {dict.home.heroTitle}{" "}
             <span className="bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">
               {dict.home.heroTitleAccent}
@@ -34,8 +34,8 @@ export default async function Home({
       </section>
 
       {/* Industries */}
-      <section className="mx-auto w-full max-w-7xl px-6 py-16">
-        <h2 className="text-2xl font-bold tracking-tight">
+      <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-16">
+        <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
           {dict.home.selectIndustry}
         </h2>
         <p className="mt-2 text-muted">{dict.home.selectIndustryDesc}</p>
@@ -75,9 +75,9 @@ export default async function Home({
       </section>
 
       {/* Modules Overview */}
-      <section className="border-t border-card-border bg-card-bg/50 px-6 py-16">
+      <section className="border-t border-card-border bg-card-bg/50 px-4 py-10 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-2xl font-bold tracking-tight">
+          <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
             {dict.home.consultingModules}
           </h2>
           <p className="mt-2 text-muted">{dict.home.consultingModulesDesc}</p>
@@ -106,9 +106,9 @@ export default async function Home({
       </section>
 
       {/* Partners */}
-      <section className="border-t border-card-border px-6 py-16">
+      <section className="border-t border-card-border px-4 py-10 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-7xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight">
+          <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
             {dict.home.partners}
           </h2>
           <p className="mt-2 text-muted">{dict.home.partnersDesc}</p>

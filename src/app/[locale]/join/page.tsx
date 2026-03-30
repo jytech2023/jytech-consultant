@@ -112,13 +112,13 @@ export default async function JoinPage({
   return (
     <div className="flex flex-1 flex-col">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-card-border px-6 py-24 text-center">
+      <section className="relative overflow-hidden border-b border-card-border px-4 py-16 text-center sm:px-6 sm:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-wider text-accent-light">
             {l === "zh" ? "成为顾问" : "Become a Consultant"}
           </p>
-          <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
             {l === "zh" ? (
               <>
                 让你的知识{" "}
@@ -281,7 +281,7 @@ export default async function JoinPage({
       {/* CTA */}
       <section className="border-t border-card-border px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
             {l === "zh" ? (
               <>
                 准备好让知识{" "}

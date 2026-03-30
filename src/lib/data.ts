@@ -56,14 +56,14 @@ export const experts: Expert[] = [
     slug: "xianji-li",
     name: "Xianji Li",
     nameZh: "李先基",
-    industries: ["cosmetic"],
+    industries: ["retail"],
     title: "Regional Sales Director, Unincore & Coway · SF Bay Area",
     titleZh: "Unincore & Coway 旧金山湾区销售主管",
     bio: "$1M+ annual revenue managing sales for Unincore (premium beauty/skincare) and Coway (wellness appliances) in the SF Bay Area. Expert in regional sales, distribution, and cross-cultural market development.",
     bioZh: "年营业额超百万，负责 Unincore（高端美妆护肤）和 Coway（健康家电）在旧金山湾区的销售。精通区域销售管理、渠道建设和跨文化市场开发。",
     hourlyRate: 200,
     city: "San Francisco Bay Area",
-    profileUrl: "/industry/cosmetic/experts/xianji-li",
+    profileUrl: "/industry/retail/experts/xianji-li",
   },
   {
     slug: "helen-lan",
@@ -117,14 +117,14 @@ export const industries: Industry[] = [
     color: "#ef4444",
   },
   {
-    slug: "cosmetic",
-    name: "Cosmetic",
-    nameZh: "美妆",
-    icon: "💄",
+    slug: "retail",
+    name: "Retail",
+    nameZh: "零售",
+    icon: "🛍️",
     description:
-      "Identify beauty trends, benchmark competitor products, build DTC strategies, and manage ingredient supply chains effectively.",
+      "Optimize retail operations, identify consumer trends, build DTC and omnichannel strategies, benchmark competitors, and manage product supply chains effectively.",
     descriptionZh:
-      "识别美容趋势、对标竞品、构建DTC策略，并有效管理原料供应链。",
+      "优化零售运营、识别消费趋势、构建DTC与全渠道策略、对标竞品，并有效管理产品供应链。",
     color: "#ec4899",
   },
   {
@@ -139,25 +139,14 @@ export const industries: Industry[] = [
     color: "#f59e0b",
   },
   {
-    slug: "robotics",
-    name: "Robotics",
-    nameZh: "机器人",
-    icon: "🤖",
-    description:
-      "Target enterprise buyers, track technology competitors, plan go-to-market strategies, and source components intelligently.",
-    descriptionZh:
-      "锁定企业买家、追踪技术竞争对手、规划上市策略，并智能化零部件采购。",
-    color: "#6366f1",
-  },
-  {
     slug: "medical",
-    name: "Medical",
+    name: "Healthcare",
     nameZh: "医疗",
     icon: "🏥",
     description:
-      "Reach healthcare providers, benchmark medical devices, navigate regulatory strategies, and manage critical medical supply chains.",
+      "Connect with licensed physicians and healthcare business consultants — clinical consulting, medical device strategy, regulatory compliance, market analysis, and supply chain optimization.",
     descriptionZh:
-      "触达医疗服务提供商、对标医疗器械、规划监管策略，并管理关键医疗供应链。",
+      "对接持证医师与医疗行业顾问——临床咨询、医疗器械策略、法规合规、市场分析与供应链优化。",
     color: "#10b981",
   },
   {
@@ -173,13 +162,13 @@ export const industries: Industry[] = [
   },
   {
     slug: "technology",
-    name: "Technology",
-    nameZh: "科技",
+    name: "Technology & Robotics",
+    nameZh: "科技与机器人",
     icon: "💻",
     description:
-      "Identify enterprise clients, benchmark SaaS competitors, plan product-market fit strategies, optimize tech stack procurement, and scale go-to-market operations.",
+      "Identify enterprise clients, benchmark SaaS and robotics competitors, plan product-market fit strategies, optimize tech stack and component procurement, and scale go-to-market operations.",
     descriptionZh:
-      "识别企业客户、对标SaaS竞品、规划产品市场匹配策略、优化技术栈采购，并扩展市场运营。",
+      "识别企业客户、对标SaaS与机器人竞品、规划产品市场匹配策略、优化技术栈与零部件采购，并扩展市场运营。",
     color: "#06b6d4",
   },
   {
@@ -194,14 +183,25 @@ export const industries: Industry[] = [
     color: "#f97316",
   },
   {
+    slug: "legal",
+    name: "Legal Services",
+    nameZh: "法务",
+    icon: "⚖️",
+    description:
+      "Legal consulting powered by GPULaw — connect with licensed attorneys for business law, contract review, IP protection, compliance, and corporate legal strategy.",
+    descriptionZh:
+      "与 GPULaw 合作的法务咨询——对接持证律师，提供商业法务、合同审查、知识产权保护、合规咨询与企业法律战略。",
+    color: "#6366f1",
+  },
+  {
     slug: "finance",
-    name: "Finance",
-    nameZh: "金融",
+    name: "Financial Services Business",
+    nameZh: "金融商务",
     icon: "💰",
     description:
-      "Analyze financial markets, benchmark fintech competitors, develop investment strategies, manage risk and compliance, and optimize financial operations.",
+      "Business consulting for financial services companies — market analysis, fintech competitor benchmarking, operational strategy, and customer acquisition. Not investment or financial advice.",
     descriptionZh:
-      "分析金融市场、对标金融科技竞品、制定投资策略、管理风险与合规，并优化金融运营。",
+      "面向金融服务企业的商业咨询——市场分析、金融科技竞品对标、运营策略与获客策略。不提供投资或理财建议。",
     color: "#16a34a",
   },
 ];

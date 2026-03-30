@@ -28,6 +28,11 @@ export const users = pgTable("users", {
   hourlyRateOnsite: integer("hourly_rate_onsite"), // on-site consultation rate in USD
   expertCity: text("expert_city"), // e.g. "San Francisco, CA"
   expertBio: text("expert_bio"), // short self-introduction
+  // License info (required for legal, medical, finance industries)
+  licenseType: text("license_type"), // e.g. "Bar License", "CPA", "MD"
+  licenseNumber: text("license_number"),
+  licenseState: text("license_state"), // e.g. "CA", "NY"
+  licenseVerified: integer("license_verified").default(0).notNull(), // 0 = unverified, 1 = verified
   // Keep hourlyRate as legacy / default
   hourlyRate: integer("hourly_rate"), // in USD (legacy, defaults to online rate)
   // Referral: commission earned by importing LinkedIn connections

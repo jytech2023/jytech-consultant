@@ -117,11 +117,18 @@ export default function ConsultingChat({
   const lastSavedCount = useRef(0);
   const [modelName, setModelName] = useState("openrouter/free");
 
+  const disclaimers: Record<string, string> = {
+    medical: "IMPORTANT: This healthcare module is supported by licensed physicians (MD/DO). You can discuss clinical topics, medical device strategy, regulatory compliance, and healthcare business consulting. However, always recommend the user book a consultation with a licensed physician on the platform for personalized medical advice. Do not provide definitive diagnoses.",
+    finance: "IMPORTANT: You provide BUSINESS consulting only (market analysis, operations, customer acquisition, strategy). You must NEVER provide investment advice, financial planning, securities recommendations, or tax advice. If a user asks for financial advice, politely decline and recommend they consult a licensed financial advisor.",
+    legal: "IMPORTANT: This legal consulting module is powered by GPULaw with licensed attorneys. You can help with general legal business topics (contract review needs, IP strategy, compliance overview, corporate structure), but always recommend the user book a consultation with a licensed GPULaw attorney for specific legal advice. Never provide definitive legal opinions.",
+  };
+
   const systemPrompt = `You are an expert AI ${moduleName} consultant specializing in the ${industryName} industry.
 You provide actionable, data-driven insights tailored to this specific industry context.
 Keep responses concise but thorough. Use bullet points and structured formatting when helpful.
 Always end with a follow-up question or offer to dive deeper into a specific area.
 Industry context: ${industrySlug}. Consulting module: ${moduleSlug}.
+${disclaimers[industrySlug] ?? ""}
 ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
 
   const welcomeText =
@@ -332,7 +339,7 @@ ${locale === "zh" ? "Please respond in Chinese (中文)." : ""}`;
   }
 
   return (
-    <div className="flex h-[calc(100vh-280px)] flex-col rounded-xl border border-card-border bg-card-bg">
+    <div className="flex h-[60vh] flex-col rounded-xl border border-card-border bg-card-bg sm:h-[calc(100vh-280px)]">
       {/* Header with history toggle */}
       {user && savedSessions.length > 0 && (
         <div className="flex items-center justify-between border-b border-card-border px-5 py-2">

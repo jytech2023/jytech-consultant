@@ -22,14 +22,14 @@ const AI_MODELS = [
 
 const INDUSTRIES = [
   { slug: "restaurant", name: "Restaurant & Food Service", nameZh: "餐饮" },
-  { slug: "cosmetic", name: "Cosmetic", nameZh: "美妆" },
+  { slug: "retail", name: "Retail", nameZh: "零售" },
   { slug: "manufacturing", name: "Manufacturing", nameZh: "制造" },
-  { slug: "robotics", name: "Robotics", nameZh: "机器人" },
-  { slug: "medical", name: "Medical", nameZh: "医疗" },
+  { slug: "medical", name: "Healthcare", nameZh: "医疗" },
   { slug: "education", name: "Education", nameZh: "教育" },
-  { slug: "technology", name: "Technology", nameZh: "科技" },
+  { slug: "technology", name: "Technology & Robotics", nameZh: "科技与机器人" },
+  { slug: "legal", name: "Legal Services (GPULaw)", nameZh: "法务 (GPULaw)" },
   { slug: "media", name: "Media", nameZh: "传媒广告" },
-  { slug: "finance", name: "Finance", nameZh: "金融" },
+  { slug: "finance", name: "Financial Services Business", nameZh: "金融商务" },
 ];
 
 const PLAN_RANK: Record<string, number> = {
@@ -62,6 +62,9 @@ export default function ProfileForm({
   const [hourlyRateOnsite, setHourlyRateOnsite] = useState("200");
   const [expertCity, setExpertCity] = useState("");
   const [expertBio, setExpertBio] = useState("");
+  const [licenseType, setLicenseType] = useState("");
+  const [licenseNumber, setLicenseNumber] = useState("");
+  const [licenseState, setLicenseState] = useState("");
   const [expertSaving, setExpertSaving] = useState(false);
   const [expertSaved, setExpertSaved] = useState(false);
 
@@ -85,6 +88,9 @@ export default function ProfileForm({
           setHourlyRateOnsite(data.user.hourlyRateOnsite ? String(data.user.hourlyRateOnsite) : "200");
           setExpertCity(data.user.expertCity ?? "");
           setExpertBio(data.user.expertBio ?? "");
+          setLicenseType(data.user.licenseType ?? "");
+          setLicenseNumber(data.user.licenseNumber ?? "");
+          setLicenseState(data.user.licenseState ?? "");
         }
         if (data.calendly) {
           setCalendly(data.calendly);
@@ -368,9 +374,14 @@ export default function ProfileForm({
                 className="w-32 rounded-lg border border-card-border bg-background px-4 py-2.5 text-sm outline-none transition focus:border-accent/60 disabled:opacity-60"
               />
               <span className="text-sm text-muted">/ hr</span>
+              {hourlyRateOnline === "0" && (
+                <span className="rounded-full bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">
+                  {locale === "zh" ? "免费" : "Free"}
+                </span>
+              )}
             </div>
             <p className="mt-1 text-xs text-muted">
-              {locale === "zh" ? "视频/电话咨询" : "Video / phone consultation"}
+              {locale === "zh" ? "视频/电话咨询（设为 0 即免费咨询）" : "Video / phone consultation (set to 0 for free consulting)"}
             </p>
           </div>
 
@@ -417,6 +428,74 @@ export default function ProfileForm({
             />
           </div>
 
+          {/* License Fields — required for legal, optional for medical/finance */}
+          {(expertIndustries.includes("legal") || expertIndustries.includes("medical") || expertIndustries.includes("finance")) && (
+            <div className="rounded-lg border border-amber-400/30 bg-amber-400/5 p-4 space-y-4">
+              <div>
+                <p className="text-sm font-medium">
+                  {locale === "zh" ? "⚖️ 执照信息" : "⚖️ License Information"}
+                  {(expertIndustries.includes("legal") || expertIndustries.includes("medical")) && (
+                    <span className="ml-2 text-xs text-red-400">
+                      {locale === "zh" ? "* 必填" : "* Required"}
+                    </span>
+                  )}
+                </p>
+                <p className="mt-1 text-xs text-muted">
+                  {locale === "zh"
+                    ? "法务板块要求律师执照，医疗板块要求医师执照。金融板块建议提供相关执照以提升可信度。"
+                    : "Legal requires a bar license, Healthcare requires a medical license. Finance licenses are recommended for credibility."}
+                </p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-3">
+                <div>
+                  <label className="text-xs font-medium text-muted">
+                    {locale === "zh" ? "执照类型" : "License Type"}
+                  </label>
+                  <select
+                    value={licenseType}
+                    onChange={(e) => setLicenseType(e.target.value)}
+                    disabled={expertStatus === "pending"}
+                    className="mt-1 w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent/60 disabled:opacity-60"
+                  >
+                    <option value="">{locale === "zh" ? "选择..." : "Select..."}</option>
+                    <option value="Bar License">{locale === "zh" ? "律师执照 (Bar)" : "Bar License"}</option>
+                    <option value="MD">{locale === "zh" ? "医师执照 (MD)" : "MD License"}</option>
+                    <option value="CPA">{locale === "zh" ? "注册会计师 (CPA)" : "CPA"}</option>
+                    <option value="CFA">{locale === "zh" ? "特许金融分析师 (CFA)" : "CFA"}</option>
+                    <option value="Series 65">Series 65</option>
+                    <option value="Other">{locale === "zh" ? "其他" : "Other"}</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-muted">
+                    {locale === "zh" ? "执照编号" : "License Number"}
+                  </label>
+                  <input
+                    type="text"
+                    value={licenseNumber}
+                    onChange={(e) => setLicenseNumber(e.target.value)}
+                    placeholder="e.g. 123456"
+                    disabled={expertStatus === "pending"}
+                    className="mt-1 w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent/60 disabled:opacity-60"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-muted">
+                    {locale === "zh" ? "颁发州/地区" : "State/Jurisdiction"}
+                  </label>
+                  <input
+                    type="text"
+                    value={licenseState}
+                    onChange={(e) => setLicenseState(e.target.value)}
+                    placeholder="e.g. CA, NY"
+                    disabled={expertStatus === "pending"}
+                    className="mt-1 w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent/60 disabled:opacity-60"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Actions */}
           {expertStatus === "draft" || expertStatus === "rejected" ? (
               <div className="space-y-3">
@@ -448,6 +527,9 @@ export default function ProfileForm({
                             hourlyRateOnsite: hourlyRateOnsite ? Number(hourlyRateOnsite) : null,
                             expertCity: expertCity || null,
                             expertBio: expertBio || null,
+                            licenseType: licenseType || null,
+                            licenseNumber: licenseNumber || null,
+                            licenseState: licenseState || null,
                           }),
                         });
                         setExpertSaved(true);
@@ -478,6 +560,14 @@ export default function ProfileForm({
                         );
                         return;
                       }
+                      if ((expertIndustries.includes("legal") || expertIndustries.includes("medical")) && (!licenseType || !licenseNumber || !licenseState)) {
+                        alert(
+                          locale === "zh"
+                            ? "法务和医疗板块要求提供完整的执照信息（类型、编号、颁发州）"
+                            : "Legal and Healthcare require complete license information (type, number, state)"
+                        );
+                        return;
+                      }
                       setExpertSaving(true);
                       try {
                         const res = await fetch("/api/stripe/expert-checkout", {
@@ -490,6 +580,9 @@ export default function ProfileForm({
                             hourlyRateOnsite: hourlyRateOnsite ? Number(hourlyRateOnsite) : null,
                             expertCity: expertCity || null,
                             expertBio: expertBio || null,
+                            licenseType: licenseType || null,
+                            licenseNumber: licenseNumber || null,
+                            licenseState: licenseState || null,
                           }),
                         });
                         const data = await res.json();

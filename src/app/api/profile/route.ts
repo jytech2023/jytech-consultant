@@ -58,6 +58,7 @@ export async function PATCH(request: NextRequest) {
     isExpert, expertIndustries, hourlyRate,
     hourlyRateOnline, hourlyRateOnsite, expertCity,
     expertBio, expertStatus,
+    licenseType, licenseNumber, licenseState,
   } = body as {
     preferredModel?: string;
     llamaindexApiKey?: string | null;
@@ -69,6 +70,9 @@ export async function PATCH(request: NextRequest) {
     expertCity?: string | null;
     expertBio?: string | null;
     expertStatus?: string;
+    licenseType?: string | null;
+    licenseNumber?: string | null;
+    licenseState?: string | null;
   };
 
   const auth0Id = session.user.sub!;
@@ -84,6 +88,9 @@ export async function PATCH(request: NextRequest) {
   if (expertCity !== undefined) updateData.expertCity = expertCity;
   if (expertBio !== undefined) updateData.expertBio = expertBio;
   if (expertStatus !== undefined) updateData.expertStatus = expertStatus;
+  if (licenseType !== undefined) updateData.licenseType = licenseType;
+  if (licenseNumber !== undefined) updateData.licenseNumber = licenseNumber;
+  if (licenseState !== undefined) updateData.licenseState = licenseState;
 
   const [updated] = await db
     .update(users)

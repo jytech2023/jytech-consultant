@@ -2,6 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/dictionaries";
+import CalendlyBooking from "@/components/CalendlyBooking";
+import { db } from "@/lib/db";
+import { users } from "@/lib/schema";
+import { eq } from "drizzle-orm";
+
+const JEFF_EMAIL = "jeffguan@bannershopusa.com";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -214,6 +220,20 @@ export default async function JeffGuanExpertPage({
   const h = highlights[l];
   const exp = expertise[l];
 
+  // Look up expert's user record for Calendly booking
+  const [expertUser] = await db
+    .select({
+      id: users.id,
+      hourlyRate: users.hourlyRate,
+      hourlyRateOnline: users.hourlyRateOnline,
+      picture: users.picture,
+    })
+    .from(users)
+    .where(eq(users.email, JEFF_EMAIL))
+    .limit(1);
+  const expertUserId = expertUser?.id ?? null;
+  const expertHourlyRate = expertUser?.hourlyRateOnline ?? expertUser?.hourlyRate ?? 500;
+
   return (
     <div className="flex flex-1 flex-col">
       {/* Hero */}
@@ -369,31 +389,31 @@ export default async function JeffGuanExpertPage({
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Booking */}
       <section className="border-t border-card-border px-6 py-16">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-4xl">
           <h2 className="text-2xl font-bold tracking-tight">
-            {l === "zh"
-              ? "与 Jeff Guan 咨询"
-              : "Consult with Jeff Guan"}
+            {l === "zh" ? "预约咨询" : "Book a Consultation"}
           </h2>
-          <p className="mt-3 text-muted">
+          <p className="mt-2 text-muted">
             {l === "zh"
-              ? "获取来自传媒行业资深专家的商业洞察与战略建议。从印刷到数字化转型、本地传媒平台运营到流量增长策略，Jeff 可以为您的业务提供专业指导。"
-              : "Get business insights and strategic advice from a seasoned media industry expert. From print-to-digital transformation, local media platform operations, to audience growth strategies — Jeff can provide expert guidance for your business."}
+              ? "选择时间，与 Jeff Guan 进行一对一咨询"
+              : "Select a time to schedule a one-on-one consultation with Jeff Guan"}
           </p>
-          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <div className="mt-8">
+            <CalendlyBooking
+              expertUserId={expertUserId}
+              expertName="Jeff Guan"
+              hourlyRate={expertHourlyRate}
+              locale={l}
+            />
+          </div>
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href={`/${l}/industry/media`}
               className="inline-flex items-center gap-2 rounded-lg border border-card-border bg-card-bg px-6 py-3 font-medium transition hover:border-accent/40"
             >
               {l === "zh" ? "探索传媒咨询" : "Explore Media Consulting"}
-            </Link>
-            <Link
-              href={`/${l}/pricing`}
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-3 font-medium text-white transition hover:opacity-90"
-            >
-              {l === "zh" ? "预约咨询" : "Book a Consultation"}
             </Link>
           </div>
         </div>

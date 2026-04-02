@@ -27,7 +27,7 @@ export default async function KnowledgePage({
 
   return (
     <div className="flex flex-1 flex-col">
-      <section className="mx-auto w-full max-w-4xl px-6 py-16">
+      <section className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6 sm:py-16">
         <KnowledgeBase locale={locale as Locale} />
       </section>
     </div>

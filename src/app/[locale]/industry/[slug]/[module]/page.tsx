@@ -56,9 +56,9 @@ export default async function ModulePage({
   return (
     <div className="flex flex-1 flex-col">
       {/* Header */}
-      <section className="border-b border-card-border px-6 py-6">
+      <section className="border-b border-card-border px-4 py-4 sm:px-6 sm:py-6">
         <div className="mx-auto max-w-7xl">
-          <div className="flex items-center gap-2 text-sm text-muted">
+          <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted sm:gap-2 sm:text-sm">
             <Link
               href={`/${l}`}
               className="transition hover:text-foreground"
@@ -90,7 +90,7 @@ export default async function ModulePage({
         </div>
       </section>
 
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 pb-16 pt-8 lg:flex-row">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 pb-10 pt-6 sm:gap-6 sm:px-6 sm:pb-16 sm:pt-8 lg:flex-row">
         {/* Sidebar - Features */}
         <aside className="w-full shrink-0 lg:w-64">
           <div className="rounded-xl border border-card-border bg-card-bg p-5">

@@ -54,14 +54,14 @@ export default function Navbar({
         </div>
 
         {/* Mobile nav */}
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <LanguageSwitcher locale={locale} />
           <ThemeToggle />
-          <AuthButton />
           <MobileMenu
             locale={locale}
             links={links}
             joinLabel={dict.nav.join}
+            authSlot={<AuthButton />}
           />
         </div>
       </div>

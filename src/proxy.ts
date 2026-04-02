@@ -37,6 +37,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|icon.svg|USProGlove_Market_Report).*)",
+    "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|icon.svg|avatar/|USProGlove_Market_Report).*)",
   ],
 };

@@ -28,10 +28,10 @@ export default async function PricingPage({
   return (
     <div className="flex flex-1 flex-col">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-card-border px-6 py-16 text-center">
+      <section className="relative overflow-hidden border-b border-card-border px-4 py-12 text-center sm:px-6 sm:py-16">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-4xl">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {p.title}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-muted">{p.subtitle}</p>
@@ -39,8 +39,8 @@ export default async function PricingPage({
       </section>
 
       {/* Plans */}
-      <section className="mx-auto w-full max-w-7xl px-6 py-16">
-        <div className="grid gap-6 lg:grid-cols-4">
+      <section className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {/* Free */}
           <div className="flex flex-col rounded-xl border border-card-border bg-card-bg p-8">
             <h3 className="text-lg font-semibold">{p.free}</h3>
@@ -164,7 +164,7 @@ export default async function PricingPage({
         </div>
 
         {/* How it works */}
-        <div className="mt-12 rounded-xl border border-card-border bg-card-bg p-8">
+        <div className="mt-8 rounded-xl border border-card-border bg-card-bg p-5 sm:mt-12 sm:p-8">
           <h3 className="text-lg font-semibold">{p.howItWorks}</h3>
           <p className="mt-2 text-sm text-muted">{p.howItWorksDesc}</p>
           <div className="mt-6 rounded-lg bg-background p-5">

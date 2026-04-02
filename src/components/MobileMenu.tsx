@@ -7,10 +7,12 @@ export default function MobileMenu({
   locale,
   links,
   joinLabel,
+  authSlot,
 }: {
   locale: string;
   links: { href: string; label: string }[];
   joinLabel: string;
+  authSlot?: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -54,6 +56,11 @@ export default function MobileMenu({
             >
               {joinLabel}
             </Link>
+            {authSlot && (
+              <div className="mt-2 border-t border-card-border pt-3 px-3">
+                {authSlot}
+              </div>
+            )}
           </div>
         </div>
       )}

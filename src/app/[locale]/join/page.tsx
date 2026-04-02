@@ -158,7 +158,7 @@ export default async function JoinPage({
       </section>
 
       {/* Our Philosophy */}
-      <section className="mx-auto w-full max-w-7xl px-6 py-16">
+      <section className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
             {l === "zh" ? "我们的理念" : "Our Philosophy"}
@@ -186,7 +186,7 @@ export default async function JoinPage({
       </section>
 
       {/* How It Works */}
-      <section className="border-t border-card-border bg-card-bg/50 px-6 py-16">
+      <section className="border-t border-card-border bg-card-bg/50 px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
@@ -213,7 +213,7 @@ export default async function JoinPage({
       </section>
 
       {/* Requirements */}
-      <section className="border-t border-card-border px-6 py-16">
+      <section className="border-t border-card-border px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
@@ -242,7 +242,7 @@ export default async function JoinPage({
       </section>
 
       {/* Earnings Highlight */}
-      <section className="border-t border-card-border bg-card-bg/50 px-6 py-16">
+      <section className="border-t border-card-border bg-card-bg/50 px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
             {l === "zh" ? "你的知识值多少？" : "What's Your Knowledge Worth?"}
@@ -279,7 +279,7 @@ export default async function JoinPage({
       </section>
 
       {/* CTA */}
-      <section className="border-t border-card-border px-6 py-20">
+      <section className="border-t border-card-border px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
             {l === "zh" ? (
@@ -307,7 +307,7 @@ export default async function JoinPage({
           </p>
           <Link
             href={`/${l}/profile`}
-            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-light px-10 py-4 text-lg font-medium text-white transition hover:opacity-90"
+            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-light px-8 py-3.5 text-base font-medium text-white transition hover:opacity-90 sm:px-10 sm:py-4 sm:text-lg"
           >
             {l === "zh" ? "立即加入 →" : "Join Now →"}
           </Link>

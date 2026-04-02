@@ -46,7 +46,7 @@ export default async function IndustryPage({
   return (
     <div className="flex flex-1 flex-col">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-card-border px-6 py-16">
+      <section className="relative overflow-hidden border-b border-card-border px-4 py-12 sm:px-6 sm:py-16">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -60,10 +60,10 @@ export default async function IndustryPage({
           >
             {dict.industry.backToIndustries}
           </Link>
-          <div className="mt-6 flex items-center gap-4">
-            <span className="text-5xl">{industry.icon}</span>
+          <div className="mt-6 flex items-start gap-3 sm:items-center sm:gap-4">
+            <span className="text-4xl sm:text-5xl">{industry.icon}</span>
             <div>
-              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              <h1 className="text-2xl font-bold tracking-tight sm:text-4xl">
                 {l === "zh" ? industry.nameZh : industry.name}{" "}
                 {dict.industry.consulting}
               </h1>
@@ -99,16 +99,261 @@ export default async function IndustryPage({
             <div className="mt-4 max-w-2xl rounded-lg border border-amber-500/40 bg-amber-500/15 px-4 py-3">
               <p className="text-sm text-foreground">
                 {l === "zh"
-                  ? "⚠️ 免责声明：本平台提供的是金融服务行业的商业咨询（市场分析、运营策略、获客策略等），不提供任何投资建议、理财规划或证券推荐。如需金融服务，请咨询持证金融顾问。"
-                  : "⚠️ Disclaimer: This platform provides business consulting for the financial services industry (market analysis, operational strategy, customer acquisition, etc.). We do not provide investment advice, financial planning, or securities recommendations. Please consult a licensed financial advisor for financial needs."}
+                  ? "⚠️ 免责声明：本平台提供的是金融保险行业的商业咨询（市场分析、运营策略、获客策略等），不提供任何投资建议、理财规划或证券推荐。如需金融服务，请咨询持证金融顾问。"
+                  : "⚠️ Disclaimer: This platform provides business consulting for the finance and insurance industry (market analysis, operational strategy, customer acquisition, etc.). We do not provide investment advice, financial planning, or securities recommendations. Please consult a licensed financial advisor for financial needs."}
               </p>
             </div>
           )}
         </div>
       </section>
 
+      {/* Industry Experts */}
+      {industry.slug === "retail" && (
+        <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
+          <h2 className="text-xl font-bold">{dict.expert.title}</h2>
+          <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href={`/${l}/industry/retail/experts/xianji-li`}
+              className="group flex items-start gap-3 rounded-xl border border-card-border bg-card-bg p-4 sm:gap-4 sm:p-6 transition hover:border-pink-400/40"
+            >
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-pink-400 to-rose-600 text-lg font-bold text-white shadow">
+                XL
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-semibold">
+                  Xianji Li{" "}
+                  <span className="text-xs font-normal text-muted">
+                    {l === "zh" ? "李先基" : "(Li Xianji)"}
+                  </span>
+                </h3>
+                <p className="text-xs text-muted">
+                  {l === "zh"
+                    ? "Unincore & Coway 旧金山湾区销售主管"
+                    : "Regional Sales Director, Unincore & Coway · SF Bay Area"}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
+                  {l === "zh"
+                    ? "年营业额超百万，深耕美妆护肤与健康家电领域，精通区域销售管理与渠道建设"
+                    : "$1M+ annual revenue, specializing in beauty, skincare & wellness appliances, expert in regional sales and distribution"}
+                </p>
+                <span
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
+                  style={{ color: industry.color }}
+                >
+                  {dict.expert.viewProfile}
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </span>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {industry.slug === "manufacturing" && (
+        <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
+          <h2 className="text-xl font-bold">{dict.expert.title}</h2>
+          <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href={`/${l}/industry/manufacturing/experts/helen-lan`}
+              className="group flex items-start gap-3 rounded-xl border border-card-border bg-card-bg p-4 sm:gap-4 sm:p-6 transition hover:border-amber-400/40"
+            >
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-600 text-lg font-bold text-white shadow">
+                HL
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-semibold">
+                  Helen Lan{" "}
+                  <span className="text-xs font-normal text-muted">
+                    {l === "zh" ? "蓝海伦" : "(Lan Helen)"}
+                  </span>
+                </h3>
+                <p className="text-xs text-muted">
+                  {l === "zh"
+                    ? "深圳电子制造 · 外贸出海专家"
+                    : "Shenzhen Electronics Manufacturing · Trade Expert"}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
+                  {l === "zh"
+                    ? "曾管理超百人团队，深耕电子制造、供应链管理与跨境贸易"
+                    : "Managed teams of 100+, specializing in electronics manufacturing, supply chain, and cross-border trade"}
+                </p>
+                <span
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
+                  style={{ color: industry.color }}
+                >
+                  {dict.expert.viewProfile}
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </span>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {industry.slug === "media" && (
+        <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
+          <h2 className="text-xl font-bold">{dict.expert.title}</h2>
+          <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href={`/${l}/industry/media/experts/jeff-guan`}
+              className="group flex items-start gap-3 rounded-xl border border-card-border bg-card-bg p-4 sm:gap-4 sm:p-6 transition hover:border-orange-400/40"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://shopdineguide.com/images/logo/store02.png"
+                alt="Jeff Guan"
+                className="h-14 w-14 shrink-0 rounded-full object-cover shadow"
+              />
+              <div className="min-w-0">
+                <h3 className="font-semibold">Jeff Guan</h3>
+                <p className="text-xs text-muted">
+                  {l === "zh"
+                    ? "BannerShop USA 创始人 · 东方新媒体"
+                    : "Founder, BannerShop USA · Eastern New Media"}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
+                  {l === "zh"
+                    ? "30+年传媒经验，旗下运营 ShopDineGuide、FoodieGuide、FoodieCoupon 等平台，百万级流量"
+                    : "30+ years in media, operating ShopDineGuide, FoodieGuide, FoodieCoupon and more, with millions of reach"}
+                </p>
+                <span
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
+                  style={{ color: industry.color }}
+                >
+                  {dict.expert.viewProfile}
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </span>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {industry.slug === "technology" && (
+        <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
+          <h2 className="text-xl font-bold">{dict.expert.title}</h2>
+          <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href={`/${l}/industry/technology/experts/jay-lin`}
+              className="group flex items-start gap-3 rounded-xl border border-card-border bg-card-bg p-4 sm:gap-4 sm:p-6 transition hover:border-blue-400/40"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://lh3.googleusercontent.com/a/ACg8ocKhtGiDq8WyAJQ7ZH8D_Hsa2QPOQLW2a4ALXv9gwW45O2GivtuyUg=s96-c"
+                alt="Jay Lin"
+                className="h-14 w-14 shrink-0 rounded-full object-cover shadow"
+              />
+              <div className="min-w-0">
+                <h3 className="font-semibold">
+                  {l === "zh" ? "林维京" : "Jay Lin"}{" "}
+                  <span className="text-xs font-normal text-muted">
+                    {l === "zh" ? "Jay Lin" : "(林维京)"}
+                  </span>
+                </h3>
+                <p className="text-xs text-muted">
+                  {l === "zh"
+                    ? "JYTech 创始人 · 湾区中文网 / Yeoso 联合创始人"
+                    : "Founder, JYTech · Co-founder, BayAreaChinese.com & Yeoso"}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
+                  {l === "zh"
+                    ? "10+年经验，曾参与华为机器人、Meta IoT/广告、Intuit/PayPal AI 平台研发（RAG、MCP、A2A、AutoClaw）"
+                    : "10+ years exp, Huawei Robotics, Meta IoT/Ads, Intuit/PayPal AI platform R&D (RAG, MCP, A2A, AutoClaw)"}
+                </p>
+                <span
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
+                  style={{ color: industry.color }}
+                >
+                  {dict.expert.viewProfile}
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </span>
+              </div>
+            </Link>
+            <Link
+              href={`/${l}/industry/technology/experts/lucas-hu`}
+              className="group flex items-start gap-3 rounded-xl border border-card-border bg-card-bg p-4 sm:gap-4 sm:p-6 transition hover:border-cyan-400/40"
+            >
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 text-lg font-bold text-white shadow">
+                LH
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-semibold">
+                  Lucas Hu
+                </h3>
+                <p className="text-xs text-muted">
+                  {l === "zh"
+                    ? "AI 研究者 · Old Dominion University 博士候选人"
+                    : "AI Researcher · Ph.D. Candidate, Old Dominion University"}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
+                  {l === "zh"
+                    ? "专注大语言模型、符号回归、AI 安全与语义通信，IEEE MILCOM 发表研究"
+                    : "LLMs, symbolic regression, AI security & semantic communication, published at IEEE MILCOM"}
+                </p>
+                <span
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
+                  style={{ color: industry.color }}
+                >
+                  {dict.expert.viewProfile}
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </span>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {industry.slug === "finance" && (
+        <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
+          <h2 className="text-xl font-bold">{dict.expert.title}</h2>
+          <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href={`/${l}/industry/finance/experts/grace-zhou`}
+              className="group flex items-start gap-3 rounded-xl border border-card-border bg-card-bg p-4 sm:gap-4 sm:p-6 transition hover:border-emerald-400/40"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/avatar/grace-zhou.png"
+                alt="Grace Zhou"
+                className="h-14 w-14 shrink-0 rounded-full object-cover shadow"
+              />
+              <div className="min-w-0">
+                <h3 className="font-semibold">
+                  Grace Zhou{" "}
+                  <span className="text-xs font-normal text-muted">
+                    {l === "zh" ? "周Grace" : "(Zhou Grace)"}
+                  </span>
+                </h3>
+                <p className="text-xs text-muted">
+                  {l === "zh"
+                    ? "Lions Club 旧金山分会会长 · 保险理财顾问 · 珠宝设计师"
+                    : "President, SF Global Healthcare Lions Club · Insurance & Wealth Advisor · Jewelry Designer"}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
+                  {l === "zh"
+                    ? "深耕海外资产配置、人寿保险与退休投资理财领域，同时跨界高级珠宝定制设计与健康美容产品"
+                    : "Specializing in overseas asset allocation, life insurance & retirement planning, plus custom jewelry design and health & beauty products"}
+                </p>
+                <span
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
+                  style={{ color: industry.color }}
+                >
+                  {dict.expert.viewProfile}
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </span>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
       {/* Modules Grid */}
-      <section className="mx-auto w-full max-w-7xl px-6 py-12">
+      <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
         <h2 className="text-xl font-bold">{dict.industry.chooseModule}</h2>
         <p className="mt-1 text-sm text-muted">
           {dict.industry.chooseModuleDesc.replace(
@@ -169,7 +414,7 @@ export default async function IndustryPage({
         const studies = getCaseStudiesForIndustry(industry.slug);
         if (studies.length === 0) return null;
         return (
-          <section className="mx-auto w-full max-w-7xl px-6 py-12">
+          <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
             <h2 className="text-xl font-bold">{dict.industry.caseStudies}</h2>
             <p className="mt-1 text-sm text-muted">
               {dict.industry.caseStudiesDesc.replace(
@@ -223,205 +468,6 @@ export default async function IndustryPage({
         );
       })()}
 
-      {/* Industry Experts */}
-      {industry.slug === "retail" && (
-        <section className="mx-auto w-full max-w-7xl px-6 py-12">
-          <h2 className="text-xl font-bold">{dict.expert.title}</h2>
-          <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href={`/${l}/industry/retail/experts/xianji-li`}
-              className="group flex items-start gap-4 rounded-xl border border-card-border bg-card-bg p-6 transition hover:border-pink-400/40"
-            >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-pink-400 to-rose-600 text-lg font-bold text-white shadow">
-                XL
-              </div>
-              <div className="min-w-0">
-                <h3 className="font-semibold">
-                  Xianji Li{" "}
-                  <span className="text-xs font-normal text-muted">
-                    {l === "zh" ? "李先基" : "(Li Xianji)"}
-                  </span>
-                </h3>
-                <p className="text-xs text-muted">
-                  {l === "zh"
-                    ? "Unincore & Coway 旧金山湾区销售主管"
-                    : "Regional Sales Director, Unincore & Coway · SF Bay Area"}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
-                  {l === "zh"
-                    ? "年营业额超百万，深耕美妆护肤与健康家电领域，精通区域销售管理与渠道建设"
-                    : "$1M+ annual revenue, specializing in beauty, skincare & wellness appliances, expert in regional sales and distribution"}
-                </p>
-                <span
-                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
-                  style={{ color: industry.color }}
-                >
-                  {dict.expert.viewProfile}
-                  <span className="transition group-hover:translate-x-1">→</span>
-                </span>
-              </div>
-            </Link>
-          </div>
-        </section>
-      )}
-
-      {industry.slug === "manufacturing" && (
-        <section className="mx-auto w-full max-w-7xl px-6 py-12">
-          <h2 className="text-xl font-bold">{dict.expert.title}</h2>
-          <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href={`/${l}/industry/manufacturing/experts/helen-lan`}
-              className="group flex items-start gap-4 rounded-xl border border-card-border bg-card-bg p-6 transition hover:border-amber-400/40"
-            >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-600 text-lg font-bold text-white shadow">
-                HL
-              </div>
-              <div className="min-w-0">
-                <h3 className="font-semibold">
-                  Helen Lan{" "}
-                  <span className="text-xs font-normal text-muted">
-                    {l === "zh" ? "蓝海伦" : "(Lan Helen)"}
-                  </span>
-                </h3>
-                <p className="text-xs text-muted">
-                  {l === "zh"
-                    ? "深圳电子制造 · 外贸出海专家"
-                    : "Shenzhen Electronics Manufacturing · Trade Expert"}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
-                  {l === "zh"
-                    ? "曾管理超百人团队，深耕电子制造、供应链管理与跨境贸易"
-                    : "Managed teams of 100+, specializing in electronics manufacturing, supply chain, and cross-border trade"}
-                </p>
-                <span
-                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
-                  style={{ color: industry.color }}
-                >
-                  {dict.expert.viewProfile}
-                  <span className="transition group-hover:translate-x-1">→</span>
-                </span>
-              </div>
-            </Link>
-          </div>
-        </section>
-      )}
-
-      {industry.slug === "media" && (
-        <section className="mx-auto w-full max-w-7xl px-6 py-12">
-          <h2 className="text-xl font-bold">{dict.expert.title}</h2>
-          <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href={`/${l}/industry/media/experts/jeff-guan`}
-              className="group flex items-start gap-4 rounded-xl border border-card-border bg-card-bg p-6 transition hover:border-orange-400/40"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://shopdineguide.com/images/logo/store02.png"
-                alt="Jeff Guan"
-                className="h-14 w-14 shrink-0 rounded-full object-cover shadow"
-              />
-              <div className="min-w-0">
-                <h3 className="font-semibold">Jeff Guan</h3>
-                <p className="text-xs text-muted">
-                  {l === "zh"
-                    ? "BannerShop USA 创始人 · 东方新媒体"
-                    : "Founder, BannerShop USA · Eastern New Media"}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
-                  {l === "zh"
-                    ? "30+年传媒经验，旗下运营 ShopDineGuide、FoodieGuide、FoodieCoupon 等平台，百万级流量"
-                    : "30+ years in media, operating ShopDineGuide, FoodieGuide, FoodieCoupon and more, with millions of reach"}
-                </p>
-                <span
-                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
-                  style={{ color: industry.color }}
-                >
-                  {dict.expert.viewProfile}
-                  <span className="transition group-hover:translate-x-1">→</span>
-                </span>
-              </div>
-            </Link>
-          </div>
-        </section>
-      )}
-
-      {industry.slug === "technology" && (
-        <section className="mx-auto w-full max-w-7xl px-6 py-12">
-          <h2 className="text-xl font-bold">{dict.expert.title}</h2>
-          <p className="mt-1 text-sm text-muted">{dict.expert.subtitle}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href={`/${l}/industry/technology/experts/jay-lin`}
-              className="group flex items-start gap-4 rounded-xl border border-card-border bg-card-bg p-6 transition hover:border-blue-400/40"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://lh3.googleusercontent.com/a/ACg8ocKhtGiDq8WyAJQ7ZH8D_Hsa2QPOQLW2a4ALXv9gwW45O2GivtuyUg=s96-c"
-                alt="Jay Lin"
-                className="h-14 w-14 shrink-0 rounded-full object-cover shadow"
-              />
-              <div className="min-w-0">
-                <h3 className="font-semibold">
-                  {l === "zh" ? "林维京" : "Jay Lin"}{" "}
-                  <span className="text-xs font-normal text-muted">
-                    {l === "zh" ? "Jay Lin" : "(林维京)"}
-                  </span>
-                </h3>
-                <p className="text-xs text-muted">
-                  {l === "zh"
-                    ? "JYTech 创始人 · 湾区中文网 / Yeoso 联合创始人"
-                    : "Founder, JYTech · Co-founder, BayAreaChinese.com & Yeoso"}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
-                  {l === "zh"
-                    ? "10+年经验，曾参与华为机器人、Meta IoT/广告、Intuit/PayPal AI 平台研发（RAG、MCP、A2A、AutoClaw）"
-                    : "10+ years exp, Huawei Robotics, Meta IoT/Ads, Intuit/PayPal AI platform R&D (RAG, MCP, A2A, AutoClaw)"}
-                </p>
-                <span
-                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
-                  style={{ color: industry.color }}
-                >
-                  {dict.expert.viewProfile}
-                  <span className="transition group-hover:translate-x-1">→</span>
-                </span>
-              </div>
-            </Link>
-            <Link
-              href={`/${l}/industry/technology/experts/lucas-hu`}
-              className="group flex items-start gap-4 rounded-xl border border-card-border bg-card-bg p-6 transition hover:border-cyan-400/40"
-            >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 text-lg font-bold text-white shadow">
-                LH
-              </div>
-              <div className="min-w-0">
-                <h3 className="font-semibold">
-                  Lucas Hu
-                </h3>
-                <p className="text-xs text-muted">
-                  {l === "zh"
-                    ? "AI 研究者 · Old Dominion University 博士候选人"
-                    : "AI Researcher · Ph.D. Candidate, Old Dominion University"}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
-                  {l === "zh"
-                    ? "专注大语言模型、符号回归、AI 安全与语义通信，IEEE MILCOM 发表研究"
-                    : "LLMs, symbolic regression, AI security & semantic communication, published at IEEE MILCOM"}
-                </p>
-                <span
-                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium"
-                  style={{ color: industry.color }}
-                >
-                  {dict.expert.viewProfile}
-                  <span className="transition group-hover:translate-x-1">→</span>
-                </span>
-              </div>
-            </Link>
-          </div>
-        </section>
-      )}
     </div>
   );
 }

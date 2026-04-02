@@ -95,7 +95,7 @@ export default function ChatWidget() {
 
   const panelClass = fullscreen
     ? "fixed inset-0 z-50 flex flex-col bg-background"
-    : "fixed bottom-6 right-6 z-50 flex h-[500px] w-[380px] flex-col rounded-xl border border-card-border bg-background shadow-2xl sm:h-[560px] sm:w-[400px]";
+    : "fixed bottom-0 right-0 z-50 flex h-[100dvh] w-full flex-col bg-background sm:bottom-6 sm:right-6 sm:h-[560px] sm:w-[400px] sm:rounded-xl sm:border sm:border-card-border sm:shadow-2xl";
 
   return (
     <div className={panelClass}>

@@ -195,13 +195,13 @@ export const industries: Industry[] = [
   },
   {
     slug: "finance",
-    name: "Financial Services Business",
-    nameZh: "金融商务",
+    name: "Finance & Insurance",
+    nameZh: "金融保险",
     icon: "💰",
     description:
-      "Business consulting for financial services companies — market analysis, fintech competitor benchmarking, operational strategy, and customer acquisition. Not investment or financial advice.",
+      "Business consulting for finance and insurance professionals — market analysis, wealth management strategy, insurance product positioning, and customer acquisition. Not investment or financial advice.",
     descriptionZh:
-      "面向金融服务企业的商业咨询——市场分析、金融科技竞品对标、运营策略与获客策略。不提供投资或理财建议。",
+      "面向金融保险行业的商业咨询——市场分析、财富管理策略、保险产品定位与获客策略。不提供投资或理财建议。",
     color: "#16a34a",
   },
 ];

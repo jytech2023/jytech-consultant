@@ -19,3 +19,12 @@ export async function getExpertsFromDB(industrySlug?: string) {
 
   return filtered;
 }
+
+export async function getExpertBySlug(slug: string) {
+  const [expert] = await db
+    .select()
+    .from(schema.expertsTable)
+    .where(eq(schema.expertsTable.slug, slug))
+    .limit(1);
+  return expert ?? null;
+}

@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
 import { locales, defaultLocale } from "@/lib/i18n";
 import { auth0 } from "@/lib/auth0";
 
-export async function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+export async function proxy(request: Request) {
+  const url = new URL(request.url);
+  const { pathname } = url;
 
   // Auth0 routes — let the SDK handle login, callback, logout, etc.
   if (pathname.startsWith("/auth/")) {
@@ -15,29 +15,21 @@ export async function proxy(request: NextRequest) {
     return auth0.middleware(request);
   }
 
-  // For all other routes, handle locale redirect WITHOUT running auth0.middleware().
-  // This avoids unnecessary session cookie writes on every page navigation
-  // which can cause race conditions with the Auth0 transaction cookie,
-  // leading to "state parameter is invalid" errors.
-
   // Check if the pathname already starts with a locale
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
   if (pathnameHasLocale) {
-    // Run auth0 middleware to handle session refresh on locale-prefixed pages
     return auth0.middleware(request);
   }
 
   // No locale prefix — redirect to locale-prefixed path
-  // Do NOT run auth0.middleware() here to avoid cookie interference
   const acceptLang = request.headers.get("accept-language") ?? "";
   const preferred = acceptLang.includes("zh") ? "zh" : defaultLocale;
 
-  const url = request.nextUrl.clone();
   url.pathname = `/${preferred}${pathname}`;
-  return NextResponse.redirect(url);
+  return Response.redirect(url.toString(), 307);
 }
 
 export const config = {

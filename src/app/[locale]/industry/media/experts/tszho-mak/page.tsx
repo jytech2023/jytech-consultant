@@ -16,12 +16,12 @@ export async function generateMetadata({
   return {
     title:
       locale === "zh"
-        ? "PIPA | 传媒与互动设计专家"
-        : "PIPA | Media & Interactive Design Expert",
+        ? "Mak 麦梓浩 | 传媒与互动设计专家"
+        : "Mak | Media & Interactive Design Expert",
     description:
       locale === "zh"
-        ? "PIPA (麦子豪) — 产品设计师，专注 UI/UX、游戏设计与互动媒体，UCSC 游戏与可玩媒体硕士"
-        : "PIPA — Product designer specializing in UI/UX, game design, and interactive media. M.S. Games & Playable Media from UC Santa Cruz",
+        ? "Mak 麦梓浩 — 产品设计师，专注 UI/UX、游戏设计与互动媒体，UCSC 游戏与可玩媒体硕士"
+        : "Mak — Product designer specializing in UI/UX, game design, and interactive media. M.S. Games & Playable Media from UC Santa Cruz",
     alternates: {
       languages: {
         en: "/en/industry/media/experts/tszho-mak",
@@ -232,7 +232,7 @@ export default async function TszhoMakExpertPage({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/avatar/papi.jpg"
-              alt="PIPA"
+              alt="Mak"
               className="h-28 w-28 shrink-0 rounded-full object-cover shadow-lg"
             />
             <div>
@@ -240,9 +240,9 @@ export default async function TszhoMakExpertPage({
                 {l === "zh" ? "传媒与互动设计专家" : "Media & Interactive Design Expert"}
               </p>
               <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
-                PIPA{" "}
+                Mak{" "}
                 <span className="text-lg font-normal text-muted">
-                  {l === "zh" ? "麦子豪" : "(Mak Tszho)"}
+                  {l === "zh" ? "麦梓浩" : "(Mak Tszho)"}
                 </span>
               </h1>
               <p className="mt-1 text-muted">
@@ -252,8 +252,8 @@ export default async function TszhoMakExpertPage({
               </p>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
                 {l === "zh"
-                  ? "PIPA 是一位专注 UI/UX 与互动媒体的产品设计师，毕业于加州大学圣克鲁兹分校游戏与可玩媒体专业（满绩）。他曾在 Bitus Labs 担任游戏 UI/UX 设计师并兼任临时 UI/UX 负责人，在 37互娱和 fAIshion.AI 积累了丰富的游戏界面设计与 AI 产品设计经验。擅长将用户研究洞察转化为可落地的设计方案，驱动可衡量的产品体验提升。"
-                  : "PIPA is a product designer specializing in UI/UX and interactive media, graduating with a perfect 4.0 GPA from UC Santa Cruz's Games & Playable Media program. He has served as Game UI/UX Designer and interim UI/UX Lead at Bitus Labs, with additional experience at 37 Interactive Entertainment and fAIshion.AI. He excels at translating user research insights into actionable design solutions that drive measurable product improvements."}
+                  ? "Mak 是一位专注 UI/UX 与互动媒体的产品设计师，毕业于加州大学圣克鲁兹分校游戏与可玩媒体专业（满绩）。他曾在 Bitus Labs 担任游戏 UI/UX 设计师并兼任临时 UI/UX 负责人，在 37互娱和 fAIshion.AI 积累了丰富的游戏界面设计与 AI 产品设计经验。擅长将用户研究洞察转化为可落地的设计方案，驱动可衡量的产品体验提升。"
+                  : "Mak is a product designer specializing in UI/UX and interactive media, graduating with a perfect 4.0 GPA from UC Santa Cruz's Games & Playable Media program. He has served as Game UI/UX Designer and interim UI/UX Lead at Bitus Labs, with additional experience at 37 Interactive Entertainment and fAIshion.AI. He excels at translating user research insights into actionable design solutions that drive measurable product improvements."}
               </p>
             </div>
           </div>
@@ -284,8 +284,8 @@ export default async function TszhoMakExpertPage({
           </h2>
           <p className="mt-2 text-muted">
             {l === "zh"
-              ? "Tszho 在产品设计与互动媒体领域的核心能力"
-              : "PIPA's core competencies in product design and interactive media"}
+              ? "Mak 在产品设计与互动媒体领域的核心能力"
+              : "Mak's core competencies in product design and interactive media"}
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {exp.map((area) => (
@@ -345,13 +345,13 @@ export default async function TszhoMakExpertPage({
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
             {l === "zh"
-              ? "与 PIPA 咨询"
-              : "Consult with PIPA"}
+              ? "与 Mak 咨询"
+              : "Consult with Mak"}
           </h2>
           <p className="mt-3 text-muted">
             {l === "zh"
-              ? "获取来自产品设计与互动媒体领域的专业建议。从游戏 UI 设计到用户体验策略，Tszho 可以为您的项目提供专业指导。"
-              : "Get expert advice on product design and interactive media. From game UI design to UX strategy, Tszho can provide professional guidance for your project."}
+              ? "获取来自产品设计与互动媒体领域的专业建议。从游戏 UI 设计到用户体验策略，Mak 可以为您的项目提供专业指导。"
+              : "Get expert advice on product design and interactive media. From game UI design to UX strategy, Mak can provide professional guidance for your project."}
           </p>
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link

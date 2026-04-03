@@ -8,6 +8,13 @@
       "when": 1774814947299,
       "tag": "0000_secret_shard",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1775181415985,
+      "tag": "0001_add-experts-table",
+      "breakpoints": true
     }
   ]
 }

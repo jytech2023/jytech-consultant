@@ -207,3 +207,34 @@ export const calendlyTokensRelations = relations(calendlyTokens, ({ one }) => ({
     references: [users.id],
   }),
 }));
+
+// ── Experts (platform-listed consultants) ────────────────────────
+export const expertsTable = pgTable(
+  "experts",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    slug: text("slug").notNull().unique(),
+    name: text("name").notNull(),
+    nameZh: text("name_zh"),
+    industries: text("industries").notNull(), // comma-separated slugs, e.g. "technology,media"
+    title: text("title").notNull(),
+    titleZh: text("title_zh"),
+    bio: text("bio"),
+    bioZh: text("bio_zh"),
+    hourlyRate: integer("hourly_rate"),
+    city: text("city"),
+    profileUrl: text("profile_url").notNull(), // e.g. "/industry/technology/experts/jay-lin"
+    avatarUrl: text("avatar_url"), // e.g. "/avatar/grace-zhou.png"
+    externalAvatarUrl: text("external_avatar_url"), // e.g. https://...
+    // Link to auth0 user if they have an account
+    userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
+    active: integer("active").default(1).notNull(), // 1 = visible, 0 = hidden
+    sortOrder: integer("sort_order").default(0).notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("experts_slug_idx").on(table.slug),
+    index("experts_active_idx").on(table.active),
+  ]
+);

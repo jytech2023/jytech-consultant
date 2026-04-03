@@ -10,6 +10,8 @@ export interface Expert {
   hourlyRate: number;
   city: string;
   profileUrl: string; // relative path template, e.g. "/industry/technology/experts/jay-lin"
+  avatarUrl?: string; // local avatar, e.g. "/avatar/grace-zhou.png"
+  externalAvatarUrl?: string; // external avatar URL
 }
 
 export const experts: Expert[] = [
@@ -25,6 +27,7 @@ export const experts: Expert[] = [
     hourlyRate: 500,
     city: "San Francisco, CA",
     profileUrl: "/industry/technology/experts/jay-lin",
+    externalAvatarUrl: "https://lh3.googleusercontent.com/a/ACg8ocKhtGiDq8WyAJQ7ZH8D_Hsa2QPOQLW2a4ALXv9gwW45O2GivtuyUg=s96-c",
   },
   {
     slug: "lucas-hu",
@@ -51,6 +54,7 @@ export const experts: Expert[] = [
     hourlyRate: 500,
     city: "San Francisco Bay Area",
     profileUrl: "/industry/media/experts/jeff-guan",
+    externalAvatarUrl: "https://shopdineguide.com/images/logo/store02.png",
   },
   {
     slug: "xianji-li",
@@ -77,6 +81,34 @@ export const experts: Expert[] = [
     hourlyRate: 200,
     city: "Shenzhen, China",
     profileUrl: "/industry/manufacturing/experts/helen-lan",
+  },
+  {
+    slug: "tszho-mak",
+    name: "PIPA",
+    nameZh: "麦子豪",
+    industries: ["media"],
+    title: "Product Designer · UCSC M.S. Games & Playable Media",
+    titleZh: "产品设计师 · UCSC 游戏与可玩媒体硕士",
+    bio: "Product designer with expertise in UI/UX, game design, and interactive media. Led UI/UX redesigns improving mobile usability by 40%. Experience at Bitus Labs, 37 Interactive Entertainment, and fAIshion.AI. UCSC M.S. with 4.0 GPA.",
+    bioZh: "专注 UI/UX、游戏设计与互动媒体的产品设计师。主导多项 UI/UX 重设计，移动端可用性提升 40%。曾任职 Bitus Labs、37互娱、fAIshion.AI。UCSC 硕士，GPA 4.0。",
+    hourlyRate: 200,
+    city: "San Francisco Bay Area",
+    profileUrl: "/industry/media/experts/tszho-mak",
+    avatarUrl: "/avatar/papi.jpg",
+  },
+  {
+    slug: "grace-zhou",
+    name: "Grace Zhou",
+    nameZh: "Grace Zhou",
+    industries: ["finance"],
+    title: "President, SF Global Healthcare Lions Club · Insurance & Wealth Advisor",
+    titleZh: "Lions Club 旧金山国际大健康狮子会会长 · 保险理财顾问",
+    bio: "President of SF Global Healthcare Cyber Lions Club (District 4 C4). Specializing in overseas asset allocation, life insurance, retirement planning. Also a senior custom jewelry designer and health & beauty products entrepreneur.",
+    bioZh: "旧金山国际大健康狮子会会长。深耕海外资产配置、人寿保险与退休投资理财。同时是高级珠宝定制设计师，涉足健康美容产品行业。",
+    hourlyRate: 300,
+    city: "San Mateo, CA",
+    profileUrl: "/industry/finance/experts/grace-zhou",
+    avatarUrl: "/avatar/grace-zhou.png",
   },
 ];
 

@@ -1,7 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import { expertsTable } from "../src/lib/schema";
-import { experts } from "../src/lib/data";
+import { experts } from "./seed-data";
 
 async function seed() {
   const url = process.env.DATABASE_URL;

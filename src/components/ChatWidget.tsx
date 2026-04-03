@@ -5,6 +5,8 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, UIMessage } from "ai";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { usePathname } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { locales, type Locale } from "@/lib/i18n";
 
 const systemPrompt = `You are an expert business consultant for JY Consulting, a Human + AI consulting platform. You help users with customer discovery, competitor analysis, business strategy, market intelligence, supply chain optimization, and career consulting across multiple industries including restaurant, cosmetic, manufacturing, robotics, medical, and education.
@@ -163,7 +165,13 @@ export default function ChatWidget() {
                   : "bg-card-bg border border-card-border"
               }`}
             >
-              <div className="whitespace-pre-wrap">{getMessageText(msg)}</div>
+              {msg.role === "assistant" ? (
+                <div className="chat-markdown">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{getMessageText(msg)}</ReactMarkdown>
+                </div>
+              ) : (
+                <div className="whitespace-pre-wrap">{getMessageText(msg)}</div>
+              )}
             </div>
           </div>
         ))}

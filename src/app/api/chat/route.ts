@@ -9,7 +9,7 @@ import { auth0 } from "@/lib/auth0";
 import { db } from "@/lib/db";
 import { users, documents } from "@/lib/schema";
 import { eq } from "drizzle-orm";
-import { getExpertsForIndustry, experts } from "@/lib/data";
+import { getExpertsFromDB } from "@/lib/db";
 
 const openrouter = createOpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY ?? "",
@@ -73,9 +73,7 @@ export async function POST(req: Request) {
   }
 
   // Build expert recommendation context
-  const relevantExperts = industrySlug
-    ? getExpertsForIndustry(industrySlug)
-    : experts;
+  const relevantExperts = await getExpertsFromDB(industrySlug ?? undefined);
   const expertContext = relevantExperts.length > 0
     ? "\n\n--- Platform Experts ---\n" +
       "At the end of EVERY response, add a '---' horizontal rule, then recommend the most relevant expert(s) from the list below with a short reason, their rate, and profile link. " +
